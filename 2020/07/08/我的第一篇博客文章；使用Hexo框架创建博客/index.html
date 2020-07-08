@@ -529,56 +529,47 @@ ok
 下一步
 ↓↓↓↓↓
 </code></pre>
-<h4 id="3-2-2-用于部署到github，达到部署到远端的目的"><a href="#3-2-2-用于部署到github，达到部署到远端的目的" class="headerlink" title="3.2.2 用于部署到github，达到部署到远端的目的"></a>3.2.2 用于部署到github，达到部署到远端的目的</h4><ol>
-<li><pre><code class="powershell">
+<h4 id="3-2-2-用于部署到github，达到部署到远端的目的"><a href="#3-2-2-用于部署到github，达到部署到远端的目的" class="headerlink" title="3.2.2 用于部署到github，达到部署到远端的目的"></a>3.2.2 用于部署到github，达到部署到远端的目的</h4><ol start="2">
+<li><pre><code>  1. cnpm install --save hexo-deployer-git
+#安装git部署插件（注意：要在blog目录安装）
+
+  2. 关键一步
+     设置blog目录中的_config.yml文件，随便找个记事本啥的打开都行，找到尾部：把deploy设置一下：
+     deploy:
+       type: git
+       repo: https://账户名:密码@github.com/Kerr-An/Kerr-An.github.io.git
+       branch: master
+       #repo这样设置的好处是使用“hexo d”命令部署的时候不需要输入账户和密码
+</code></pre></li>
+</ol>
+<pre><code class="powershell">3. hexo d
+#安装之后就可以部署了d-&gt;deployer：部署
+
+ok
+🛫起飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞
 </code></pre>
-<ol start="2">
-<li><p>cnpm install –save hexo-deployer-git<br>#安装git部署插件（注意：要在blog目录安装）</p>
+<p><strong>接下来就是见证奇迹的时刻！！！</strong></p>
+<p><strong>打开刚才的空仓库，刷新：</strong></p>
+<p><img src="C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708171749653.png" alt="image-20200708171749653"></p>
+<p>部署“陈坤”，嘻嘻嘻：</p>
+<p>访问的话，看下图，或者直接使用刚才的仓库名。</p>
+<p><img src="C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708172019056.png" alt="image-20200708172019056"></p>
+<p>最终效果：</p>
+<p><img src="C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708172317418.png" alt="image-20200708172317418"></p>
+<h2 id="4-关于美化"><a href="#4-关于美化" class="headerlink" title="4. 关于美化"></a>4. 关于美化</h2><h3 id="4-1-更换主题"><a href="#4-1-更换主题" class="headerlink" title="4.1 更换主题"></a>4.1 更换主题</h3><ul>
+<li><pre><code class="powershell"># yilia主题：地址栏键入
+github.com/litten/hexo-theme-yilia
+
+查看这个yilia主题
+然后捏，再去powershell里，blog目录下，键入
+git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
+意思是使用git从github上克隆yilia主题到themes/yilia文件夹
+
+clone下来之后，只需要修改blog目录下的_config.yml文件，找到theme，改成yilia，保存退出
+</code></pre>
+<p><img src="C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708174912080.png" alt="image-20200708174912080"></p>
 </li>
-<li><p>关键一步<br>设置blog目录中的_config.yml文件，随便找个记事本啥的打开都行，找到尾部：把deploy设置一下：<br>deploy:<br> type: git<br> repo: https://账户名:密码@github.com/Kerr-An/Kerr-An.github.io.git<br> branch: master<br> #repo这样设置的好处是使用“hexo d”命令部署的时候不需要输入账户和密码</p>
-</li>
-</ol>
-<p><code>`</code><br>设置图如下</p>
-<p><img src="C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708170601505.png" alt="image-20200708170601505"></p>
-</li>
-</ol>
-<p>​<code>`</code>powershell</p>
-<ol start="3">
-<li>hexo d<br>#安装之后就可以部署了d-&gt;deployer：部署</li>
-</ol>
-<p>ok<br>🛫起飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞</p>
-<pre><code>
-**接下来就是见证奇迹的时刻！！！**
-
-**打开刚才的空仓库，刷新：**
-
-![image-20200708171749653](C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708171749653.png)
-
-部署“陈坤”，嘻嘻嘻：
-
-访问的话，看下图，或者直接使用刚才的仓库名。
-
-![image-20200708172019056](C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708172019056.png)
-
-最终效果：
-
-![image-20200708172317418](C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708172317418.png)
-
-## 4. 关于美化
-
-### 4.1 更换主题
-
-* ```powershell
-  # yilia主题：地址栏键入
-  github.com/litten/hexo-theme-yilia
-
-  查看这个yilia主题
-  然后捏，再去powershell里，blog目录下，键入
-  git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
-  意思是使用git从github上克隆yilia主题到themes/yilia文件夹
-
-  clone下来之后，只需要修改blog目录下的_config.yml文件，找到theme，改成yilia，保存退出
-</code></pre><p>  <img src="C:\Users\lelove\AppData\Roaming\Typora\typora-user-images\image-20200708174912080.png" alt="image-20200708174912080"></p>
+</ul>
 <p><strong>然后hexo clean清理一下，然后hexo g生成一下，j接着hexo s启动，本地查看localhost:4000；然后Ctrl+C关闭；再然后hexo clean，hexo d。</strong></p>
 <p><strong>至此，打完收工！！！</strong></p>
 
