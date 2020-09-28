@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-09-28T09:12:11.599Z</updated>
+  <updated>2020-09-28T13:56:26.586Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记第一次喝吐~~~</title>
+    <link href="/2020/09/28/%E8%AE%B0%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%96%9D%E5%90%90/"/>
+    <id>/2020/09/28/记第一次喝吐/</id>
+    <published>2020-09-28T13:37:34.000Z</published>
+    <updated>2020-09-28T13:56:26.586Z</updated>
+    
+    <summary type="html">
+    
+      平生第一次喝吐，2020/9/27 21:30:xx
+    
+    </summary>
+    
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>005.递归必备掌握题目</title>
