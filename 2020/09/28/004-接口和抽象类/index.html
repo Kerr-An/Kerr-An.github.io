@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: 悦读 | Kerr&amp;Ann</title>
+  <title itemprop="name">004.接口和抽象类 | Kerr&amp;Ann</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -61,6 +61,17 @@
   </style>
 </head>
 </html>
+
+<!-- 鼠标点击雪花特效 -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+<!-- 背景显示飘动的彩带 -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/piao.js"></script>
+<!-- 樱花飘落 -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<!-- 这条在sakura中已有，可不添加 -->
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 
 <body
   class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -371,64 +382,181 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/reading.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      004.接口和抽象类</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
+          </a>
+        </span>
+        <span>
+          <a href="">Kerr</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-28<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">悦读</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2018/12/12/Hexo-Theme-Sakura/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="接口和抽象类这个问题，要分JDK版本来区分回答："><a href="#接口和抽象类这个问题，要分JDK版本来区分回答：" class="headerlink" title="接口和抽象类这个问题，要分JDK版本来区分回答："></a>接口和抽象类这个问题，要分JDK版本来区分回答：</h1><ul>
+<li><h2 id="JDK1-8之前："><a href="#JDK1-8之前：" class="headerlink" title="JDK1.8之前："></a>JDK1.8之前：</h2></li>
+<li><ul>
+<li><p>语法：</p>
+</li>
+<li><ul>
+<li>抽象类：方法可以有抽象的，也可以有非抽象, 有构造器</li>
+<li>接口：方法都是抽象，属性都是常量，默认有public static final修饰（接口实际上就是一种契约）</li>
+</ul>
+</li>
+<li><p>设计：</p>
+</li>
+<li><ul>
+<li>抽象类：同一类事物的抽取，比如针对Dao层操作的封装，如，BaseDao，BaseServiceImpl</li>
+<li>接口：通常更像是一种标准的制定，定制系统之间对接的标准</li>
+<li>例子：</li>
+<li>1，单体项目，分层开发，interface作为各层之间的纽带，在controller中注入IUserService，在Service注入IUserDao</li>
+<li>2，分布式项目，面向服务的开发，抽取服务service，这个时候，就会产生服务的提供者和服务的消费者两个角色</li>
+<li>这两个角色之间的纽带，依然是接口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="JDK1-8之后："><a href="#JDK1-8之后：" class="headerlink" title="JDK1.8之后："></a>JDK1.8之后：</h2></li>
+<li><ul>
+<li>接口里面可以有实现的方法，注意要在方法的声明上加上default或者static</li>
+</ul>
+</li>
+</ul>
+<p>最后区分几个概念：</p>
+<ul>
+<li><p>多继承，多重继承，多实现</p>
+</li>
+<li><ul>
+<li>多重继承：A-&gt;B-&gt;C（爷孙三代的关系）</li>
+<li>多实现：Person implements IRunable,IEatable（符合多项国际化标准）</li>
+<li>多继承：接口可以多继承，类只支持单继承</li>
+</ul>
+</li>
+</ul>
+<p><code>面向接口编程的好处</code>：解耦。比如分层开发的时候，上一层调用下一层，为了解耦，不要调具体的实现，要使用接口将二者连接起来，那么上层和下层就解耦了。</p>
+<img src="/2020/09/28/004-接口和抽象类/面向接口编程的好处.png">
         </div>
-        <img width="150" height="150" src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2018/12/12/Hexo-Theme-Sakura/">
-    Hexo-Theme-Sakura</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2018-12-12</div>
-    <p>
-    hexo-sakura主题使用教程</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2018/12/12/Hexo-Theme-Sakura/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/28/005-递归必备掌握题目/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                005.递归必备掌握题目</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/09/28/003-String-StringBuffer-String-Builder的区别/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/6992/forest-trees-northwestisbest-exploress.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://images.pexels.com/photos/6992/forest-trees-northwestisbest-exploress.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                003.String_StringBuffer_String_Builder的区别</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kerr</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
