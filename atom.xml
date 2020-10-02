@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-02T06:21:44.729Z</updated>
+  <updated>2020-10-02T07:58:45.628Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>转载开篇</title>
+    <link href="/2020/10/02/%E8%BD%AC%E8%BD%BD%E5%BC%80%E7%AF%87/"/>
+    <id>/2020/10/02/转载开篇/</id>
+    <published>2020-10-02T07:54:44.000Z</published>
+    <updated>2020-10-02T07:58:45.628Z</updated>
+    
+    <summary type="html">
+    
+      转载自CodeSheep
+    
+    </summary>
+    
+      <category term="转载" scheme="/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+      <category term="转载" scheme="/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随想开篇</title>
+    <link href="/2020/10/02/%E9%9A%8F%E6%83%B3%E5%BC%80%E7%AF%87/"/>
+    <id>/2020/10/02/随想开篇/</id>
+    <published>2020-10-02T07:48:27.000Z</published>
+    <updated>2020-10-02T07:50:35.108Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Hello-world-amp-life&quot;&gt;&lt;a href=&quot;#Hello-world-amp-life&quot; class=&quot;headerlink&quot; title=&quot;Hello, world &amp;amp; life.&quot;&gt;&lt;/a&gt;Hello, world &amp;amp;
+        
+      
+    
+    </summary>
+    
+      <category term="随想" scheme="/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+      <category term="心情" scheme="/tags/%E5%BF%83%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>发发的资源</title>
+    <link href="/2020/10/02/%E5%8F%91%E5%8F%91%E7%9A%84%E8%B5%84%E6%BA%90/"/>
+    <id>/2020/10/02/发发的资源/</id>
+    <published>2020-10-02T07:15:54.000Z</published>
+    <updated>2020-10-02T07:22:06.672Z</updated>
+    
+    <summary type="html">
+    
+      发发的资源（media）
+    
+    </summary>
+    
+      <category term="资源" scheme="/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="资源" scheme="/tags/%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>谈谈ArrayList和LinkedList的区别</title>
