@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">005.递归必备掌握题目 | Kerr&amp;Ann</title>
+  <title itemprop="name">谈谈ArrayList和LinkedList的区别 | Kerr&amp;Ann</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -388,11 +388,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601627402921&amp;di=16bfff5d403e6a33ed8c23647f2ab63d&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F548fe3c03fa62.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601627402921&amp;di=16bfff5d403e6a33ed8c23647f2ab63d&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F548fe3c03fa62.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      005.递归必备掌握题目</h1>
+      谈谈ArrayList和LinkedList的区别</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -404,7 +404,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-9-28<span class="bull">
+        2020-10-2<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -418,56 +418,125 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>这道算法题一般考查的递归的编程技能，那么我们回顾下递归程序的特点：</p>
-<p><code>1，什么是递归？</code></p>
-<blockquote>
-<p>递归，就是方法内部调用方法自身<br>递归的注意事项：<br>找到规律，编写递归公式<br>找到出口（边界值），让递归有结束边界</p>
-<p><code>注意：</code>如果递归太多层，或者没有正确结束递归，则会出现“栈内存溢出Error”！</p>
-<p><code>问题：</code>为什么会出现栈内存溢出，而不是堆内存溢出？</p>
-<p>​                <strong>因为每次调用的方法是在栈中创建栈帧的空间，而不是堆。</strong></p>
+          <h2 id="1，底层数据结构的差异"><a href="#1，底层数据结构的差异" class="headerlink" title="1，底层数据结构的差异"></a><strong>1，底层数据结构的差异</strong></h2><blockquote>
+<p>ArrayList，数组，连续一块内存空间<br>LinkedList，双向链表，不是连续的内存空间</p>
 </blockquote>
-<p><code>2，这道题该怎么写？</code></p>
-<p>规律：N!=（n-1）!*n;</p>
-<p>出口：n == 1或 n == 0 return 1;</p>
-<pre><code class="java">/**
-     * 1.n的阶乘
-     * @param n
-     * @return
-     */
-    public static int getResult(int n) {
-        if (n &lt; 0) {
-            throw new IllegalArgumentException(&quot;非法参数&quot;);
-        }
-        if (n == 0 || n == 1) {
-            return 1;
-        }
-        return getResult(n - 1) * n;
-    }
+<h2 id="2，一个常规的结论"><a href="#2，一个常规的结论" class="headerlink" title="2，一个常规的结论"></a><strong>2，一个常规的结论</strong></h2><p>虽然不严谨，但也可以应付很多面试了</p>
+<blockquote>
+<p>ArrayList，查找快，因为是连续的内存空间，方便寻址，但删除，插入慢，因为需要发生数据迁移<br>LinkedList，查找慢，因为需要通过指针一个个寻找，但删除，插入块，因为只要改变前后节点的指针指向即可。<br><img src="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/ArrayList和LinkedList查找和插入的情况分析.png"></p>
+</blockquote>
+<h2 id="3，ArrayList细节分析"><a href="#3，ArrayList细节分析" class="headerlink" title="3，ArrayList细节分析"></a><strong>3，ArrayList细节分析</strong></h2><p>1，增加</p>
+<ul>
+<li><ul>
+<li><p>添加到末尾，正常不需要做特别的处理，除非现有的数组空间不够了，需要扩容</p>
+</li>
+<li><ul>
+<li><p><code>数组初始化容量多大？10</code>，当你知道需要存储多少数据时，建议在创建的时候，直接设置初始化大小</p>
+</li>
+<li><p>怎么扩容？</p>
+</li>
+<li><ul>
+<li>当发现容量不够之后，就进行扩容</li>
+<li><code>按原先数组容量的1.5倍进行扩容</code>，通过位运算（效率高），下面是关键的源码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">int oldCapacity = elementData.length;
+int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
 </code></pre>
-<p><code>3，如何实现递归求斐波那切数列第N个数字的值（传说中的不死神兔就是这个问题）</code></p>
-<p>数字的规律：1,1,2,3,5,8,13,21….（第三个数等于前两个数之和）</p>
-<p>所以，我们可以分析编写如下：</p>
-<pre><code class="java">/**
-    规律：每个数等于前两个数之和
-    出口：第一项和第二项都等于1
-*/
-     /**
-     * 2. 斐波那契数列（求第n项的值）
-     * @param n
-     * @return
-     */
-    public static int getFeiBo(int n){
-        if (n&lt;0){
-            return -1;
-        }
-        if (n==0 || n==1){
-            return 1;
-        }else{
-            return getFeiBo(n-1)+getFeiBo(n-2);
-        }
-    }
+<ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li>再将原先数组的元素复制到新数组，Arrays</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">elementData = Arrays.copyOf(elementData, newCapacity)
 </code></pre>
-
+<ul>
+<li><ul>
+<li>添加到其他位置，这个时候需要做整体的搬迁</li>
+</ul>
+</li>
+<li><p>2，删除</p>
+</li>
+<li><ul>
+<li>删除末尾，并不需要迁移</li>
+<li>删除其他的位置，这个时候也需要搬迁</li>
+</ul>
+</li>
+<li><p>3，修改</p>
+</li>
+<li><ul>
+<li>修改之前，必须先定位</li>
+<li>定位-查找-ArrayList（数组是一段连续的内存空间，定位会特别快）</li>
+</ul>
+</li>
+<li><p>4，查找</p>
+</li>
+<li><ul>
+<li>如上所述</li>
+</ul>
+</li>
+</ul>
+<h2 id="4，LinkedList细节分析"><a href="#4，LinkedList细节分析" class="headerlink" title="4，LinkedList细节分析"></a><strong>4，LinkedList细节分析</strong></h2><h3 id="1，提供了的两个引用（first，last）"><a href="#1，提供了的两个引用（first，last）" class="headerlink" title="1，提供了的两个引用（first，last）"></a>1，提供了的两个引用（first，last）</h3><h3 id="2，增加"><a href="#2，增加" class="headerlink" title="2，增加"></a>2，增加</h3><p>添加到末尾，创建一个新的节点，将之前的last节点设置为新节点的pre，新节点设置为last</p>
+<p>我们看下源码：</p>
+<pre><code class="java">void linkLast(E e) {
+    //获取到最后一个节点
+    final Node&lt;E&gt; l = last;
+    //构建一个新节点，将当前的last作为这个新节点的pre
+    final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);
+    //把last指向新节点
+    last = newNode;
+    //如果原先没有最后一个节点
+    if (l == null)
+        //将first指向新节点
+        first = newNode;
+    else
+        //否则，将原先的last的next指向新节点
+        l.next = newNode;
+    size++;
+    modCount++;
+}
+Node节点的定义：内部类
+private static class Node&lt;E&gt; {
+    E item;
+    Node&lt;E&gt; next;
+    Node&lt;E&gt; prev;
+    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {
+        this.item = element;
+        this.next = next;
+        this.prev = prev;
+    }
+}
+</code></pre>
+<p>添加到其他位置，这个时候，就需要调整前后节点的引用指向</p>
+<h3 id="3，如何去定义一个双向链表的节点，如上述的源码所示"><a href="#3，如何去定义一个双向链表的节点，如上述的源码所示" class="headerlink" title="3，如何去定义一个双向链表的节点，如上述的源码所示"></a>3，如何去定义一个双向链表的节点，如上述的源码所示</h3><h3 id="4，修改"><a href="#4，修改" class="headerlink" title="4，修改"></a>4，修改</h3><p>修改最后一个节点或者第一个节点，那么就很快（first，last）</p>
+<p>修改其他位置，如果是按坐标来定位节点，则会按照二分查找法，源码如下：</p>
+<pre><code class="java">if (index &lt; (size &gt;&gt; 1)) {
+    Node&lt;E&gt; x = first;
+    for (int i = 0; i &lt; index; i++)
+        x = x.next;
+    return x;
+} else {
+    Node&lt;E&gt; x = last;
+    for (int i = size - 1; i &gt; index; i--)
+        x = x.prev;
+    return x;
+}
+</code></pre>
+<h3 id="5，一个思考题，假如我们可以确定要存储1000个元素，那么采用ArrayList和LinkedList，"><a href="#5，一个思考题，假如我们可以确定要存储1000个元素，那么采用ArrayList和LinkedList，" class="headerlink" title="5，一个思考题，假如我们可以确定要存储1000个元素，那么采用ArrayList和LinkedList，"></a>5，一个思考题，假如我们可以确定要存储1000个元素，那么采用ArrayList和LinkedList，</h3><p>哪个更耗内存，为什么？</p>
+<img src="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/存储与扩容.png">
+<h3 id="6，LinkedList，要实现在A和B之间插入C，该如何实现，编写伪代码即可"><a href="#6，LinkedList，要实现在A和B之间插入C，该如何实现，编写伪代码即可" class="headerlink" title="6，LinkedList，要实现在A和B之间插入C，该如何实现，编写伪代码即可"></a>6，LinkedList，要实现在A和B之间插入C，该如何实现，编写伪代码即可</h3>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -495,36 +564,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/09/28/记第一次喝吐/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                记第一次喝吐~~~</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/09/28/004-接口和抽象类/" rel="next">
+            <a href="/2020/10/02/008-List和Set的区别/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601626970058&di=5b7f86b4493845ef96b022db5e0a4e2d&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171220%2Fc40b35b680924440976783780e3ead0d.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601626970058&di=5b7f86b4493845ef96b022db5e0a4e2d&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171220%2Fc40b35b680924440976783780e3ead0d.jpeg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                004.接口和抽象类</h3>
+                008-List和Set的区别</h3>
                 <hr>
               </div>
             </a>

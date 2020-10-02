@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-09-28T13:56:26.586Z</updated>
+  <updated>2020-10-02T06:21:44.729Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>谈谈ArrayList和LinkedList的区别</title>
+    <link href="/2020/10/02/009-%E8%B0%88%E8%B0%88ArrayList%E5%92%8CLinkedList%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>/2020/10/02/009-谈谈ArrayList和LinkedList的区别/</id>
+    <published>2020-10-02T05:41:02.000Z</published>
+    <updated>2020-10-02T06:21:44.729Z</updated>
+    
+    <summary type="html">
+    
+      Java中ArrayList和LinkedList的区别
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>008-List和Set的区别</title>
+    <link href="/2020/10/02/008-List%E5%92%8CSet%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>/2020/10/02/008-List和Set的区别/</id>
+    <published>2020-10-02T05:35:13.000Z</published>
+    <updated>2020-10-02T06:16:01.783Z</updated>
+    
+    <summary type="html">
+    
+      Java中的List和Set的区别
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>007-方法的重写和重载的区别</title>
+    <link href="/2020/10/02/007-%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>/2020/10/02/007-方法的重写和重载的区别/</id>
+    <published>2020-10-02T05:29:57.000Z</published>
+    <updated>2020-10-02T05:32:39.033Z</updated>
+    
+    <summary type="html">
+    
+      Java中的重写和重载
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>006.Integer和int</title>
+    <link href="/2020/10/02/006-Integer%E5%92%8Cint/"/>
+    <id>/2020/10/02/006-Integer和int/</id>
+    <published>2020-10-02T05:22:55.000Z</published>
+    <updated>2020-10-02T05:29:38.903Z</updated>
+    
+    <summary type="html">
+    
+      Java中的基本类型与引用类型（包装类、自动装/拆箱）
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>记第一次喝吐~~~</title>
@@ -141,7 +221,7 @@
     <link href="/2020/09/28/Hexo%E5%86%99%E5%8F%91%E6%96%87%E7%AB%A0%E6%AD%A5%E9%AA%A4/"/>
     <id>/2020/09/28/Hexo写发文章步骤/</id>
     <published>2020-09-28T02:22:01.000Z</published>
-    <updated>2020-09-28T08:51:29.263Z</updated>
+    <updated>2020-10-02T06:34:58.103Z</updated>
     
     <summary type="html">
     

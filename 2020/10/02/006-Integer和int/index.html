@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">005.递归必备掌握题目 | Kerr&amp;Ann</title>
+  <title itemprop="name">006.Integer和int | Kerr&amp;Ann</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -388,11 +388,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601624069572&amp;di=56da78b1169a41c0ace7fb6bdce506a1&amp;imgtype=0&amp;src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Ff31fbe096b63f62432f1e1bc8644ebf81b4ca3e5.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601624069572&amp;di=56da78b1169a41c0ace7fb6bdce506a1&amp;imgtype=0&amp;src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Ff31fbe096b63f62432f1e1bc8644ebf81b4ca3e5.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      005.递归必备掌握题目</h1>
+      006.Integer和int</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -404,7 +404,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-9-28<span class="bull">
+        2020-10-2<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -418,55 +418,50 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>这道算法题一般考查的递归的编程技能，那么我们回顾下递归程序的特点：</p>
-<p><code>1，什么是递归？</code></p>
+          <pre><code class="java">public static void main(String[] args){
+    Integer i1 = new Integer(12);
+    Integer i2 = new Integer(12);
+    System.out.println(i1 == i2); // false
+
+    Integer i3 = 126;
+    Integer i4 = 126;
+
+    // 反编译工具
+    Integer.valueOf(126);
+
+    int i5 = 126;
+    System.out.println(i3 == i4); // true
+    System.out.println(i3 == i5); // true 自动拆箱，数值
+
+    Integer i6 = 128;
+    Integer i7 = 128;
+    int i8 = 128;
+    System.out.println(i6 == i7); // false
+    System.out.println(i6 == i8); // true 自动拆箱，数值
+}
+</code></pre>
 <blockquote>
-<p>递归，就是方法内部调用方法自身<br>递归的注意事项：<br>找到规律，编写递归公式<br>找到出口（边界值），让递归有结束边界</p>
-<p><code>注意：</code>如果递归太多层，或者没有正确结束递归，则会出现“栈内存溢出Error”！</p>
-<p><code>问题：</code>为什么会出现栈内存溢出，而不是堆内存溢出？</p>
-<p>​                <strong>因为每次调用的方法是在栈中创建栈帧的空间，而不是堆。</strong></p>
+<p><code>第一个sout（sout指的是System.out.println()）中，是两个引用类型比较，比较的是地址，很显然，i1和i2是new出来的，因此占用了两块堆空间，也就是说i1和i2的地址不一样。</code></p>
 </blockquote>
-<p><code>2，这道题该怎么写？</code></p>
-<p>规律：N!=（n-1）!*n;</p>
-<p>出口：n == 1或 n == 0 return 1;</p>
-<pre><code class="java">/**
-     * 1.n的阶乘
-     * @param n
-     * @return
-     */
-    public static int getResult(int n) {
-        if (n &lt; 0) {
-            throw new IllegalArgumentException(&quot;非法参数&quot;);
-        }
-        if (n == 0 || n == 1) {
-            return 1;
-        }
-        return getResult(n - 1) * n;
-    }
-</code></pre>
-<p><code>3，如何实现递归求斐波那切数列第N个数字的值（传说中的不死神兔就是这个问题）</code></p>
-<p>数字的规律：1,1,2,3,5,8,13,21….（第三个数等于前两个数之和）</p>
-<p>所以，我们可以分析编写如下：</p>
-<pre><code class="java">/**
-    规律：每个数等于前两个数之和
-    出口：第一项和第二项都等于1
-*/
-     /**
-     * 2. 斐波那契数列（求第n项的值）
-     * @param n
-     * @return
-     */
-    public static int getFeiBo(int n){
-        if (n&lt;0){
-            return -1;
-        }
-        if (n==0 || n==1){
-            return 1;
-        }else{
-            return getFeiBo(n-1)+getFeiBo(n-2);
-        }
-    }
-</code></pre>
+<blockquote>
+<p><code>第二个：i3和i4是基本类型，都没有new；而左边是Integer类引用类型，因此这种语句有一个装箱操作； 而基本类型赋值给引用类型，需要装箱操作。JDK1.5之后，有自动装箱操作。i3 i4都还在缓存最小值low-128和最大值high127之间，直接用缓存里面的数据，答案是true。如果超出这个范围，需要重新new一个出来，这样的话结果就不一样了。</code></p>
+</blockquote>
+<img src="/2020/10/02/006-Integer和int/Integer缓存范围.png">
+<blockquote>
+<p><code>第三个：当引用类型和基本类型比较时，需要进行自动拆箱，将包装类Integer转换成int型，最后比较的是二者的数值。所以答案是true。</code></p>
+</blockquote>
+<blockquote>
+<p><code>第四个：128已经越界，因此需要new一个出来，那么两个引用类型比较，比较地址，二者分别new，地址肯定不一样。</code></p>
+</blockquote>
+<blockquote>
+<p><code>第五个：同第三个。</code></p>
+</blockquote>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 结论：1️⃣、引用类型和引用类型比较，需要判断是否越界[-128,127]：<pre><code>            1）不越界：true；因为不需要new；
+            2）越界：false；因为需要new。
+         2️⃣、引用类型和基本类型比较，直接看数值，因为引用类型要自                动拆箱，然后再比较。
+</code></pre></li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -498,15 +493,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/09/28/记第一次喝吐/" rel="prev">
+            <a href="/2020/10/02/007-方法的重写和重载的区别/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601626723331&di=96010965fdf90b3788aefc14d31703dc&imgtype=0&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2604812603%2C1583058785%26fm%3D214%26gp%3D0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601626723331&di=96010965fdf90b3788aefc14d31703dc&imgtype=0&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2604812603%2C1583058785%26fm%3D214%26gp%3D0.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                记第一次喝吐~~~</h3>
+                007-方法的重写和重载的区别</h3>
                 <hr>
               </div>
             </a>
@@ -516,15 +511,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/09/28/004-接口和抽象类/" rel="next">
+            <a href="/2020/09/28/记第一次喝吐/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                004.接口和抽象类</h3>
+                记第一次喝吐~~~</h3>
                 <hr>
               </div>
             </a>

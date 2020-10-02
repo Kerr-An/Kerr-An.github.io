@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">005.递归必备掌握题目 | Kerr&amp;Ann</title>
+  <title itemprop="name">008-List和Set的区别 | Kerr&amp;Ann</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -388,11 +388,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601626970058&amp;di=5b7f86b4493845ef96b022db5e0a4e2d&amp;imgtype=0&amp;src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171220%2Fc40b35b680924440976783780e3ead0d.jpeg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601626970058&amp;di=5b7f86b4493845ef96b022db5e0a4e2d&amp;imgtype=0&amp;src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171220%2Fc40b35b680924440976783780e3ead0d.jpeg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      005.递归必备掌握题目</h1>
+      008-List和Set的区别</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -404,7 +404,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-9-28<span class="bull">
+        2020-10-2<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -418,55 +418,16 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>这道算法题一般考查的递归的编程技能，那么我们回顾下递归程序的特点：</p>
-<p><code>1，什么是递归？</code></p>
+          <ul>
+<li><p>List（有序，可重复）：子类-&gt;ArrayList、LinkedList</p>
+</li>
+<li><p>Set（无序，不可重复）：子类-&gt;HashSet、TreeSet（此无序！=可排序）</p>
+</li>
+</ul>
 <blockquote>
-<p>递归，就是方法内部调用方法自身<br>递归的注意事项：<br>找到规律，编写递归公式<br>找到出口（边界值），让递归有结束边界</p>
-<p><code>注意：</code>如果递归太多层，或者没有正确结束递归，则会出现“栈内存溢出Error”！</p>
-<p><code>问题：</code>为什么会出现栈内存溢出，而不是堆内存溢出？</p>
-<p>​                <strong>因为每次调用的方法是在栈中创建栈帧的空间，而不是堆。</strong></p>
+<p>Collections和Collection的区别：</p>
+<p>​        Java里工具类的命名：+s结尾</p>
 </blockquote>
-<p><code>2，这道题该怎么写？</code></p>
-<p>规律：N!=（n-1）!*n;</p>
-<p>出口：n == 1或 n == 0 return 1;</p>
-<pre><code class="java">/**
-     * 1.n的阶乘
-     * @param n
-     * @return
-     */
-    public static int getResult(int n) {
-        if (n &lt; 0) {
-            throw new IllegalArgumentException(&quot;非法参数&quot;);
-        }
-        if (n == 0 || n == 1) {
-            return 1;
-        }
-        return getResult(n - 1) * n;
-    }
-</code></pre>
-<p><code>3，如何实现递归求斐波那切数列第N个数字的值（传说中的不死神兔就是这个问题）</code></p>
-<p>数字的规律：1,1,2,3,5,8,13,21….（第三个数等于前两个数之和）</p>
-<p>所以，我们可以分析编写如下：</p>
-<pre><code class="java">/**
-    规律：每个数等于前两个数之和
-    出口：第一项和第二项都等于1
-*/
-     /**
-     * 2. 斐波那契数列（求第n项的值）
-     * @param n
-     * @return
-     */
-    public static int getFeiBo(int n){
-        if (n&lt;0){
-            return -1;
-        }
-        if (n==0 || n==1){
-            return 1;
-        }else{
-            return getFeiBo(n-1)+getFeiBo(n-2);
-        }
-    }
-</code></pre>
 
         </div>
         <!-- .entry-content -->
@@ -498,15 +459,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/09/28/记第一次喝吐/" rel="prev">
+            <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601310513633&di=94795e5708e7411a9947886b5ab40470&imgtype=0&src=http%3A%2F%2Fimg.08087.cc%2Fuploads%2F20190819%2F19%2F1566212533-nWMhHbYVTg.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601627402921&di=16bfff5d403e6a33ed8c23647f2ab63d&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F548fe3c03fa62.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601627402921&di=16bfff5d403e6a33ed8c23647f2ab63d&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F548fe3c03fa62.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                记第一次喝吐~~~</h3>
+                谈谈ArrayList和LinkedList的区别</h3>
                 <hr>
               </div>
             </a>
@@ -516,15 +477,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/09/28/004-接口和抽象类/" rel="next">
+            <a href="/2020/10/02/007-方法的重写和重载的区别/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601626723331&di=96010965fdf90b3788aefc14d31703dc&imgtype=0&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2604812603%2C1583058785%26fm%3D214%26gp%3D0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601626723331&di=96010965fdf90b3788aefc14d31703dc&imgtype=0&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2604812603%2C1583058785%26fm%3D214%26gp%3D0.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                004.接口和抽象类</h3>
+                007-方法的重写和重载的区别</h3>
                 <hr>
               </div>
             </a>
