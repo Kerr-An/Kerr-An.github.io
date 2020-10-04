@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | Kerr&amp;Ann</title>
+  <title itemprop="name">011-HashSet的存储原理 | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,706 +483,179 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      011-HashSet的存储原理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
+          </a>
+        </span>
+        <span>
+          <a href="">Kerr</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-10-4<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">玩转技术的“艺术家”</h1>
-    <span class="cat-des">
-      <p>For Better</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/端口被占用的解决办法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601810445749&amp;di=5af6b2a41392721eb9bd3a5386e47e44&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1539735%2F201902%2F1539735-20190226172559427-420879644.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/端口被占用的解决办法/">
-    端口被占用的解决办法</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    端口被占用的处理方法</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/端口被占用的解决办法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/012-Hash/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/012-Hash/">
-    012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中HashSet的存储原理</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/012-Hash/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/011-HashSet的存储原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/011-HashSet的存储原理/">
-    011-HashSet的存储原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中HashSet的存储原理</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/011-HashSet的存储原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601789349374&amp;di=7ecbb612d0344677322b069a9d1d8900&amp;imgtype=0&amp;src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F720%2Fw1920h1200%2F20181202%2FbESE-hphsupx8610478.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-    010-双向链表中插入元素的具体实现</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中双向链表插入元素的具体实现</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601627402921&amp;di=16bfff5d403e6a33ed8c23647f2ab63d&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F548fe3c03fa62.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/">
-    谈谈ArrayList和LinkedList的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中ArrayList和LinkedList的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/008-List和Set的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601626970058&amp;di=5b7f86b4493845ef96b022db5e0a4e2d&amp;imgtype=0&amp;src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171220%2Fc40b35b680924440976783780e3ead0d.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/008-List和Set的区别/">
-    008-List和Set的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中的List和Set的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/008-List和Set的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/007-方法的重写和重载的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601626723331&amp;di=96010965fdf90b3788aefc14d31703dc&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2604812603%2C1583058785%26fm%3D214%26gp%3D0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/007-方法的重写和重载的区别/">
-    007-方法的重写和重载的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中的重写和重载</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/007-方法的重写和重载的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/006-Integer和int/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601624069572&amp;di=56da78b1169a41c0ace7fb6bdce506a1&amp;imgtype=0&amp;src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Ff31fbe096b63f62432f1e1bc8644ebf81b4ca3e5.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/006-Integer和int/">
-    006.Integer和int</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中的基本类型与引用类型（包装类、自动装/拆箱）</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/006-Integer和int/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/28/005-递归必备掌握题目/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/28/005-递归必备掌握题目/">
-    005.递归必备掌握题目</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-28</div>
-    <p>
-    Java中循环必备知识：递归</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/28/005-递归必备掌握题目/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/28/004-接口和抽象类/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/28/004-接口和抽象类/">
-    004.接口和抽象类</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-28</div>
-    <p>
-    Java中的接口和抽象类（Interface&amp;Abstract class）</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/28/004-接口和抽象类/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!-- 
-      <nav class="navigator">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-        <span class="page-number current">1</span><a class="page-number" href="/categories/技术/page/2/">2</a><a class="extend next" rel="next" href="/categories/技术/page/2/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-    
-      <div id="pagination"><a href="/categories/技术/page/2/" class="">Previous</a></div>
-    
-  </div>
+        <div class="entry-content">
+          <blockquote>
+<p>HashSet的存储原理或者工作原理，主要是从如何保证唯一性来说起。</p>
+</blockquote>
+<p><code>这里面主要有3个问题，需要回答？</code></p>
+<ul>
+<li><p>[x] 第一，为什么要采用Hash算法？有什么优势，解决了什么问题？</p>
+</li>
+<li><p>[x] 第二，所谓哈希表是一张什么表？</p>
+</li>
+<li><p>[x] 第三，HashSet如何保证保存对象的唯一性？会经历一个什么样的运算过程？</p>
+</li>
+</ul>
+<p><code>首先，我们要明确一点，HashSet底层采用的是HashMap来实现存储，其值作为HashMap的key</code></p>
+<pre><code class="java">public boolean add(E e) {
+        return map.put(e, PRESENT)==null;
+    }
+</code></pre>
+<p>具体关于hashmap的细节再说</p>
+<blockquote>
+<p>第一，为什么要采用Hash算法？有什么优势，解决了什么问题？</p>
+</blockquote>
+<p>解决的问题是唯一性</p>
+<p>存储数据，底层采用的是数组</p>
+<p>当我们往数组放数据的时候，你如何判断是否唯一？</p>
+<p>可以采用遍历的方式，逐个比较，但是这种效率低，尤其是数据很多的情况下</p>
+<p>所以，为了解决这个效率低的问题，我们采用新的方式</p>
+<p>采用hash算法，通过计算存储对象的hashcode，然后再跟数组长度-1做位运算，得到我们要存储在数组的哪个下标下，如果此时计算的位置没有其他元素，直接存储，不用比较。</p>
+<p>此处，我们只会用到hashCode</p>
+<p>但是随着元素的不断添加，就可能出现“哈希冲突”，不同的对象计算出来的hash值是相同的，这个时候，我们就需要比较，才需要用到equals方法</p>
+<p>如果equals相同，则不插入，不相等，则形成链表</p>
+<blockquote>
+<p>第二，所谓哈希表是一张什么表？</p>
+</blockquote>
+<p>本质是一个数组，而且数组的元素是链表</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> JDK1.7的版本实现</li>
+<li style="list-style: none"><input type="checkbox" checked> JDK1.8做了优化</li>
+</ul>
+<p><strong>随着元素不断添加，链表可能会越来越长，会优化为红黑树</strong></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/10/04/012-Hash/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/10/04/010-双向链表中插入元素的具体实现/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601789349374&di=7ecbb612d0344677322b069a9d1d8900&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F720%2Fw1920h1200%2F20181202%2FbESE-hphsupx8610478.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601789349374&di=7ecbb612d0344677322b069a9d1d8900&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F720%2Fw1920h1200%2F20181202%2FbESE-hphsupx8610478.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                010-双向链表中插入元素的具体实现</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kerr</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/端口被占用的解决办法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601810445749&amp;di=5af6b2a41392721eb9bd3a5386e47e44&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1539735%2F201902%2F1539735-20190226172559427-420879644.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/端口被占用的解决办法/">
-    端口被占用的解决办法</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    端口被占用的处理方法</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/端口被占用的解决办法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/012-Hash/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/012-Hash/">
-    012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中HashSet的存储原理</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/012-Hash/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/011-HashSet的存储原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/011-HashSet的存储原理/">
-    011-HashSet的存储原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中HashSet的存储原理</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/011-HashSet的存储原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601789349374&amp;di=7ecbb612d0344677322b069a9d1d8900&amp;imgtype=0&amp;src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F720%2Fw1920h1200%2F20181202%2FbESE-hphsupx8610478.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-    010-双向链表中插入元素的具体实现</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中双向链表插入元素的具体实现</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601627402921&amp;di=16bfff5d403e6a33ed8c23647f2ab63d&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fd%2F548fe3c03fa62.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/">
-    谈谈ArrayList和LinkedList的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中ArrayList和LinkedList的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/009-谈谈ArrayList和LinkedList的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/008-List和Set的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601626970058&amp;di=5b7f86b4493845ef96b022db5e0a4e2d&amp;imgtype=0&amp;src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171220%2Fc40b35b680924440976783780e3ead0d.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/008-List和Set的区别/">
-    008-List和Set的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中的List和Set的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/008-List和Set的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/007-方法的重写和重载的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601626723331&amp;di=96010965fdf90b3788aefc14d31703dc&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2604812603%2C1583058785%26fm%3D214%26gp%3D0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/007-方法的重写和重载的区别/">
-    007-方法的重写和重载的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中的重写和重载</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/007-方法的重写和重载的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/02/006-Integer和int/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601624069572&amp;di=56da78b1169a41c0ace7fb6bdce506a1&amp;imgtype=0&amp;src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Ff31fbe096b63f62432f1e1bc8644ebf81b4ca3e5.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/02/006-Integer和int/">
-    006.Integer和int</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-2</div>
-    <p>
-    Java中的基本类型与引用类型（包装类、自动装/拆箱）</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/02/006-Integer和int/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/28/005-递归必备掌握题目/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/28/005-递归必备掌握题目/">
-    005.递归必备掌握题目</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-28</div>
-    <p>
-    Java中循环必备知识：递归</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/28/005-递归必备掌握题目/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/28/004-接口和抽象类/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/28/004-接口和抽象类/">
-    004.接口和抽象类</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-28</div>
-    <p>
-    Java中的接口和抽象类（Interface&amp;Abstract class）</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/28/004-接口和抽象类/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
