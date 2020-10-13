@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">012-Hashtable&amp;HashMap&amp;ConcurrentHashMap | Kerr&amp;Ann</title>
+  <title itemprop="name">Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,212 +483,126 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      012-Hashtable&HashMap&ConcurrentHashMap</h1>
-      <p class="entry-census">
-        <span>
-          <a href="">
-            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
-          </a>
-        </span>
-        <span>
-          <a href="">Kerr</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-10-4<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
+      <div class="blank" style="padding-top: 0px;"></div>
 <div id="content" class="site-content">
+  
+  <div class="notice" style="margin-top:60px">
+    <i class="iconfont icon-notification">
+    </i>
+    <div class="notice-content">🚀🚀🚀欢迎来到我的博客！🚀🚀🚀</div>
+  </div>
+  
+  <div class="top-feature-row">
+  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
+    <i class="fa fa-anchor" aria-hidden="true">
+    </i>
+    起飞飞飞……🛫🛫🛫🛫</h1>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="/theme-sakura/" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/sakura.md.png">
+        </div>
+        <div class="info">
+          <h3>我的主题</h3>
+          <p>主题宣传页</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="https://space.bilibili.com/172816607" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/bilibili.jpg">
+        </div>
+        <div class="info">
+          <h3>Bilibili</h3>
+          <p>博主的b站视频</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="/" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/wangshiwu.jpg">
+        </div>
+        <div class="info">
+          <h3>原地反复横跳</h3>
+          <p>自传</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          
-
-<h2 id="附：验证HashMap线程不安全"><a href="#附：验证HashMap线程不安全" class="headerlink" title="附：验证HashMap线程不安全"></a>附：验证HashMap线程不安全</h2><pre><code class="java">// 验证HashMap线程不安全
-
-/**
- * 具体做法：
- * 启动多个线程操作同一个HashMap，不断往里面put
- * 过一段时间，内部发生死锁
- */
-public class HashMapTest {
-    public static void main(String[] args) {
-
-        Mythead mt1 = new Mythead();
-        Mythead mt2 = new Mythead();
-        Mythead mt3 = new Mythead();
-        Mythead mt4 = new Mythead();
-        Mythead mt5 = new Mythead();
-
-        mt1.start();
-        mt2.start();
-        mt3.start();
-        mt4.start();
-        mt5.start();
-    }
-}
-
-class Mythead extends Thread {
-    // 在Thread类的子类中重写Thread类中的run方法，设置线程任务（开启线程要做什么？）
-    private static AtomicInteger ai = new AtomicInteger(); // 原子类型
-    private static HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-
-    @Override
-    public void run() {
-        while (ai.get() &lt; 10000000) {
-            map.put(ai.get(), ai.get());
-            ai.incrementAndGet();
-        }
-    }
-}
-</code></pre>
-
-<h2 id="1，首先，来看看其他几个相关的类"><a href="#1，首先，来看看其他几个相关的类" class="headerlink" title="#1，首先，来看看其他几个相关的类"></a>#1，首先，来看看其他几个相关的类</h2><blockquote>
-<p>Hashtable是线程安全的，但效率低<br>HashMap是线程不安全的，但效率高<br>Collections.synchronizedMap()，工具类提供了同步包装器的方法，来返回具有线程安全的集合对象<br>性能依然有问题</p>
-</blockquote>
-<pre><code class="java">public static &lt;K,V&gt; Map&lt;K,V&gt; synchronizedMap(Map&lt;K,V&gt; m) {
-return new SynchronizedMap&lt;&gt;(m);
-}
-//在这个类的内部方法实现上，也只是单纯加上了锁
-public V put(K key, V value) {
-synchronized (mutex) {return m.put(key, value);}
-}
-</code></pre>
-<p>为解决这样的矛盾问题，所以JDK提供了并发包，来平衡这样的问题（java.util.concurrent）</p>
-<h2 id="2，ConcurrentHashMap（重点）"><a href="#2，ConcurrentHashMap（重点）" class="headerlink" title="*2，ConcurrentHashMap（重点）"></a><strong>*2，ConcurrentHashMap（重点）</strong></h2><ul>
-<li>兼顾了线程安全和效率的问题</li>
-</ul>
-<blockquote>
-<p>分析：HashTable锁了整段数据（用户操作是不同的数据段，依然需要等待）<br>解决方案：把数据分段，执行分段锁（分离锁），核心把锁的范围变小，这样出现并发冲突的概率就变小<br>在保存的时候，计算所存储的数据是属于哪一段，只锁当前这一段</p>
-</blockquote>
-<ul>
-<li><strong>注意：分段锁（分离锁）是JDK1.8之前的一种的方案，JDK1.8之后做了优化。</strong></li>
-</ul>
-<p><strong>JDK1.7跟JDK1.8在ConcurrentHashMap的实现上存在以下区别：</strong></p>
-<h3 id="1，数据结构"><a href="#1，数据结构" class="headerlink" title="1，数据结构"></a><strong>1，数据结构</strong></h3><p>JDK1.7采用链表的方式，而JDK1.8则采用链表+红黑树的方式</p>
-<h3 id="2，发生hash碰撞之后"><a href="#2，发生hash碰撞之后" class="headerlink" title="2，发生hash碰撞之后"></a><strong>2，发生hash碰撞之后</strong></h3><p>JDK1.7发生碰撞之后，会采用链表的方式来解决</p>
-<p>JDK1.8发生碰撞之后，默认采用链表，但当链表的长度超过8，且数组容量超过64时，会转换为红黑树存储</p>
-<h3 id="3，保证并发安全"><a href="#3，保证并发安全" class="headerlink" title="3，保证并发安全"></a><strong>3，保证并发安全</strong></h3><p>JDK1.7采用分段锁的方式，而JDK1.8采用CAS和synchronized的组合模式</p>
-<h3 id="4，查询复杂度"><a href="#4，查询复杂度" class="headerlink" title="4，查询复杂度"></a><strong>4，查询复杂度</strong></h3><p>JDK1.7采用链表的方式，时间复杂度为O(n)，而JDK1.8在采用红黑树的方式时，时间复杂度为O(log(n))</p>
-<p><strong>题外话：</strong></p>
-<p><strong>不过红黑树其实是一种兜底方案，因为当链表数量达到8个的时候，其发生的概率是千万分之几，所以作者考虑到这种极端情况下，需要用红黑树的方式来优化</strong></p>
-<blockquote>
-<h2 id="场景选择"><a href="#场景选择" class="headerlink" title="场景选择"></a>场景选择</h2></blockquote>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/10/04/012-Hash/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/10/04/011-HashSet的存储原理/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                011-HashSet的存储原理</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
+      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
+        <i class="fa fa-envira" aria-hidden="true"></i>
+        Show Time</h1>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
-        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
+  <!-- 首页默认取最最新文章集 -->
+  
+    
+<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
 
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author">Kerr</a>
-            </h3>
-          </div>
+  <div class="post-thumb">
+    <a href="/2020/09/28/Hexo写发文章步骤/">
+      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.4/img/banner/writing.jpg">
+    </a>
+  </div>
+  <div class="post-content-wrap">
+    <div class="post-content">
+      <div class="post-date">
+        <i class="iconfont icon-time">
+        </i>2020-9-28 10:09</div>
+      <a href="/2020/09/28/Hexo写发文章步骤/" class="post-title">
+        <h3>写发文章步骤.md</h3>
+      </a>
+      <div class="post-meta">
+        <span><i class="fa fa-tags"></i>
+        
+            <a href="/tags/Hexo写文章/">Hexo写文章<em>·</em></a>
+          
+        </span>
+        <span>
+          <i class="iconfont icon-file"></i>
+          
+            <a href="/categories/技术/">技术</a>
+          
+        </span>
+      </div>
+      <div class="float-content">
+        <p>Hexo写文章的相关步骤和可能碰到的问题</p>
+        <div class="post-bottom">
+          <a href="/2020/09/28/Hexo写发文章步骤/" class="button-normal">
+            <i class="iconfont icon-caidan"></i>
+          </a>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i></p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+      </div>
+    </div>
+  </div>
+</article>
+  
+
+
+    </main>
+    <!-- 首页默认取最最新文章集 -->
+    <!-- 
+      <nav class="navigator">
+        
+        <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      </nav>
+     -->
+  </div>
+  
 </div>
-
-
-
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
