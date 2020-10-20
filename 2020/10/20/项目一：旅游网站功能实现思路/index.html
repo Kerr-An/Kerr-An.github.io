@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Kerr&amp;Ann</title>
+  <title itemprop="name">项目一：旅游网站功能实现思路 | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,497 +483,156 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3440604936,3602984043&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3440604936,3602984043&amp;fm=26&amp;gp=0.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      项目一：旅游网站功能实现思路</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
+          </a>
+        </span>
+        <span>
+          <a href="">Kerr</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-10-20<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">🚀🚀🚀欢迎来到我的博客！🚀🚀🚀</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-    <i class="fa fa-anchor" aria-hidden="true">
-    </i>
-    起飞飞飞……🛫🛫🛫🛫</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>我的主题</h3>
-          <p>主题宣传页</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://space.bilibili.com/172816607" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>原地反复横跳</h3>
-          <p>自传</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-        <i class="fa fa-envira" aria-hidden="true"></i>
-        Show Time</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="1-技术选型"><a href="#1-技术选型" class="headerlink" title="1. 技术选型"></a>1. 技术选型</h1><h2 id="1-1-Web层"><a href="#1-1-Web层" class="headerlink" title="1.1  Web层"></a>1.1  Web层</h2><p>a)    Servlet：前端控制器</p>
+<p>b)    html：视图</p>
+<p>c)    Filter：过滤器</p>
+<p>d)    BeanUtils：数据封装</p>
+<p>e)    Jackson：json序列化工具</p>
+<h2 id="1-2-Service层"><a href="#1-2-Service层" class="headerlink" title="1.2  Service层"></a>1.2  Service层</h2><p>f)    Javamail：java发送邮件工具</p>
+<p>g)    Redis：nosql内存数据库</p>
+<p>h)    Jedis：java的redis客户端</p>
+<h2 id="1-3-Dao层"><a href="#1-3-Dao层" class="headerlink" title="1.3  Dao层"></a>1.3  Dao层</h2><p>i)     Mysql：数据库</p>
+<p>j)     Druid：数据库连接池</p>
+<p>k)    JdbcTemplate：jdbc的工具</p>
+<h1 id="2-注册功能的实现思路"><a href="#2-注册功能的实现思路" class="headerlink" title="2. 注册功能的实现思路"></a>2. 注册功能的实现思路</h1><img src="/2020/10/20/项目一：旅游网站功能实现思路/注册功能.png">
+<img src="/2020/10/20/项目一：旅游网站功能实现思路/注册之邮件激活.png">
+<h1 id="3-登录功能"><a href="#3-登录功能" class="headerlink" title="3. 登录功能"></a>3. 登录功能</h1><img src="/2020/10/20/项目一：旅游网站功能实现思路/登录功能.png">
+<h1 id="4-退出功能"><a href="#4-退出功能" class="headerlink" title="4. 退出功能"></a>4. 退出功能</h1><blockquote>
+<p>什么叫做登录了？session中有user对象。</p>
+<p>实现步骤：</p>
+<ol>
+<li><p>访问servlet，将session销毁</p>
+</li>
+<li><p>跳转到登录页面</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="5-优化Servlet"><a href="#5-优化Servlet" class="headerlink" title="5. 优化Servlet"></a>5. 优化Servlet</h1><p><code>减少Servlet的数量，现在是一个功能一个Servlet，将其优化为一个模块一个Servlet，相当于在数据库中一张表对应一个Servlet，在Servlet中提供不同的方法，完成用户的请求。</code></p>
+<img src="/2020/10/20/项目一：旅游网站功能实现思路/优化Servlet.png">
+<h1 id="6-分类数据展示"><a href="#6-分类数据展示" class="headerlink" title="6.分类数据展示"></a>6.分类数据展示</h1><h2 id="6-1-分类数据展示（初级）"><a href="#6-1-分类数据展示（初级）" class="headerlink" title="6.1 分类数据展示（初级）"></a>6.1 分类数据展示（初级）</h2><img src="/2020/10/20/项目一：旅游网站功能实现思路/分类数据展示.png">
+<h2 id="6-2-对分类数据进行缓存优化"><a href="#6-2-对分类数据进行缓存优化" class="headerlink" title="6.2 对分类数据进行缓存优化"></a>6.2 对分类数据进行缓存优化</h2><p><code>分析发现，分类的数据在每一次页面加载后都会重新请求数据库来加载，对数据库的压力比较大，而且分类的数据不会经常产生变化，所有可以使用redis来缓存这个数据。</code></p>
+<img src="/2020/10/20/项目一：旅游网站功能实现思路/对分类数据进行缓存优化.png">
+<h1 id="7-根据id查询不同类别的旅游线路数据"><a href="#7-根据id查询不同类别的旅游线路数据" class="headerlink" title="7. 根据id查询不同类别的旅游线路数据"></a>7. 根据id查询不同类别的旅游线路数据</h1><img src="/2020/10/20/项目一：旅游网站功能实现思路/根据id查询不同类别的旅游线路数据.png">
+<h1 id="8-旅游线路名称查询"><a href="#8-旅游线路名称查询" class="headerlink" title="8. 旅游线路名称查询"></a>8. 旅游线路名称查询</h1><h1 id="9-旅游线路的详情展示"><a href="#9-旅游线路的详情展示" class="headerlink" title="9. 旅游线路的详情展示"></a>9. 旅游线路的详情展示</h1><img src="/2020/10/20/项目一：旅游网站功能实现思路/旅游线路的详情展示1.png">
+<img src="/2020/10/20/项目一：旅游网站功能实现思路/旅游线路的详情展示2.png">
+<h1 id="10-旅游线路收藏功能"><a href="#10-旅游线路收藏功能" class="headerlink" title="10. 旅游线路收藏功能"></a>10. 旅游线路收藏功能</h1>
+<h1 id="11-点击按钮收藏线路"><a href="#11-点击按钮收藏线路" class="headerlink" title="11. 点击按钮收藏线路"></a>11. 点击按钮收藏线路</h1><img src="/2020/10/20/项目一：旅游网站功能实现思路/点击按钮收藏线路.png">
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://m.doc.100lw.com/pic/f8f79741612a2190e38746db92002a77e12639b2/1-607.5-jpg_6-1080-0-0-1080.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://m.doc.100lw.com/pic/f8f79741612a2190e38746db92002a77e12639b2/1-607.5-jpg_6-1080-0-0-1080.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                idea&amp;VS_Code&amp;Shell&amp;Linux命令</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3440604936,3602984043&amp;fm=26&amp;gp=0.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-20 21:10</div>
-      <a href="/2020/10/20/项目一：旅游网站功能实现思路/" class="post-title">
-        <h3>项目一：旅游网站功能实现思路</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/JavaEE开发，项目/">JavaEE开发，项目<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>旅游网站项目</p>
-        <div class="post-bottom">
-          <a href="/2020/10/20/项目一：旅游网站功能实现思路/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kerr</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://m.doc.100lw.com/pic/f8f79741612a2190e38746db92002a77e12639b2/1-607.5-jpg_6-1080-0-0-1080.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-13 20:10</div>
-      <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/" class="post-title">
-        <h3>idea&amp;VS_Code&amp;Shell&amp;Linux命令</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/快捷键/">快捷键<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>idea&amp;VS_Code&amp;Shell&amp;Linux命令</p>
-        <div class="post-bottom">
-          <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/06/SpringBoot重要笔记/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601893030641&amp;di=d19890e1f1669113b8d6502e0d8eb6bf&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.songma.com%2Fwenzhang%2F20180911%2Fdt4rhafzpki1108.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-6 08:10</div>
-      <a href="/2020/10/06/SpringBoot重要笔记/" class="post-title">
-        <h3>SpringBoot重要笔记</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/JavaEE开发框架：SpringBoot/">JavaEE开发框架：SpringBoot<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>SpringBoot笔记</p>
-        <div class="post-bottom">
-          <a href="/2020/10/06/SpringBoot重要笔记/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/05/SpringBoot入门/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601893030641&amp;di=d19890e1f1669113b8d6502e0d8eb6bf&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.songma.com%2Fwenzhang%2F20180911%2Fdt4rhafzpki1108.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-5 15:10</div>
-      <a href="/2020/10/05/SpringBoot入门/" class="post-title">
-        <h3>SpringBoot入门</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/JavaEE开发框架：SpringBoot/">JavaEE开发框架：SpringBoot<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>JavaEE开发框架</p>
-        <div class="post-bottom">
-          <a href="/2020/10/05/SpringBoot入门/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/04/端口被占用的解决办法/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601810445749&amp;di=5af6b2a41392721eb9bd3a5386e47e44&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1539735%2F201902%2F1539735-20190226172559427-420879644.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-4 16:10</div>
-      <a href="/2020/10/04/端口被占用的解决办法/" class="post-title">
-        <h3>端口被占用的解决办法</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/操作系统OS/">操作系统OS<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>端口被占用的处理方法</p>
-        <div class="post-bottom">
-          <a href="/2020/10/04/端口被占用的解决办法/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/04/012-Hash/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-4 14:10</div>
-      <a href="/2020/10/04/012-Hash/" class="post-title">
-        <h3>012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Java基础/">Java基础<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Java中HashSet的存储原理</p>
-        <div class="post-bottom">
-          <a href="/2020/10/04/012-Hash/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/04/011-HashSet的存储原理/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-4 14:10</div>
-      <a href="/2020/10/04/011-HashSet的存储原理/" class="post-title">
-        <h3>011-HashSet的存储原理</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Java基础/">Java基础<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Java中HashSet的存储原理</p>
-        <div class="post-bottom">
-          <a href="/2020/10/04/011-HashSet的存储原理/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/04/010-双向链表中插入元素的具体实现/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601789349374&amp;di=7ecbb612d0344677322b069a9d1d8900&amp;imgtype=0&amp;src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F720%2Fw1920h1200%2F20181202%2FbESE-hphsupx8610478.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-4 10:10</div>
-      <a href="/2020/10/04/010-双向链表中插入元素的具体实现/" class="post-title">
-        <h3>010-双向链表中插入元素的具体实现</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Java基础/">Java基础<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Java中双向链表插入元素的具体实现</p>
-        <div class="post-bottom">
-          <a href="/2020/10/04/010-双向链表中插入元素的具体实现/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/02/转载开篇/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601634250167&amp;di=fef48bb0e23e6037055f2bd62f5f5d57&amp;imgtype=0&amp;src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201205%2F07%2F200343cx0b5wwqdp0wbdb3.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-2 15:10</div>
-      <a href="/2020/10/02/转载开篇/" class="post-title">
-        <h3>转载开篇</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/转载/">转载<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/转载/">转载</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>转载自CodeSheep</p>
-        <div class="post-bottom">
-          <a href="/2020/10/02/转载开篇/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/10/02/随想开篇/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601635019664&amp;di=02f25fec9517894be3838040032287dc&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1405%2F31%2Fc0%2F34808184_34808184_1401494219156_mthumb.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-10-2 15:10</div>
-      <a href="/2020/10/02/随想开篇/" class="post-title">
-        <h3>随想开篇</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/心情/">心情<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/随想/">随想</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/10/02/随想开篇/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-    <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-  </div>
-  
-  <div id="pagination"><a href="/page/2/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
