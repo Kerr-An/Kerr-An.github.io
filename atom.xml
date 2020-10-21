@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-20T13:31:16.740Z</updated>
+  <updated>2020-10-21T08:25:28.654Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>招商金科一面总结</title>
+    <link href="/2020/10/21/%E6%8B%9B%E5%95%86%E9%87%91%E7%A7%91%E4%B8%80%E9%9D%A2%E6%80%BB%E7%BB%93/"/>
+    <id>/2020/10/21/招商金科一面总结/</id>
+    <published>2020-10-21T08:25:12.000Z</published>
+    <updated>2020-10-21T08:25:28.654Z</updated>
+    
+    <summary type="html">
+    
+      招商金科一面总结
+    
+    </summary>
+    
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>项目一：旅游网站功能实现思路</title>
@@ -392,26 +412,6 @@
     <summary type="html">
     
       Java中字符串类的相关问题
-    
-    </summary>
-    
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>002.final的用法及相关注意点</title>
-    <link href="/2020/09/28/002-final%E7%9A%84%E7%94%A8%E6%B3%95%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
-    <id>/2020/09/28/002-final的用法及相关注意点/</id>
-    <published>2020-09-28T03:46:49.000Z</published>
-    <updated>2020-09-28T09:02:32.058Z</updated>
-    
-    <summary type="html">
-    
-      Java中final的相关问题
     
     </summary>
     
