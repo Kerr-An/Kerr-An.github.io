@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-23T12:54:58.018Z</updated>
+  <updated>2020-10-23T13:52:41.940Z</updated>
   <id>/</id>
   
   <author>
@@ -20,15 +20,19 @@
     <title>Mybatis01</title>
     <link href="/2020/10/23/Mybatis01/"/>
     <id>/2020/10/23/Mybatis01/</id>
-    <published>2020-10-23T12:54:57.000Z</published>
-    <updated>2020-10-23T12:54:58.018Z</updated>
+    <published>2020-10-23T13:50:44.000Z</published>
+    <updated>2020-10-23T13:52:41.940Z</updated>
     
     <summary type="html">
+    
+      Mybatis创建和初始化流程
     
     </summary>
     
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
+    
+      <category term="Mybatis框架" scheme="/tags/Mybatis%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
