@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-23T13:52:41.940Z</updated>
+  <updated>2020-10-23T14:01:52.808Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis的“的增删改查</title>
+    <link href="/2020/10/23/Mybatis02/"/>
+    <id>/2020/10/23/Mybatis02/</id>
+    <published>2020-10-23T13:58:00.000Z</published>
+    <updated>2020-10-23T14:01:52.808Z</updated>
+    
+    <summary type="html">
+    
+      Mybatis的“CRUD”操作
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Mybatis框架" scheme="/tags/Mybatis%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis01</title>
@@ -395,26 +415,6 @@
     
     
       <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>005.递归必备掌握题目</title>
-    <link href="/2020/09/28/005-%E9%80%92%E5%BD%92%E5%BF%85%E5%A4%87%E6%8E%8C%E6%8F%A1%E9%A2%98%E7%9B%AE/"/>
-    <id>/2020/09/28/005-递归必备掌握题目/</id>
-    <published>2020-09-28T09:07:56.000Z</published>
-    <updated>2020-09-28T09:12:11.599Z</updated>
-    
-    <summary type="html">
-    
-      Java中循环必备知识：递归
-    
-    </summary>
-    
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
