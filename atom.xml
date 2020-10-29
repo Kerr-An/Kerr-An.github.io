@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-29T13:37:46.144Z</updated>
+  <updated>2020-10-29T13:41:20.188Z</updated>
   <id>/</id>
   
   <author>
@@ -17,24 +17,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>Spring入门</title>
     <link href="/2020/10/29/Spring%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/"/>
     <id>/2020/10/29/Spring配置过程/</id>
-    <published>2020-10-29T13:35:26.305Z</published>
-    <updated>2020-10-29T13:37:46.144Z</updated>
+    <published>2020-10-29T13:39:37.000Z</published>
+    <updated>2020-10-29T13:41:20.188Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;Spring5-2-0&quot;&gt;&lt;a href=&quot;#Spring5-2-0&quot; class=&quot;headerlink&quot; title=&quot;Spring5.2.0&quot;&gt;&lt;/a&gt;Spring5.2.0&lt;/h1&gt;&lt;h3
-        
-      
+      JavaEE开发框架：Spring
     
     </summary>
     
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaEE开发框架：Spring" scheme="/tags/JavaEE%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%EF%BC%9ASpring/"/>
     
   </entry>
   
