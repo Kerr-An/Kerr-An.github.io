@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | Kerr&amp;Ann</title>
+  <title itemprop="name">Spring初始化及原理 | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,706 +483,313 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Spring初始化及原理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
+          </a>
+        </span>
+        <span>
+          <a href="">Kerr</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-10-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">玩转技术的“艺术家”</h1>
-    <span class="cat-des">
-      <p>For Better</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/29/Spring初始化及原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/29/Spring初始化及原理/">
-    Spring初始化及原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-29</div>
-    <p>
-    Spring笔记</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/29/Spring初始化及原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/28/从输入URL到页面解析完成的过程/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603906948259&amp;di=a4670c80dd68e65ecf7bdf3849db2e26&amp;imgtype=0&amp;src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/28/从输入URL到页面解析完成的过程/">
-    从URL到页面解析从URL到页面解析</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-28</div>
-    <p>
-    页面解析过程</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/28/从输入URL到页面解析完成的过程/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/23/Mybatis02/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603471226457&amp;di=740bbb3a7ff1e5cb5dec7c0488bf8f6c&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2196685962%2C796489853%26fm%3D214%26gp%3D0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/23/Mybatis02/">
-    Mybatis的“的增删改查</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-23</div>
-    <p>
-    Mybatis的“CRUD”操作</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/23/Mybatis02/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/23/Mybatis01/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603471226457&amp;di=740bbb3a7ff1e5cb5dec7c0488bf8f6c&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2196685962%2C796489853%26fm%3D214%26gp%3D0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/23/Mybatis01/">
-    Mybatis01</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-23</div>
-    <p>
-    Mybatis创建和初始化流程</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/23/Mybatis01/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3440604936,3602984043&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-    项目一：旅游网站功能实现思路</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-20</div>
-    <p>
-    旅游网站项目</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="http://m.doc.100lw.com/pic/f8f79741612a2190e38746db92002a77e12639b2/1-607.5-jpg_6-1080-0-0-1080.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-    idea&amp;VS_Code&amp;Shell&amp;Linux命令</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-13</div>
-    <p>
-    idea&amp;VS_Code&amp;Shell&amp;Linux命令</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/06/SpringBoot重要笔记/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601893030641&amp;di=d19890e1f1669113b8d6502e0d8eb6bf&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.songma.com%2Fwenzhang%2F20180911%2Fdt4rhafzpki1108.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/06/SpringBoot重要笔记/">
-    SpringBoot重要笔记</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-6</div>
-    <p>
-    SpringBoot笔记</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/06/SpringBoot重要笔记/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/05/SpringBoot入门/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601893030641&amp;di=d19890e1f1669113b8d6502e0d8eb6bf&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.songma.com%2Fwenzhang%2F20180911%2Fdt4rhafzpki1108.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/05/SpringBoot入门/">
-    SpringBoot入门</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-5</div>
-    <p>
-    JavaEE开发框架</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/05/SpringBoot入门/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/端口被占用的解决办法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601810445749&amp;di=5af6b2a41392721eb9bd3a5386e47e44&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1539735%2F201902%2F1539735-20190226172559427-420879644.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/端口被占用的解决办法/">
-    端口被占用的解决办法</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    端口被占用的处理方法</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/端口被占用的解决办法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/012-Hash/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/012-Hash/">
-    012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中HashSet的存储原理</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/012-Hash/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!-- 
-      <nav class="navigator">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-        <span class="page-number current">1</span><a class="page-number" href="/categories/技术/page/2/">2</a><a class="page-number" href="/categories/技术/page/3/">3</a><a class="extend next" rel="next" href="/categories/技术/page/2/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-    
-      <div id="pagination"><a href="/categories/技术/page/2/" class="">Previous</a></div>
-    
-  </div>
+        <div class="entry-content">
+          <h1 id="Spring5-2-0"><a href="#Spring5-2-0" class="headerlink" title="Spring5.2.0"></a>Spring5.2.0</h1><h3 id="spring中文文档https-www-docs4dev-com-docs-zh-spring-framework-5-1-3-RELEASE-reference-core-html-beans"><a href="#spring中文文档https-www-docs4dev-com-docs-zh-spring-framework-5-1-3-RELEASE-reference-core-html-beans" class="headerlink" title="spring中文文档https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans"></a>spring中文文档<a href="https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans" target="_blank" rel="noopener">https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans</a></h3><h2 id="1、创建spring工程"><a href="#1、创建spring工程" class="headerlink" title="1、创建spring工程"></a>1、创建spring工程</h2><img src="/2020/10/29/Spring初始化及原理/002maven_spring配置.png">
+<p><code>具体如下：</code></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.kerr&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-study&lt;/artifactId&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;spring-01-ioc1&lt;/module&gt;
+        &lt;module&gt;spring-02-hellospring&lt;/module&gt;
+    &lt;/modules&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.2.0.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h2 id="2、-创建与配置spring子模块（module）"><a href="#2、-创建与配置spring子模块（module）" class="headerlink" title="2、 创建与配置spring子模块（module）"></a>2、 创建与配置spring子模块（module）</h2><img src="/2020/10/29/Spring初始化及原理/003子工程配置.png">
+<p>因为spring子工程继承了初始项目project的pom，因此不需要进一步配置子工程的pom，只需要建立spring相应的工程文件即可：</p>
+<img src="/2020/10/29/Spring初始化及原理/004bean_xml配置.png">
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.kerr&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-study&lt;/artifactId&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;spring-01-ioc1&lt;/module&gt;
+        &lt;module&gt;spring-02-hellospring&lt;/module&gt;
+    &lt;/modules&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.2.0.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h3 id="spring工程实践——"><a href="#spring工程实践——" class="headerlink" title="spring工程实践——"></a>spring工程实践——</h3><img src="/2020/10/29/Spring初始化及原理/hello_java实体类.png">
+<img src="/2020/10/29/Spring初始化及原理/bean_xml.png">
+<img src="/2020/10/29/Spring初始化及原理/mytest测试类.png">
+<p>对应代码：</p>
+<pre><code class="java">// Hello.java
+
+package com.kerr.pojo;
+
+public class Hello {
+    private String str;
+
+    @Override
+    public String toString() {
+        return &quot;Hello{&quot; +
+                &quot;str=&#39;&quot; + str + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    public String getStr() {
+        return str;
+    }
+}
+</code></pre>
+<pre><code class="xml">&lt;!--bean.xml--&gt;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;!--  使用spring来创建对象，在spring这些都称为Bean
+
+    Java写法：
+        类型 变量名 = new 类型；
+        Hello hello = new Hello();
+    spring内部：
+        bean = 对象 new Hello();
+
+        id = 变量名
+        class = 全路径（要new的对象）
+        property 相当于给对象的属性设置一个值！
+    --&gt;
+    &lt;bean id=&quot;hello&quot; class=&quot;com.kerr.pojo.Hello&quot;&gt;
+        &lt;property name=&quot;str&quot; value=&quot;Spring&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<pre><code class="java">// MyTest.java
+
+import com.kerr.dao.UserDaoMysqlImpl;
+import com.kerr.dao.UserDaoOracleImpl;
+import com.kerr.service.UserService;
+import com.kerr.service.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyTest {
+    public static void main(String[] args) {
+        // 用户实际调用的是业务层，dao层不需要接触
+
+        /**
+         * 传统new对象的方式
+         */
+//        UserService userService = new UserServiceImpl();
+//
+//        ((UserServiceImpl) userService).setUserDao(new UserDaoOracleImpl());
+//        userService.getUser();
+
+
+        /**
+         * spring创建对象方式
+         */
+        // 获取ApplicationContext；拿到spring容器
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+        // 容器在手，天下我有，需要什么，就get什么
+        UserServiceImpl userServiceImpl =(UserServiceImpl) context.getBean(&quot;UserServiceImpl&quot;);
+        userServiceImpl.getUser();
+    }
+
+}
+
+</code></pre>
+<p><strong><code>值得一提的是，spring创建实例对象的方法是通过控制set方法来创建的，这是IOC的原理。</code></strong></p>
+<p><code>MyTest.java文件中，ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);说明ClassPathXmlApplicationContext与ApplicationContext有着千丝万缕的关系。下面通过源码的方式获取这些继承和实现关系。</code></p>
+<img src="/2020/10/29/Spring初始化及原理/ClassPathXmlApplicationContext的继承关系.png">
+<blockquote>
+<p>可见，从ClassPathXmlApplicationContext到ApplicationContext总共6层关系，前5层是都是继承，最后是实现接口。（此时此刻我又想起了那句经典：你看到的我在第二层，而你把我想成了第一层，实际上我在第五层~~）</p>
+<h3 id="ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！"><a href="#ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！" class="headerlink" title="ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！"></a>ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！</h3><h3 id="实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。"><a href="#实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。" class="headerlink" title="实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。"></a>实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。</h3></blockquote>
+<h2 id="3、spring工作原理分析"><a href="#3、spring工作原理分析" class="headerlink" title="3、spring工作原理分析"></a>3、spring工作原理分析</h2><p> ApplicationContext接口下读取配置的方法：</p>
+<p>｛% asset_img ApplicationContext接口下读取配置的方法.png %｝</p>
+<h3 id="3-1-IoC创建对象的方式"><a href="#3-1-IoC创建对象的方式" class="headerlink" title="3.1 IoC创建对象的方式"></a>3.1 IoC创建对象的方式</h3><ol>
+<li><p>使用无参构造创建对象，默认！</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+
+&lt;!--    默认无参构造创建对象的方法：name指的是实体类中的属性名，Kerr是传入的属性值    --&gt;
+        &lt;property name=&quot;name&quot; value=&quot;Kerr&quot;/&gt;
+
+ &lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>使用有参构造方法创建对象：</p>
+<ol>
+<li><p>下标赋值</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+
+        &lt;!--    有参构造创建对象的方法1：下标法（index中传入输入参数对应的索引号，value传入属性值）    --&gt;
+        &lt;constructor-arg index=&quot;0&quot; value=&quot;Kerr&quot;/&gt;
+
+&lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>类型（不建议使用，因为当第一个和第二个参数都为相同类型时，无法使用）</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+        &lt;!--    有参构造创建对象的方法2：参数类型（不建议使用）    --&gt;
+        &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;Kerr&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>参数名（重点掌握（这个就够用了！！！））</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+    &lt;!--    通过参数名来设置    --&gt;
+    &lt;constructor-arg name=&quot;name&quot; value=&quot;Kerr&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p><strong>总结：</strong>在配置文件加载的时候，容器（ApplicationContext）（spring中的bean是在容器中的）中管理的对象就已经初始化了。</p>
+</blockquote>
+</li>
+</ol>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/10/28/从输入URL到页面解析完成的过程/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603906948259&di=a4670c80dd68e65ecf7bdf3849db2e26&imgtype=0&src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603906948259&di=a4670c80dd68e65ecf7bdf3849db2e26&imgtype=0&src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                从URL到页面解析从URL到页面解析</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kerr</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/29/Spring初始化及原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/29/Spring初始化及原理/">
-    Spring初始化及原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-29</div>
-    <p>
-    Spring笔记</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/29/Spring初始化及原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/28/从输入URL到页面解析完成的过程/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603906948259&amp;di=a4670c80dd68e65ecf7bdf3849db2e26&amp;imgtype=0&amp;src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/28/从输入URL到页面解析完成的过程/">
-    从URL到页面解析从URL到页面解析</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-28</div>
-    <p>
-    页面解析过程</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/28/从输入URL到页面解析完成的过程/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/23/Mybatis02/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603471226457&amp;di=740bbb3a7ff1e5cb5dec7c0488bf8f6c&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2196685962%2C796489853%26fm%3D214%26gp%3D0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/23/Mybatis02/">
-    Mybatis的“的增删改查</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-23</div>
-    <p>
-    Mybatis的“CRUD”操作</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/23/Mybatis02/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/23/Mybatis01/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603471226457&amp;di=740bbb3a7ff1e5cb5dec7c0488bf8f6c&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2196685962%2C796489853%26fm%3D214%26gp%3D0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/23/Mybatis01/">
-    Mybatis01</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-23</div>
-    <p>
-    Mybatis创建和初始化流程</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/23/Mybatis01/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3440604936,3602984043&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-    项目一：旅游网站功能实现思路</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-20</div>
-    <p>
-    旅游网站项目</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/20/项目一：旅游网站功能实现思路/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="http://m.doc.100lw.com/pic/f8f79741612a2190e38746db92002a77e12639b2/1-607.5-jpg_6-1080-0-0-1080.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-    idea&amp;VS_Code&amp;Shell&amp;Linux命令</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-13</div>
-    <p>
-    idea&amp;VS_Code&amp;Shell&amp;Linux命令</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/13/idea&VS_Code&Shell&Linux命令/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/06/SpringBoot重要笔记/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601893030641&amp;di=d19890e1f1669113b8d6502e0d8eb6bf&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.songma.com%2Fwenzhang%2F20180911%2Fdt4rhafzpki1108.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/06/SpringBoot重要笔记/">
-    SpringBoot重要笔记</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-6</div>
-    <p>
-    SpringBoot笔记</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/06/SpringBoot重要笔记/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/05/SpringBoot入门/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601893030641&amp;di=d19890e1f1669113b8d6502e0d8eb6bf&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.songma.com%2Fwenzhang%2F20180911%2Fdt4rhafzpki1108.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/05/SpringBoot入门/">
-    SpringBoot入门</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-5</div>
-    <p>
-    JavaEE开发框架</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/05/SpringBoot入门/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/端口被占用的解决办法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601810445749&amp;di=5af6b2a41392721eb9bd3a5386e47e44&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1539735%2F201902%2F1539735-20190226172559427-420879644.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/端口被占用的解决办法/">
-    端口被占用的解决办法</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    端口被占用的处理方法</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/端口被占用的解决办法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/10/04/012-Hash/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/10/04/012-Hash/">
-    012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-10-4</div>
-    <p>
-    Java中HashSet的存储原理</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/10/04/012-Hash/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
