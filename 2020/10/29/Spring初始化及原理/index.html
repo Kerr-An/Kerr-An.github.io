@@ -572,10 +572,10 @@
     &lt;/dependencies&gt;
 &lt;/project&gt;
 </code></pre>
-<h3 id="spring工程实践——"><a href="#spring工程实践——" class="headerlink" title="spring工程实践——"></a>spring工程实践——</h3><img src="/2020/10/29/Spring初始化及原理/hello_java实体类.png">
-<img src="/2020/10/29/Spring初始化及原理/bean_xml.png">
+<h3 id="spring工程实践——"><a href="#spring工程实践——" class="headerlink" title="spring工程实践——"></a>spring工程实践——</h3><img src="/2020/10/29/Spring初始化及原理/hellojava实体类.png">
+<img src="/2020/10/29/Spring初始化及原理/beanxml.png">
 <img src="/2020/10/29/Spring初始化及原理/mytest测试类.png">
-<p>对应代码：</p>
+<p><code>对应代码：</code></p>
 <pre><code class="java">// Hello.java
 
 package com.kerr.pojo;
@@ -1016,6 +1016,162 @@ public void test2(){
 */
 </code></pre>
 <p><code>注意点：p和c命名空间不能直接使用，需要导入xml约束，官网文档也有。</code></p>
+<h3 id="6-4-Bean-Scope（bean作用域）"><a href="#6-4-Bean-Scope（bean作用域）" class="headerlink" title="6.4 Bean Scope（bean作用域）"></a>6.4 Bean Scope（bean作用域）</h3><p>｛% asset_img Bean作用域.png %｝</p>
+<ol>
+<li><p>单例模式（Spring默认机制：默认只有一个对象）<br><code>存在问题：并发访问情况下会产生延迟或者数据不一致问题！！！</code><br><code>因此一般用在单线程中！</code></p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot; p:name=&quot;Kerr&quot; p:age=&quot;18&quot; scope=&quot;singleton&quot;/&gt;
+</code></pre>
+</li>
+<li><p>原型模式（每次从容器中get的时候，都会产生一个新对象）<br><code>存在问题：浪费资源！！！</code><br><code>一般用在多线程中！</code></p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot; p:name=&quot;Kerr&quot; p:age=&quot;18&quot; scope=&quot;prototype&quot;/&gt;
+</code></pre>
+</li>
+<li><p>其余的request、session、application这些只能在web开发中使用。</p>
+</li>
+</ol>
+<h2 id="7、Bean的自动装配"><a href="#7、Bean的自动装配" class="headerlink" title="7、Bean的自动装配"></a>7、Bean的自动装配</h2><ul>
+<li>自动装配是Spring满足bean依赖的一种方式！</li>
+<li>Spring会在上下文中自动寻找，并自动给bean装配属性！</li>
+</ul>
+<p><code>在Spring中有三种装配方式：</code></p>
+<ul>
+<li>在xml中显式的配置</li>
+<li>在java中显式配置</li>
+<li>隐式的自动装配bean【重要！！！】</li>
+</ul>
+<h3 id="7-1-自动装配——测试"><a href="#7-1-自动装配——测试" class="headerlink" title="7.1 自动装配——测试"></a>7.1 自动装配——测试</h3><p>环境搭建</p>
+<ul>
+<li><p>一个人People有两个宠物Cat、Dog</p>
+<pre><code class="xml">&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot; autowire=&quot;byType&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;主人&quot;/&gt;
+
+    &lt;!--传统配置方式，直接将属性赋值给对象--&gt;
+    &lt;property name=&quot;cat&quot; ref=&quot;cat&quot;/&gt;
+    &lt;property name=&quot;dog&quot; ref=&quot;dog&quot;/&gt;
+
+&lt;/bean&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="7-2-ByName自动装配（只适用于id唯一）"><a href="#7-2-ByName自动装配（只适用于id唯一）" class="headerlink" title="7.2 ByName自动装配（只适用于id唯一）"></a>7.2 ByName自动装配（只适用于id唯一）</h3><pre><code class="xml">&lt;!--
+    autowire=&quot;byName&quot;的原理：会自动在容器上下文中查找和自己对象set方法后面的值（set后紧跟的那个单词比如setDog-&gt;dog）对应的bean id。
+--&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot; autowire=&quot;byName&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;主人&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<h3 id="7-3-ByType自动装配（只适用于类型唯一）"><a href="#7-3-ByType自动装配（只适用于类型唯一）" class="headerlink" title="7.3 ByType自动装配（只适用于类型唯一）"></a>7.3 ByType自动装配（只适用于类型唯一）</h3><pre><code class="xml">&lt;!--
+    autowire=&quot;byType&quot;的原理：会自动在容器上下文中查找和自己对象属性相同的bean。
+--&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot; autowire=&quot;byType&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;主人&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>小结：</p>
+<ul>
+<li>byName的时候需要保证所有bean的id唯一，并且这个bean需要和自动注入的属性的set方法的值一致；</li>
+<li>byType的时候需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致；</li>
+</ul>
+<h3 id="7-4-使用注解实现自动装配"><a href="#7-4-使用注解实现自动装配" class="headerlink" title="7.4 使用注解实现自动装配"></a>7.4 使用注解实现自动装配</h3><p>jdk1.5开始支持注解，spring2.5就有了。</p>
+<pre><code>The introduction of annotation-based configuration raised the question of whether this approach is “better” than XML. The short answer is “it depends.” 
+</code></pre><p><code>要使用注解须知：</code></p>
+<ol>
+<li>导入约束context：下面代码段（行4）</li>
+<li>==配置注解的支持（开启注解支持）==：<a href="context:annotation-config/" target="_blank" rel="noopener">context:annotation-config/</a></li>
+</ol>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;context:annotation-config/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h4 id="7-4-1-Autowired"><a href="#7-4-1-Autowired" class="headerlink" title="==7.4.1 @Autowired=="></a>==7.4.1 @Autowired==</h4><ul>
+<li>直接在属性上使用即可（注解利用反射实现的，因此使用注解开发set方法也可以不要）</li>
+<li>使用@Autowired就可以不用编写set方法了，前提是你这个自动装配的属性在IoC（Spring）容器中存在，且符合名字byName！</li>
+</ul>
+<p>科普：</p>
+<ul>
+<li><p>@Nullable    字段标记了这个注解，说明这个字段可以为null；</p>
+<pre><code class="java">public People(@Nullable String name) {
+    this.name = name;
+}
+</code></pre>
+</li>
+<li><p>@Autowired下唯一属性required的作用：标记字段可为null，为null时不报错</p>
+<pre><code class="java">public @interface Autowired {
+    boolean required() default true;
+}
+</code></pre>
+</li>
+<li><p>@Autowired下唯一属性required的测试代码</p>
+<pre><code class="java">public class People {
+    // 如果显式定义Autowired的required属性为null，说明这个对象可以为null，否则不允许为空
+    @Autowired(required = false)
+    public Cat cat;
+    @Autowired
+    public Dog dog;
+    public String name;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="7-4-2-Autowired的特殊情况"><a href="#7-4-2-Autowired的特殊情况" class="headerlink" title="7.4.2 @Autowired的特殊情况"></a>7.4.2 @Autowired的特殊情况</h4><p>​        <code>假如bean中相同对象Cat的id有多个，类型也不唯一，而且没有对应的默认的正确id，首先会使用byType查找，如果存在多个类型相同的，再通过byName。那么测试类会报错：找不到对应的类的正确名字。此时需要另一个注解@Qualifier(value = &quot;对象名&quot;)去指定其中一个bean id来正确使用bean的这些配置。</code>（但凡满足唯一类型或者能找到默认正确id都不会报错！！！）</p>
+<p>​        ==如果@Autowired自动装配的环境比较复杂，自动装配无法通过一个注解【@Autowired】完成的时候，我们可以使用@Qualifier(value = “对象名”)去配置@Autowired的使用，指定一个唯一的bean对象注入。==</p>
+<ul>
+<li><pre><code class="xml">&lt;!--假如bean中相同对象Cat的id有多个，而且没有对应的默认的正确id，那么测试类会报错：找不到对应的类的正确名字。此时需要另一个注解@Qualifier(value = &quot;对象名&quot;)去指定其中一个bean id来正确使用bean的这些配置--&gt;
+&lt;bean id=&quot;cat11&quot; class=&quot;com.kerr.pojo.Cat&quot;/&gt;  
+&lt;bean id=&quot;cat111&quot; class=&quot;com.kerr.pojo.Cat&quot;/&gt;
+&lt;bean id=&quot;dog22&quot; class=&quot;com.kerr.pojo.Dog&quot;/&gt;
+&lt;bean id=&quot;dog222&quot; class=&quot;com.kerr.pojo.Dog&quot;/&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot;/&gt;
+</code></pre>
+</li>
+<li><pre><code class="java">// 测试类
+public class People {
+    @Autowired
+    @Qualifier(value = &quot;cat11&quot;)
+    public Cat cat;
+    @Autowired
+    @Qualifier(value = &quot;dog222&quot;)
+    public Dog dog;
+    public String name;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="7-4-3-关于-Resource注解"><a href="#7-4-3-关于-Resource注解" class="headerlink" title="7.4.3 关于@Resource注解"></a>7.4.3 关于@Resource注解</h4><ul>
+<li><p>@Resource是属于java的注解，功能同@Autowired类似，但是效率比@Autowired略低，如果用@Resource解决上述7.4.2问题的话，需要更改为如下测试类：</p>
+</li>
+<li><pre><code class="java">public class People {
+    @Resource(name = &quot;cat11&quot;)
+    public Cat cat;
+    @Resource(name = &quot;dog222&quot;)
+    public Dog dog;
+    public String name;
+}
+</code></pre>
+</li>
+</ul>
+<p>不过，开发中更常用@Autowired。</p>
+<h4 id="7-4-4-小结（-Resource和-Autowired的相同点和不同点）"><a href="#7-4-4-小结（-Resource和-Autowired的相同点和不同点）" class="headerlink" title="7.4.4 小结（@Resource和@Autowired的相同点和不同点）"></a>7.4.4 小结（@Resource和@Autowired的相同点和不同点）</h4><ul>
+<li><code>相同点：</code><ul>
+<li>都是用来自动装配的，都可以放在属性字段上</li>
+</ul>
+</li>
+<li><code>不同点：</code><ul>
+<li>@Autowired默认会使用byType查找，如果存在多个类型相同的，不能唯一自动装配上属性，再通过byName（此处需要配合@Qualifier(value = “bean的id”)使用）进行匹配，再不行则报错</li>
+<li>@Resource默认会使用byName装配，如果不存在正确名称，再通过byType，再不行则报错</li>
+<li>执行顺序不同</li>
+</ul>
+</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
