@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">从URL到页面解析从URL到页面解析 | Kerr&amp;Ann</title>
+  <title itemprop="name">Spring笔记（上） | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -489,11 +489,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603906948259&amp;di=a4670c80dd68e65ecf7bdf3849db2e26&amp;imgtype=0&amp;src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603906948259&amp;di=a4670c80dd68e65ecf7bdf3849db2e26&amp;imgtype=0&amp;src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      从URL到页面解析从URL到页面解析</h1>
+      Spring笔记（上）</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -505,7 +505,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-10-28<span class="bull">
+        2020-10-29<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -519,35 +519,659 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="过程概述"><a href="#过程概述" class="headerlink" title="过程概述"></a>过程概述</h2><p>js html是基于http在浏览器和服务器之间进行传输（是响应的第四部分的字符串）<br>1.http协议基于TCP/IP协议<br>过程：浏览器输入域名-&gt;浏览器查询dns是否有缓存-&gt;DNS查询到域名-&gt;TCP/IP链接（三次握手）-&gt;建立连接-&gt;浏览器发出请求-&gt;服务器响应（1.2.3.4）-&gt;浏览器会先获得响应头然后在获得相应体（因为响应体有时候会很大）.</p>
-<pre><code>*1、浏览器地址栏输入url* 
-*2、浏览器会先查看浏览器缓存*--*系统缓存*--*路由缓存，如有存在缓存，就直接显示。如果没有，接着第三步* 
-*3、域名解析（DNS）获取相应的ip* 
-*4、浏览器向服务器发起tcp连接，与浏览器建立tcp三次握手* 
-*5、握手成功，浏览器向服务器发送http请求，请求数据包* 
-*6、服务器请求数据，将数据返回到浏览器* 
-*7、浏览器接收响应，读取页面内容，解析html源码，生成DOm树* 
-*8、解析css样式、浏览器渲染，js交互绑定多个域名，数量不限*
-</code></pre><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>知道了服务器的 IP 地址，下面便开始与服务器建立连接了。</p>
-<p>通俗地讲，通信连接的建立需要经历以下三个过程：</p>
-<p>主机向服务器发送一个建立连接的请求（您好，我想认识您）；</p>
-<p>服务器接到请求后发送同意连接的信号（好的，很高兴认识您）；</p>
-<p>主机接到同意连接的信号后，再次向服务器发送了确认信号（我也很高兴认识您），自此，主机与服务器两者建立了连接。</p>
-<p>*补充说明</p>
-<p>TCP 协议：三次握手的过程采用 TCP 协议，其可以保证信息传输的可靠性，三次握手过程中，若一方收不到确认信号，协议会要求重新发送信号。</p>
-<p>网页请求与显示<br>当服务器与主机建立了连接之后，下面主机便与服务器进行通信。网页请求是一个单向请求的过程，即是一个主机向服务器请求数据，服务器返回相应的数据的过程。</p>
-<p>浏览器根据 URL 内容生成 HTTP 请求，请求中包含请求文件的位置、请求文件的方式等等；</p>
-<p>服务器接到请求后，会根据 HTTP 请求中的内容来决定如何获取相应的 HTML 文件；</p>
-<p>服务器将得到的 HTML 文件发送给浏览器；</p>
-<p>在浏览器还没有完全接收 HTML 文件时便开始渲染、显示网页；</p>
-<p>在执行 HTML 中代码时，根据需要，浏览器会继续请求图片、CSS、JavsScript等文件，过程同请求 HTML ；</p>
-<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>主机向服务器发送一个断开连接的请求（不早了，我该走了）；</p>
-<p>服务器接到请求后发送确认收到请求的信号（知道了）；</p>
-<p>服务器向主机发送断开通知（我也该走了）；</p>
-<p>主机接到断开通知后断开连接并反馈一个确认信号（嗯，好的），服务器收到确认信号后断开连接；</p>
-<p>*补充说明</p>
-<p>为什么服务器在接到断开请求时不立即同意断开：当服务器收到断开连接的请求时，可能仍然有数据未发送完毕，所以服务器先发送确认信号，等所有数据发送完毕后再同意断开。</p>
-<p>第四次握手后，主机发送确认信号后并没有立即断开连接，而是等待了 2 个报文传送周期，原因是：如果第四次握手的确认信息丢失，服务器将会重新发送第三次握手的断开连接的信号，而服务器发觉丢包与重新发送的断开连接到达主机的时间正好为 2 个报文传输周期。</p>
+          <h1 id="Spring5-2-0（上）"><a href="#Spring5-2-0（上）" class="headerlink" title="Spring5.2.0（上）"></a>Spring5.2.0（上）</h1><h3 id="spring中文文档https-www-docs4dev-com-docs-zh-spring-framework-5-1-3-RELEASE-reference-core-html-beans"><a href="#spring中文文档https-www-docs4dev-com-docs-zh-spring-framework-5-1-3-RELEASE-reference-core-html-beans" class="headerlink" title="spring中文文档https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans"></a>spring中文文档<a href="https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans" target="_blank" rel="noopener">https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans</a></h3><h3 id="官方文档https-docs-spring-io-spring-framework-docs-current-reference-html-core-html-beans-p-namespace"><a href="#官方文档https-docs-spring-io-spring-framework-docs-current-reference-html-core-html-beans-p-namespace" class="headerlink" title="官方文档https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-p-namespace"></a>官方文档<a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-p-namespace" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-p-namespace</a></h3><h2 id="1、创建spring工程"><a href="#1、创建spring工程" class="headerlink" title="1、创建spring工程"></a>1、创建spring工程</h2><img src="/2020/10/29/Spring学习笔记（上）/002maven_spring配置.png">
+<p><code>具体如下：</code></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.kerr&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-study&lt;/artifactId&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;spring-01-ioc1&lt;/module&gt;
+        &lt;module&gt;spring-02-hellospring&lt;/module&gt;
+    &lt;/modules&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.2.0.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h2 id="2、-创建与配置spring子模块（module）"><a href="#2、-创建与配置spring子模块（module）" class="headerlink" title="2、 创建与配置spring子模块（module）"></a>2、 创建与配置spring子模块（module）</h2><img src="/2020/10/29/Spring学习笔记（上）/003子工程配置.png">
+<p>因为spring子工程继承了初始项目project的pom，因此不需要进一步配置子工程的pom，只需要建立spring相应的工程文件即可：</p>
+<img src="/2020/10/29/Spring学习笔记（上）/004bean_xml配置.png">
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.kerr&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-study&lt;/artifactId&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;spring-01-ioc1&lt;/module&gt;
+        &lt;module&gt;spring-02-hellospring&lt;/module&gt;
+    &lt;/modules&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.2.0.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h3 id="spring工程实践——"><a href="#spring工程实践——" class="headerlink" title="spring工程实践——"></a>spring工程实践——</h3><img src="/2020/10/29/Spring学习笔记（上）/hellojava实体类.png">
+<img src="/2020/10/29/Spring学习笔记（上）/beanxml.png">
+<img src="/2020/10/29/Spring学习笔记（上）/mytest测试类.png">
+<p><code>对应代码：</code></p>
+<pre><code class="java">// Hello.java
+
+package com.kerr.pojo;
+
+public class Hello {
+    private String str;
+
+    @Override
+    public String toString() {
+        return &quot;Hello{&quot; +
+                &quot;str=&#39;&quot; + str + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    public String getStr() {
+        return str;
+    }
+}
+</code></pre>
+<pre><code class="xml">&lt;!--bean.xml--&gt;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;!--  使用spring来创建对象，在spring这些都称为Bean
+
+    Java写法：
+        类型 变量名 = new 类型；
+        Hello hello = new Hello();
+    spring内部：
+        bean = 对象 new Hello();
+
+        id = 变量名
+        class = 全路径（要new的对象）
+        property 相当于给对象的属性设置一个值！
+    --&gt;
+    &lt;bean id=&quot;hello&quot; class=&quot;com.kerr.pojo.Hello&quot;&gt;
+        &lt;property name=&quot;str&quot; value=&quot;Spring&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<pre><code class="java">// MyTest.java
+
+import com.kerr.dao.UserDaoMysqlImpl;
+import com.kerr.dao.UserDaoOracleImpl;
+import com.kerr.service.UserService;
+import com.kerr.service.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyTest {
+    public static void main(String[] args) {
+        // 用户实际调用的是业务层，dao层不需要接触
+
+        /**
+         * 传统new对象的方式
+         */
+//        UserService userService = new UserServiceImpl();
+//
+//        ((UserServiceImpl) userService).setUserDao(new UserDaoOracleImpl());
+//        userService.getUser();
+
+
+        /**
+         * spring创建对象方式
+         */
+        // 获取ApplicationContext；拿到spring容器
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+        // 容器在手，天下我有，需要什么，就get什么
+        UserServiceImpl userServiceImpl =(UserServiceImpl) context.getBean(&quot;UserServiceImpl&quot;);
+        userServiceImpl.getUser();
+    }
+
+}
+
+</code></pre>
+<p><strong><code>值得一提的是，spring创建实例对象的方法是通过控制set方法来创建的，这是IOC的原理。</code></strong></p>
+<p><code>MyTest.java文件中，ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);说明ClassPathXmlApplicationContext与ApplicationContext有着千丝万缕的关系。下面通过源码的方式获取这些继承和实现关系。</code></p>
+<img src="/2020/10/29/Spring学习笔记（上）/ClassPathXmlApplicationContext的继承关系.png">
+<blockquote>
+<p>可见，从ClassPathXmlApplicationContext到ApplicationContext总共6层关系，前5层是都是继承，最后是实现接口。（此时此刻我又想起了那句经典：你看到的我在第二层，而你把我想成了第一层，实际上我在第五层~~）</p>
+<h3 id="ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！"><a href="#ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！" class="headerlink" title="ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！"></a>ok，从现在开始，我们彻底不用在程序中去改动了，要实现不同操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！</h3><h3 id="实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。"><a href="#实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。" class="headerlink" title="实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。"></a>实际上，spring容器相当于一个婚恋网站，当网站开始的时候，内部的所有人都注册（实例化）好了，想要找哪一个直接get就好了。也就是说，所有bean注册好之后就已经被spring实例化了。</h3></blockquote>
+<h2 id="3、spring工作原理分析"><a href="#3、spring工作原理分析" class="headerlink" title="3、spring工作原理分析"></a>3、spring工作原理分析</h2><p> ApplicationContext接口下读取配置的方法：</p>
+<p>｛% asset_img ApplicationContext接口下读取配置的方法.png %｝</p>
+<h2 id="4、-IoC创建对象的方式"><a href="#4、-IoC创建对象的方式" class="headerlink" title="4、 IoC创建对象的方式"></a>4、 IoC创建对象的方式</h2><ol>
+<li><p>使用无参构造创建对象，默认！</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+
+&lt;!--    默认无参构造创建对象的方法：name指的是实体类中的属性名，Kerr是传入的属性值    --&gt;
+        &lt;property name=&quot;name&quot; value=&quot;Kerr&quot;/&gt;
+
+ &lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>使用有参构造方法创建对象：</p>
+<ol>
+<li><p>下标赋值</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+
+        &lt;!--    有参构造创建对象的方法1：下标法（index中传入输入参数对应的索引号，value传入属性值）    --&gt;
+        &lt;constructor-arg index=&quot;0&quot; value=&quot;Kerr&quot;/&gt;
+
+&lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>类型（不建议使用，因为当第一个和第二个参数都为相同类型时，无法使用）</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+        &lt;!--    有参构造创建对象的方法2：参数类型（不建议使用）    --&gt;
+        &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;Kerr&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>参数名（重点掌握（这个就够用了！！！））</p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;&gt;
+    &lt;!--    通过参数名来设置    --&gt;
+    &lt;constructor-arg name=&quot;name&quot; value=&quot;Kerr&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p><strong>总结：</strong>在配置文件加载的时候，容器（ApplicationContext）（spring中的bean是在容器中的）中管理的对象就已经初始化了。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="5、-spring配置分析"><a href="#5、-spring配置分析" class="headerlink" title="5、 spring配置分析"></a>5、 spring配置分析</h2><h3 id="5-1-别名（alias）"><a href="#5-1-别名（alias）" class="headerlink" title="5.1 别名（alias）"></a>5.1 别名（alias）</h3><pre><code class="xml">&lt;!--  name表示要创建的对象名，alias表示对应对象名的别名。给对象添加别名，如果User太多了，可以起别名。通过别名也可以获取到这个对象  --&gt;
+    &lt;alias name=&quot;user&quot; alias=&quot;userNew&quot;/&gt;
+</code></pre>
+<h3 id="5-2-Bean的配置"><a href="#5-2-Bean的配置" class="headerlink" title="5.2 Bean的配置"></a>5.2 Bean的配置</h3><pre><code class="xml">&lt;!--
+  id：bean的唯一标识符，也就是要创建的对象名
+  class：bean对象所对应的全限定名，包名+类名
+  name：也是别名，而且name更高级，可以同时取多个别名（逗号、空格、分号等分隔都可以）
+--&gt;
+    &lt;bean id=&quot;userT&quot; class=&quot;com.kerr.pojo.UserT&quot; name=&quot;user2,u2&quot;&gt;
+        &lt;property name=&quot;name&quot; value=&quot;Kerr&quot;/&gt;
+        &lt;property name=&quot;uid&quot; value=&quot;123&quot;/&gt;
+    &lt;/bean&gt;
+</code></pre>
+<h3 id="5-3-import"><a href="#5-3-import" class="headerlink" title="5.3 import"></a>5.3 import</h3><p><code>这个import，一般用于团队开发使用，可以将多个配置文件，导入合并为一个。</code></p>
+<p>假设，现在项目中有多个人开发，这三个人利用不同的beans.xml配置，最后汇总需要用import将所用人的beans.xml合并为一个总的。</p>
+<ul>
+<li><p>P1、beans.xml</p>
+</li>
+<li><p>P2、beans2.xml</p>
+</li>
+<li><p>P3、beans3.xml</p>
+</li>
+<li><p>总：applicationContext.xml</p>
+<pre><code class="xml">&lt;import resource=&quot;beans.xml&quot;/&gt;
+&lt;import resource=&quot;beans2.xml&quot;/&gt;
+&lt;import resource=&quot;beans3.xml&quot;/&gt;
+</code></pre>
+</li>
+</ul>
+<p>使用的时候，直接使用总的配置就可以了。</p>
+<h2 id="6、依赖注入"><a href="#6、依赖注入" class="headerlink" title="6、依赖注入"></a>6、依赖注入</h2><h3 id="6-1-构造器注入（前面已经记录过）"><a href="#6-1-构造器注入（前面已经记录过）" class="headerlink" title="6.1 构造器注入（前面已经记录过）"></a>6.1 构造器注入（前面已经记录过）</h3><h3 id="6-2-Set方式注入（重点）"><a href="#6-2-Set方式注入（重点）" class="headerlink" title="6.2 Set方式注入（重点）"></a>6.2 Set方式注入（重点）</h3><ul>
+<li><p>依赖注入：Set注入</p>
+<ul>
+<li>依赖：bean对象的创建依赖于容器</li>
+<li>注入：bean对象中的所用属性，由容器来注入</li>
+</ul>
+</li>
+<li><p>例子：</p>
+</li>
+<li><p>例子的结构<br>｛% asset_img 依赖注入的项目结构.png %｝</p>
+<p><code>下面是本例中的代码：</code></p>
+<pre><code class="java">package com.kerr.pojo;
+
+// 实体类Student
+import java.util.*;
+
+public class Student {
+
+    private String name; // 通过value赋值
+    private Address address; // 通过ref赋值
+
+    private String[] books;
+    private List&lt;String&gt; hobbys;
+    private Map&lt;String,String&gt; card;
+    private Set&lt;String&gt; games;
+    private String wife; // 空指针
+    private Properties info;
+
+    @Override
+    public String toString() {
+        return &quot;Student{&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, address=&quot; + address +
+                &quot;, books=&quot; + Arrays.toString(books) +
+                &quot;, hobbys=&quot; + hobbys +
+                &quot;, card=&quot; + card +
+                &quot;, games=&quot; + games +
+                &quot;, wife=&#39;&quot; + wife + &#39;\&#39;&#39; +
+                &quot;, info=&quot; + info +
+                &#39;}&#39;;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(String[] books) {
+        this.books = books;
+    }
+
+    public List&lt;String&gt; getHobbys() {
+        return hobbys;
+    }
+
+    public void setHobbys(List&lt;String&gt; hobbys) {
+        this.hobbys = hobbys;
+    }
+
+    public Map&lt;String, String&gt; getCard() {
+        return card;
+    }
+
+    public void setCard(Map&lt;String, String&gt; card) {
+        this.card = card;
+    }
+
+    public Set&lt;String&gt; getGames() {
+        return games;
+    }
+
+    public void setGames(Set&lt;String&gt; games) {
+        this.games = games;
+    }
+
+    public String getWife() {
+        return wife;
+    }
+
+    public void setWife(String wife) {
+        this.wife = wife;
+    }
+
+    public Properties getInfo() {
+        return info;
+    }
+
+    public void setInfo(Properties info) {
+        this.info = info;
+    }
+}
+</code></pre>
+<pre><code class="java">package com.kerr.pojo;
+// 实体类Address
+public class Address {
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Address{&quot; +
+                &quot;address=&#39;&quot; + address + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+}
+</code></pre>
+<pre><code class="xml">&lt;!--set依赖注入--&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;bean id=&quot;address&quot; class=&quot;com.kerr.pojo.Address&quot;&gt;
+        &lt;property name=&quot;address&quot; value=&quot;北京&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id=&quot;student&quot; class=&quot;com.kerr.pojo.Student&quot;&gt;
+        &lt;!--第1种：普通值注入：value--&gt;
+        &lt;property name=&quot;name&quot; value=&quot;Kerr&quot;/&gt;
+
+        &lt;!--第2种：bean注入：ref--&gt;
+        &lt;!--此处，由于address也是一个bean，所以先给他定义bean--&gt;
+        &lt;property name=&quot;address&quot; ref=&quot;address&quot;/&gt;
+
+        &lt;!--数组注入：ref--&gt;
+        &lt;property name=&quot;books&quot;&gt;
+            &lt;array&gt;
+                &lt;value&gt;红楼梦&lt;/value&gt;
+                &lt;value&gt;水浒传&lt;/value&gt;
+                &lt;value&gt;西游记&lt;/value&gt;
+                &lt;value&gt;三国演义&lt;/value&gt;
+            &lt;/array&gt;
+        &lt;/property&gt;
+
+        &lt;!--list--&gt;
+        &lt;property name=&quot;hobbys&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;听歌&lt;/value&gt;
+                &lt;value&gt;敲代码&lt;/value&gt;
+                &lt;value&gt;敲看电影&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+
+        &lt;!--map--&gt;
+        &lt;property name=&quot;card&quot;&gt;
+            &lt;map&gt;
+                &lt;!--entry：实体--&gt;
+                &lt;entry key=&quot;身份证&quot; value=&quot;1564312531214531&quot;/&gt;
+                &lt;entry key=&quot;学生证&quot; value=&quot;14213212&quot;/&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+
+        &lt;!--set--&gt;
+        &lt;property name=&quot;games&quot;&gt;
+            &lt;set&gt;
+                &lt;value&gt;LOL&lt;/value&gt;
+                &lt;value&gt;COC&lt;/value&gt;
+                &lt;value&gt;BOB&lt;/value&gt;
+            &lt;/set&gt;
+        &lt;/property&gt;
+
+        &lt;!--null注入--&gt;
+        &lt;property name=&quot;wife&quot;&gt;
+            &lt;null/&gt;
+        &lt;/property&gt;
+
+        &lt;!--配置文件/属性类注入--&gt;
+        &lt;property name=&quot;info&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key=&quot;姓名&quot;&gt;Kerr&lt;/prop&gt;
+                &lt;prop key=&quot;性别&quot;&gt;男&lt;/prop&gt;
+                &lt;prop key=&quot;学号&quot;&gt;789456123&lt;/prop&gt;
+                &lt;prop key=&quot;学院&quot;&gt;计算机学院&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<pre><code class="java">import com.kerr.pojo.Student;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+// 测试类
+public class MyTest {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+        Student student =(Student) context.getBean(&quot;student&quot;);
+
+        System.out.println(student.toString());
+
+        // 输出结果
+        /* Student{
+            name=&#39;Kerr&#39;,
+            address=Address{address=&#39;北京&#39;},
+            books=[红楼梦, 水浒传, 西游记, 三国演义],
+            hobbys=[听歌, 敲代码, 敲看电影],
+            card={身份证=1564312531214531, 学生证=14213212},
+            games=[LOL, COC, BOB], wife=&#39;null&#39;,
+            info={学号=789456123, 性别=男, 学院=计算机学院, 姓名=Kerr}
+            }
+
+        */
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="6-3-扩展方式注入（p、c命名空间注入）"><a href="#6-3-扩展方式注入（p、c命名空间注入）" class="headerlink" title="6.3 扩展方式注入（p、c命名空间注入）"></a>6.3 扩展方式注入（p、c命名空间注入）</h3><p>我们可以使用p命令和c命令来实现注入</p>
+<p>｛% asset_img pc命名空间注入法.png %｝</p>
+<p>首先在userbeans.xml文件的<beans>标签中加入以下约束</beans></p>
+<pre><code class="xml">&lt;!--p命名空间--&gt;
+xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+</code></pre>
+<pre><code class="xml">&lt;!--c命名空间--&gt; 
+xmlns:c=&quot;http://www.springframework.org/schema/c&quot;
+</code></pre>
+<p>具体userbeans.xml文件内容如下：</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+       xmlns:c=&quot;http://www.springframework.org/schema/c&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;!--p命名空间注入，可以直接注入属性的值：property--&gt;
+    &lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot; p:name=&quot;Kerr&quot; p:age=&quot;18&quot;/&gt;
+
+    &lt;!--c命名空间注入，通过构造器注入:construct-args（构造器参数）--&gt;
+    &lt;bean id=&quot;user2&quot; class=&quot;com.kerr.pojo.User&quot; c:name=&quot;Kerr2&quot; c:age=&quot;28&quot;/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p>测试：</p>
+<pre><code class="java">@Test
+public void test2(){
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;userbeans.xml&quot;);
+
+    User user20 = (User) context.getBean(&quot;user2&quot;); // 可以强转
+    User user21 = context.getBean(&quot;user2&quot;, User.class); // 可以在参数指定映射的类，就不需要强转了，会自动识别出返回的类
+
+    System.out.println(user20);
+    System.out.println(user21);
+}
+
+/**
+输出：
+    User{name=&#39;Kerr2&#39;, age=28}
+    User{name=&#39;Kerr2&#39;, age=28}
+*/
+</code></pre>
+<p><code>注意点：p和c命名空间不能直接使用，需要导入xml约束，官网文档也有。</code></p>
+<h3 id="6-4-Bean-Scope（bean作用域）"><a href="#6-4-Bean-Scope（bean作用域）" class="headerlink" title="6.4 Bean Scope（bean作用域）"></a>6.4 Bean Scope（bean作用域）</h3><p>｛% asset_img Bean作用域.png %｝</p>
+<ol>
+<li><p>单例模式（Spring默认机制：默认只有一个对象）<br><code>存在问题：并发访问情况下会产生延迟或者数据不一致问题！！！</code><br><code>因此一般用在单线程中！</code></p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot; p:name=&quot;Kerr&quot; p:age=&quot;18&quot; scope=&quot;singleton&quot;/&gt;
+</code></pre>
+</li>
+<li><p>原型模式（每次从容器中get的时候，都会产生一个新对象）<br><code>存在问题：浪费资源！！！</code><br><code>一般用在多线程中！</code></p>
+<pre><code class="xml">&lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot; p:name=&quot;Kerr&quot; p:age=&quot;18&quot; scope=&quot;prototype&quot;/&gt;
+</code></pre>
+</li>
+<li><p>其余的request、session、application这些只能在web开发中使用。</p>
+</li>
+</ol>
+<h2 id="7、Bean的自动装配"><a href="#7、Bean的自动装配" class="headerlink" title="7、Bean的自动装配"></a>7、Bean的自动装配</h2><ul>
+<li>自动装配是Spring满足bean依赖的一种方式！</li>
+<li>Spring会在上下文中自动寻找，并自动给bean装配属性！</li>
+</ul>
+<p><code>在Spring中有三种装配方式：</code></p>
+<ul>
+<li>在xml中显式的配置</li>
+<li>在java中显式配置</li>
+<li>隐式的自动装配bean【重要！！！】</li>
+</ul>
+<h3 id="7-1-自动装配——测试"><a href="#7-1-自动装配——测试" class="headerlink" title="7.1 自动装配——测试"></a>7.1 自动装配——测试</h3><p>环境搭建</p>
+<ul>
+<li><p>一个人People有两个宠物Cat、Dog</p>
+<pre><code class="xml">&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot; autowire=&quot;byType&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;主人&quot;/&gt;
+
+    &lt;!--传统配置方式，直接将属性赋值给对象--&gt;
+    &lt;property name=&quot;cat&quot; ref=&quot;cat&quot;/&gt;
+    &lt;property name=&quot;dog&quot; ref=&quot;dog&quot;/&gt;
+
+&lt;/bean&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="7-2-ByName自动装配（只适用于id唯一）"><a href="#7-2-ByName自动装配（只适用于id唯一）" class="headerlink" title="7.2 ByName自动装配（只适用于id唯一）"></a>7.2 ByName自动装配（只适用于id唯一）</h3><pre><code class="xml">&lt;!--
+    autowire=&quot;byName&quot;的原理：会自动在容器上下文中查找和自己对象set方法后面的值（set后紧跟的那个单词比如setDog-&gt;dog）对应的bean id。
+--&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot; autowire=&quot;byName&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;主人&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<h3 id="7-3-ByType自动装配（只适用于类型唯一）"><a href="#7-3-ByType自动装配（只适用于类型唯一）" class="headerlink" title="7.3 ByType自动装配（只适用于类型唯一）"></a>7.3 ByType自动装配（只适用于类型唯一）</h3><pre><code class="xml">&lt;!--
+    autowire=&quot;byType&quot;的原理：会自动在容器上下文中查找和自己对象属性相同的bean。
+--&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot; autowire=&quot;byType&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;主人&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>小结：</p>
+<ul>
+<li>byName的时候需要保证所有bean的id唯一，并且这个bean需要和自动注入的属性的set方法的值一致；</li>
+<li>byType的时候需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致；</li>
+</ul>
+<h3 id="7-4-使用注解实现自动装配"><a href="#7-4-使用注解实现自动装配" class="headerlink" title="7.4 使用注解实现自动装配"></a>7.4 使用注解实现自动装配</h3><p>jdk1.5开始支持注解，spring2.5就有了。</p>
+<pre><code>The introduction of annotation-based configuration raised the question of whether this approach is “better” than XML. The short answer is “it depends.” 
+</code></pre><p><code>要使用注解须知：</code></p>
+<ol>
+<li>导入约束context：下面代码段（行4）</li>
+<li>==配置注解的支持（开启注解支持）==：<a href="context:annotation-config/" target="_blank" rel="noopener">context:annotation-config/</a></li>
+</ol>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;context:annotation-config/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h4 id="7-4-1-Autowired"><a href="#7-4-1-Autowired" class="headerlink" title="==7.4.1 @Autowired=="></a>==7.4.1 @Autowired==</h4><ul>
+<li>直接在属性上使用即可（注解利用反射实现的，因此使用注解开发set方法也可以不要）</li>
+<li>使用@Autowired就可以不用编写set方法了，前提是你这个自动装配的属性在IoC（Spring）容器中存在，且符合名字byName！</li>
+</ul>
+<p>科普：</p>
+<ul>
+<li><p>@Nullable    字段标记了这个注解，说明这个字段可以为null；</p>
+<pre><code class="java">public People(@Nullable String name) {
+    this.name = name;
+}
+</code></pre>
+</li>
+<li><p>@Autowired下唯一属性required的作用：标记字段可为null，为null时不报错</p>
+<pre><code class="java">public @interface Autowired {
+    boolean required() default true;
+}
+</code></pre>
+</li>
+<li><p>@Autowired下唯一属性required的测试代码</p>
+<pre><code class="java">public class People {
+    // 如果显式定义Autowired的required属性为null，说明这个对象可以为null，否则不允许为空
+    @Autowired(required = false)
+    public Cat cat;
+    @Autowired
+    public Dog dog;
+    public String name;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="7-4-2-Autowired的特殊情况"><a href="#7-4-2-Autowired的特殊情况" class="headerlink" title="7.4.2 @Autowired的特殊情况"></a>7.4.2 @Autowired的特殊情况</h4><p>​        <code>假如bean中相同对象Cat的id有多个，类型也不唯一，而且没有对应的默认的正确id，首先会使用byType查找，如果存在多个类型相同的，再通过byName。那么测试类会报错：找不到对应的类的正确名字。此时需要另一个注解@Qualifier(value = &quot;对象名&quot;)去指定其中一个bean id来正确使用bean的这些配置。</code>（但凡满足唯一类型或者能找到默认正确id都不会报错！！！）</p>
+<p>​        ==如果@Autowired自动装配的环境比较复杂，自动装配无法通过一个注解【@Autowired】完成的时候，我们可以使用@Qualifier(value = “对象名”)去配置@Autowired的使用，指定一个唯一的bean对象注入。==</p>
+<ul>
+<li><pre><code class="xml">&lt;!--假如bean中相同对象Cat的id有多个，而且没有对应的默认的正确id，那么测试类会报错：找不到对应的类的正确名字。此时需要另一个注解@Qualifier(value = &quot;对象名&quot;)去指定其中一个bean id来正确使用bean的这些配置--&gt;
+&lt;bean id=&quot;cat11&quot; class=&quot;com.kerr.pojo.Cat&quot;/&gt;  
+&lt;bean id=&quot;cat111&quot; class=&quot;com.kerr.pojo.Cat&quot;/&gt;
+&lt;bean id=&quot;dog22&quot; class=&quot;com.kerr.pojo.Dog&quot;/&gt;
+&lt;bean id=&quot;dog222&quot; class=&quot;com.kerr.pojo.Dog&quot;/&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kerr.pojo.People&quot;/&gt;
+</code></pre>
+</li>
+<li><pre><code class="java">// 测试类
+public class People {
+    @Autowired
+    @Qualifier(value = &quot;cat11&quot;)
+    public Cat cat;
+    @Autowired
+    @Qualifier(value = &quot;dog222&quot;)
+    public Dog dog;
+    public String name;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="7-4-3-关于-Resource注解"><a href="#7-4-3-关于-Resource注解" class="headerlink" title="7.4.3 关于@Resource注解"></a>7.4.3 关于@Resource注解</h4><ul>
+<li><p>@Resource是属于java的注解，功能同@Autowired类似，但是效率比@Autowired略低，如果用@Resource解决上述7.4.2问题的话，需要更改为如下测试类：</p>
+</li>
+<li><pre><code class="java">public class People {
+    @Resource(name = &quot;cat11&quot;)
+    public Cat cat;
+    @Resource(name = &quot;dog222&quot;)
+    public Dog dog;
+    public String name;
+}
+</code></pre>
+</li>
+</ul>
+<p>不过，开发中更常用@Autowired。</p>
+<h4 id="7-4-4-小结（-Resource和-Autowired的相同点和不同点）"><a href="#7-4-4-小结（-Resource和-Autowired的相同点和不同点）" class="headerlink" title="7.4.4 小结（@Resource和@Autowired的相同点和不同点）"></a>7.4.4 小结（@Resource和@Autowired的相同点和不同点）</h4><ul>
+<li><code>相同点：</code><ul>
+<li>都是用来自动装配的，都可以放在属性字段上</li>
+</ul>
+</li>
+<li><code>不同点：</code><ul>
+<li>@Autowired默认会使用byType查找，如果存在多个类型相同的，不能唯一自动装配上属性，再通过byName（此处需要配合@Qualifier(value = “bean的id”)使用）进行匹配，再不行则报错</li>
+<li>@Resource默认会使用byName装配，如果不存在正确名称，再通过byType，再不行则报错</li>
+<li>执行顺序不同</li>
+</ul>
+</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -579,7 +1203,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/10/29/Spring学习笔记（上）/" rel="prev">
+            <a href="/2020/10/31/Spring学习笔记（下）/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&fm=26&gp=0.jpg">
               </div>
@@ -587,7 +1211,7 @@
               Previous Post</span>
               <div class="info">
                 <h3>
-                Spring笔记（上）</h3>
+                Spring笔记（下）</h3>
                 <hr>
               </div>
             </a>
@@ -597,15 +1221,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/10/23/Mybatis02/" rel="next">
+            <a href="/2020/10/28/从输入URL到页面解析完成的过程/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603471226457&di=740bbb3a7ff1e5cb5dec7c0488bf8f6c&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2196685962%2C796489853%26fm%3D214%26gp%3D0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603471226457&di=740bbb3a7ff1e5cb5dec7c0488bf8f6c&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2196685962%2C796489853%26fm%3D214%26gp%3D0.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603906948259&di=a4670c80dd68e65ecf7bdf3849db2e26&imgtype=0&src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603906948259&di=a4670c80dd68e65ecf7bdf3849db2e26&imgtype=0&src=http%3A%2F%2Fbmp.skxox.com%2F201605%2F06%2Flanou.093918.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Mybatis的“的增删改查</h3>
+                从URL到页面解析从URL到页面解析</h3>
                 <hr>
               </div>
             </a>
