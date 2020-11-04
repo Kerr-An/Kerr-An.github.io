@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">tags | Kerr&amp;Ann</title>
+  <title itemprop="name">Java中各种内部类的区别 | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,381 +483,286 @@
   </div>
 </header>
 
-      <header class="site-header no-select gizle sabit" role="banner">
-  <div class="site-top">
-    <div class="site-branding">
-      <span class="site-title">
-        <span class="logolink moe-mashiro">
-          <a href="/">
-            <span class="sakurasono"></span>
-            <span class="shironeko">🚀Kerrのヽ(✿ﾟ▽ﾟ)ノ🚀</span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1601802308064&amp;di=ca318a3cddcc360686a00736e4171f8d&amp;imgtype=0&amp;src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Java中各种内部类的区别</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
           </a>
         </span>
-      </span>
-    </div>
-    <div class="searchbox search-form-submit">
-      <i class="iconfont js-toggle-search iconsearch icon-search">
-      </i>
-    </div>
-    <div id="show-nav" class="showNav mobile-fit">
-      <div class="line line1">
-      </div>
-      <div class="line line2">
-      </div>
-      <div class="line line3">
-      </div>
-    </div>
-    <div class="lower-cantiner">
-      <div class="lower">
-        <nav class="mobile-fit-control hide">
-          <ul id="menu-new" class="menu">
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-                    首页
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-                    内容
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/categories/技术/">
-                          <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/生活/">
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          生活
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/资源/">
-                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                          资源
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/随想/">
-                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                          随想
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/转载/">
-                          <i class="fa fa-book" aria-hidden="true"></i>
-                          转载
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="javascript:;">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
-                    单集
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/books/">
-                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                          书单
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/bangumi/">
-                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                          视单
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/music/">
-                          <i class="fa fa-headphones" aria-hidden="true"></i>
-                          歌单
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/pictures/">
-                          <i class="fa fa-photo" aria-hidden="true"></i>
-                          图单
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="/tags/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-tag" aria-hidden="true"></i>
-                    标签
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/categories/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-bookmark" aria-hidden="true"></i>
-                    分类
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言薄
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/links/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-                    友仔&amp;友女
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
-                    关于
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          Me
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
+        <span>
+          <a href="">Kerr</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-10-4<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-</header>
 
-
-<main class="content">
-
-    
-
-<div id="tags" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/Java基础/" title="Java基础: 13">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="Java基础" style="background-color: #F9EBEA;">Java基础
-                        <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Hexo写文章/" title="Hexo写文章: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="Hexo写文章" style="background-color: #F5EEF8;">Hexo写文章
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JavaEE开发框架：SpringBoot/" title="JavaEE开发框架：SpringBoot: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="JavaEE开发框架：SpringBoot" style="background-color: #D5F5E3;">JavaEE开发框架：SpringBoot
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JavaEE开发框架：Spring001/" title="JavaEE开发框架：Spring001: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="JavaEE开发框架：Spring001" style="background-color: #E8F8F5;">JavaEE开发框架：Spring001
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JavaEE开发框架：Spring002/" title="JavaEE开发框架：Spring002: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="JavaEE开发框架：Spring002" style="background-color: #FEF9E7;">JavaEE开发框架：Spring002
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Mybatis框架/" title="Mybatis框架: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="Mybatis框架" style="background-color: #F8F9F9;">Mybatis框架
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/资源/" title="资源: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="资源" style="background-color: #82E0AA;">资源
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/快捷键/" title="快捷键: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="快捷键" style="background-color: #D7BDE2;">快捷键
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/面试/" title="面试: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="面试" style="background-color: #A3E4D7;">面试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/页面解析过程/" title="页面解析过程: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="页面解析过程" style="background-color: #85C1E9;">页面解析过程
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/转载/" title="转载: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="转载" style="background-color: #F8C471;">转载
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/心情/" title="心情: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="心情" style="background-color: #F9E79F;">心情
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/操作系统OS/" title="操作系统OS: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="操作系统OS" style="background-color: #D5F5E3;">操作系统OS
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/随想/" title="随想: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="随想" style="background-color: #F8F9F9;">随想
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JavaEE开发，项目/" title="JavaEE开发，项目: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                        data-tagname="JavaEE开发，项目" style="background-color: #FEF9E7;">JavaEE开发，项目
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wallleap/cdn/css/jqcloud.css">
-<style type="text/css">
-    #tag-wordcloud {
-        width: 100%;
-        height: 300px;
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h1><p><code>内部类的主要作用如下：</code></p>
+<ol>
+<li><p>内部类提供了更好的封装，可以把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类</p>
+</li>
+<li><p>内部类的方法可以直接访问外部类的所有数据，包括私有的数据</p>
+</li>
+<li><p>内部类所实现的功能使用外部类同样可以实现，只是有时使用内部类更方便。</p>
+</li>
+</ol>
+<p><code>java主要有四种内部类：**成员内部类、静态内部类、方法内部类、匿名内部类**。</code></p>
+<blockquote>
+<p>成员内部类类似普通的成员变量，定义在属性级别，可以访问外部类任何属性。使用时，new 外部类.new 内部类。</p>
+</blockquote>
+<blockquote>
+<p>静态内部类不允许访问外部类的非静态属性。使用时可以直接new。</p>
+</blockquote>
+<blockquote>
+<p>方法内部类是定义在方法内部的类，类似方法的局部变量。只在此方法里使用。可以直接new。</p>
+</blockquote>
+<blockquote>
+<p>匿名内部类是特殊的方法内部类。主要用于实现接口或抽象类，达到单次实现单次使用的目的，少创建一个类文件。使用时 接口（抽象类）名 实例名=new 接口（抽象类）名（）{接口（抽象类）实现}。</p>
+</blockquote>
+<h1 id="2-详解"><a href="#2-详解" class="headerlink" title="2. 详解"></a>2. 详解</h1><h2 id="内部类分类"><a href="#内部类分类" class="headerlink" title="内部类分类"></a>内部类分类</h2><ul>
+<li>一.成员内部类</li>
+<li>二.静态内部类</li>
+<li>三.局部内部类</li>
+<li>四.匿名内部类</li>
+</ul>
+<h3 id="一-成员内部类"><a href="#一-成员内部类" class="headerlink" title="一.成员内部类"></a>一.成员内部类</h3><ul>
+<li>1.位置<ul>
+<li>在类的内部，与成员变量，方法同级</li>
+</ul>
+</li>
+<li>2.访问权限修饰符<ul>
+<li>可以设置全部的类型的访问权限修饰符</li>
+</ul>
+</li>
+<li>3.访问外部类的范围<ul>
+<li>所有外部类属性和方法（包括private修饰的）</li>
+</ul>
+</li>
+<li>4.内部的方法和属性<ul>
+<li>只能有非静态的方法和属性</li>
+</ul>
+</li>
+<li>5.创建对象<ul>
+<li>通过创建外部类对象来创建</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">public class InstanceOutterClass{
+    private String name;
+    private static int age;
+    public void say(){}
+    public static void main(String[] args){
+        new InstanceOutterClass().new InstanceInnerClass();//创建成员内部类对象
     }
-</style>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="tag-wordcloud" class="card-content"></div>
-    </div>
-</div>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/jqcloud-1.0.4.js"></script>
-<script type="text/javascript">
-    
+    public class InstanceInnerClass{}
 
-        $('#tag-wordcloud').jQCloud(, {
-            autoResize: true
-        });
+}
+</code></pre>
+<h3 id="二-静态内部类"><a href="#二-静态内部类" class="headerlink" title="二.静态内部类"></a>二.静态内部类</h3><ul>
+<li>1.位置<ul>
+<li>在类的内部，与成员变量，方法同级</li>
+</ul>
+</li>
+<li>2.访问权限修饰符<ul>
+<li>可以设置全部的类型的访问权限修饰符</li>
+</ul>
+</li>
+<li>3.访问外部类的范围<ul>
+<li>所有外部类<strong>静态</strong>属性和方法（包括private修饰的）</li>
+</ul>
+</li>
+<li>4.内部的方法和属性<ul>
+<li>可以写所有类型的方法和属性</li>
+</ul>
+</li>
+<li>5.创建对象<ul>
+<li>通过外部类.内部类构造器</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">public class StaticOutterClass{
+    private String name;
+    private static int num;
+    public void say(){}
+    public static void main(String[] args){
+        new StaticOutterClass.StaticInnerClass();//创建静态内部类对象
+    }
+
+    public static class StaticInnerClass{}
+}
+</code></pre>
+<h3 id="三-局部内部类"><a href="#三-局部内部类" class="headerlink" title="三.局部内部类"></a>三.局部内部类</h3><ul>
+<li>1.位置<ul>
+<li>在类的方法内部</li>
+</ul>
+</li>
+<li>2.访问权限修饰符<ul>
+<li>就像成员中的一个局部变量，<strong>没有</strong>访问权限修饰符</li>
+</ul>
+</li>
+<li>3.访问外部类的范围<ul>
+<li>可以访问外部类的成员方法和变量;访问外部方法或外部作用域中的属性是，被访问的属性会被final修饰</li>
+</ul>
+</li>
+<li>4.内部的方法和属性<ul>
+<li>和方法中的普通属性一样，所以不能有静态方法和属性</li>
+</ul>
+</li>
+<li>5.创建对象<ul>
+<li>在该方法或作用域内部创建</li>
+</ul>
+</li>
+</ul>
+<h3 id="四-匿名内部类"><a href="#四-匿名内部类" class="headerlink" title="四.匿名内部类"></a>四.匿名内部类</h3><ul>
+<li>1.位置<ul>
+<li>任何地方，但是要<strong>依托于类或接口</strong>创建</li>
+</ul>
+</li>
+<li>2.访问权限修饰符<ul>
+<li><strong>没有</strong>访问权限修饰符</li>
+</ul>
+</li>
+<li>3.访问外部类的范围<ul>
+<li>和局部内部类<strong>一致</strong></li>
+</ul>
+</li>
+<li>4.创建对象<ul>
+<li>声明时候就会创建，且声明必须是跟在<code>new 类名()</code>后面</li>
+</ul>
+</li>
+<li>5.内部的方法和属性<ul>
+<li>和方法中的普通属性一样，所以不能有静态方法和属性</li>
+</ul>
+</li>
+<li>6.注意<ul>
+<li>匿名内部类除了依托的类或接口之外,不能指定继承或者实现其他类或接口,同时也不能被其他类所继承,因为没有名字。</li>
+<li>匿名内部中,我们不能写出其构造器,因为没有名字。(有无参构造器)</li>
+<li>如果依托的是类,那么创建出来的匿名内部类就默认是这个类的子类;如果依托的是接口,那么创建出来的匿名内部类就默认是这个接口的实现类。</li>
+<li>如果依托的是类,那么创建出来的匿名内部类就默认是这个类的子类;如果依托的是接口,那么创建出来的匿名内部类就默认是这个接口的实现类。</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/10/04/012-Hash/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                012-Hashtable&amp;HashMap&amp;ConcurrentHashMap</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/10/04/011-HashSet的存储原理/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601802308064&di=ca318a3cddcc360686a00736e4171f8d&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2FUploadfiles%2Fimage%2F20181207%2F20181207094753_38210.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                011-HashSet的存储原理</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
 </script>
 
-</main>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kerr</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
