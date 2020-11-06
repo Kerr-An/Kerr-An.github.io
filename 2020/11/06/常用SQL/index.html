@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Spring笔记（下） | Kerr&amp;Ann</title>
+  <title itemprop="name">常用SQL | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -489,11 +489,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&amp;fm=26&amp;gp=0.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1604671115393&amp;di=9ffed59f43b5d977233c99f769cca680&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1604671115393&amp;di=9ffed59f43b5d977233c99f769cca680&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Spring笔记（下）</h1>
+      常用SQL</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -505,7 +505,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-10-31<span class="bull">
+        2020-11-6<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -519,655 +519,518 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Spring5-2-0（下）"><a href="#Spring5-2-0（下）" class="headerlink" title="Spring5.2.0（下）"></a>Spring5.2.0（下）</h1><h3 id="spring中文文档"><a href="#spring中文文档" class="headerlink" title="spring中文文档"></a>spring中文文档</h3><p><a href="https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans" target="_blank" rel="noopener">https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans</a></p>
-<h3 id="官方英文文档"><a href="#官方英文文档" class="headerlink" title="官方英文文档"></a>官方英文文档</h3><p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-p-namespace" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-p-namespace</a></p>
-<h2 id="8-使用注解开发"><a href="#8-使用注解开发" class="headerlink" title="8. 使用注解开发"></a>8. 使用注解开发</h2><p>Spring4之后要使用注解开发，必须要保证AOP的包已经导入。</p>
-<img src="/2020/10/31/Spring学习笔记（下）/aop依赖.jpg">
-<p>使用注解需要导入context约束，增加注解支持。</p>
+          <h1 id="1、SQL"><a href="#1、SQL" class="headerlink" title="1、SQL"></a>1、SQL</h1><h2 id="1-1-什么是SQL？"><a href="#1-1-什么是SQL？" class="headerlink" title="1.1 什么是SQL？"></a>1.1 什么是SQL？</h2><p>​    Structured Query Language：结构化查询语言<br>​    其实就是定义了操作所有关系型数据库的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。</p>
+<h2 id="1-2-SQL通用语法"><a href="#1-2-SQL通用语法" class="headerlink" title="1.2 SQL通用语法"></a>1.2 SQL通用语法</h2><ol>
+<li>SQL 语句可以单行或多行书写，以分号结尾。</li>
+<li>可使用空格和缩进来增强语句的可读性。</li>
+<li>MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。</li>
+<li>3 种注释<ul>
+<li>单行注释: – 注释内容 或 # 注释内容(mysql 特有) </li>
+<li>多行注释: /<em> 注释 </em>/</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-SQL分类"><a href="#1-3-SQL分类" class="headerlink" title="1.3 SQL分类"></a>1.3 SQL分类</h2><p>1) DDL(Data Definition Language)数据定义语言<br>    用来定义数据库对象：数据库，表，列等。关键字：create, drop,alter 等<br>2) DML(Data Manipulation Language)数据操作语言<br>    用来对数据库中表的数据进行增删改。关键字：insert, delete, update 等<br>3) DQL(Data Query Language)数据查询语言<br>    用来查询数据库中表的记录(数据)。关键字：select, where 等<br>4) DCL(Data Control Language)数据控制语言(了解)<br>    用来定义数据库的访问权限和安全级别，及创建用户。关键字：GRANT， REVOKE 等</p>
+<h1 id="2-DDL（操作数据库、表）"><a href="#2-DDL（操作数据库、表）" class="headerlink" title="2. DDL（操作数据库、表）"></a>2. DDL（操作数据库、表）</h1><ol>
+<li><p>操作数据库</p>
+<pre><code class="sql">1. C(Create):创建
+        * 创建数据库：
+            * create database 数据库名称;
+        * 创建数据库，判断不存在，再创建：
+            * create database if not exists 数据库名称;
+        * 创建数据库，并指定字符集
+            * create database 数据库名称 character set 字符集名;
+
+        * 练习： 创建db4数据库，判断是否存在，并制定字符集为gbk
+            * create database if not exists db4 character set gbk;
+    2. R(Retrieve)：查询
+        * 查询所有数据库的名称:
+            * show databases;
+        * 查询某个数据库的字符集:查询某个数据库的创建语句
+            * show create database 数据库名称;
+    3. U(Update):修改
+        * 修改数据库的字符集
+            * alter database 数据库名称 character set 字符集名称;
+    4. D(Delete):删除
+        * 删除数据库
+            * drop database 数据库名称;
+        * 判断数据库存在，存在再删除
+            * drop database if exists 数据库名称;
+    5. 使用数据库
+        * 查询当前正在使用的数据库名称
+            * select database();
+        * 使用数据库
+            * use 数据库名称;
+</code></pre>
+</li>
+<li><p>操作表</p>
+<p><code>`</code>sql</p>
 <ol>
-<li><p><code>bean</code></p>
-<pre><code class="java">// @Component（组件）  注解等价于  &lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;/&gt;
-
-@Component // 用来注册bean
-public class User {...}
-</code></pre>
+<li>C(Create):创建</li>
+</ol>
 </li>
 </ol>
-<ol start="2">
-<li><p><code>属性如何注入</code><br>一般简单的用注解注入，如果遇到复杂的，最好用xml：清晰明了</p>
-<pre><code class="java">// @Component（组件）  注解等价于  &lt;bean id=&quot;user&quot; class=&quot;com.kerr.pojo.User&quot;/&gt;
-@Component
-public class User {
+<pre><code>   1. 语法：
+           create table 表名(
+               列名1 数据类型1,
+               列名2 数据类型2,
+               ....
+               列名n 数据类型n
+           );
+           * 注意：最后一列，不需要加逗号（,）
+           * 数据库类型：
+               1. int：整数类型
+                   * age int,
+               2. double:小数类型
+                   * score double(5,2)
+               3. date:日期，只包含年月日，yyyy-MM-dd
+               4. datetime:日期，包含年月日时分秒     yyyy-MM-dd HH:mm:ss
+               5. timestamp:时间戳类型    包含年月日时分秒     yyyy-MM-dd HH:mm:ss    
+                   * 如果将来不给这个字段赋值，或赋值为null，则默认使用当前的系统时间，来自动赋值
 
- //  @Value(&quot;Kerr&quot;)  注解等价于  &lt;property name=&quot;name&quot; value=&quot;kerr&quot;/&gt;
-    @Value(&quot;Kerr&quot;)
-    public String name;
-// 同样@Value(&quot;Kerr&quot;)注解也可以放在set方法上
-    @Value(&quot;Kerr&quot;)
-    public void setName(String name) {
-        this.name = name;
-    }
-}
+               6. varchar：字符串
+                   * name varchar(20):姓名最大20个字符
+                   * zhangsan 8个字符  张三 2个字符
+         * 创建表
+           create table student(
+               id int,
+               name varchar(32),
+               age int ,
+               score double(4,1),
+               birthday date,
+               insert_time timestamp
+           );
+       * 复制表：
+           * create table 表名 like 被复制的表名;          
+
+
+   2. R(Retrieve)：查询
+       * 查询某个数据库中所有的表名称
+           * show tables;
+       * 查询表结构
+           * desc 表名;
+
+
+   3. U(Update):修改
+       1. 修改表名
+           alter table 表名 rename to 新的表名;
+       2. 修改表的字符集
+           alter table 表名 character set 字符集名称;
+       3. 添加一列
+           alter table 表名 add 列名 数据类型;
+       4. 修改列名称 类型
+           alter table 表名 change 列名 新列名 新数据类型;
+           alter table 表名 modify 列名 新数据类型;
+       5. 删除列
+           alter table 表名 drop 列名;
+
+
+   4. D(Delete):删除
+       * drop table 表名;
+       * drop table  if exists 表名 ;
+</code></pre><pre><code>
+
+
+# 3. DML：增删改表中数据
+
+```sql
+1. 添加数据：
+    * 语法：
+        * insert into 表名(列名1,列名2,...列名n) values(值1,值2,...值n);
+    * 注意：
+        1. 列名和值要一一对应。
+        2. 如果表名后，不定义列名，则默认给所有列添加值
+            insert into 表名 values(值1,值2,...值n);
+        3. 除了数字类型，其他类型需要使用引号(单双都可以)引起来
+2. 删除数据：
+    * 语法：
+        * delete from 表名 [where 条件]
+    * 注意：
+        1. 如果不加条件，则删除表中所有记录。
+        2. 如果要删除所有记录
+            1. delete from 表名; -- 不推荐使用。有多少条记录就会执行多少次删除操作
+            2. TRUNCATE TABLE 表名; -- 推荐使用，效率更高 先删除表，然后再创建一张一样的表。
+3. 修改数据：
+    * 语法：
+        * update 表名 set 列名1 = 值1, 列名2 = 值2,... [where 条件];
+
+    * 注意：
+        1. 如果不加任何条件，则会将表中所有记录全部修改。
+</code></pre><h1 id="4-DQL：查询表中的记录"><a href="#4-DQL：查询表中的记录" class="headerlink" title="4. DQL：查询表中的记录"></a>4. DQL：查询表中的记录</h1><pre><code class="sql">* select * from 表名;
+
+1. 语法：
+    select
+        字段列表
+    from
+        表名列表
+    where
+        条件列表
+    group by
+        分组字段
+    having
+        分组之后的条件
+    order by
+        排序
+    limit
+        分页限定
+
+
+2. 基础查询
+    1. 多个字段的查询
+        select 字段名1，字段名2... from 表名；
+        * 注意：
+            * 如果查询所有字段，则可以使用*来替代字段列表。
+    2. 去除重复：
+        * distinct
+    3. 计算列
+        * 一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
+        * ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null
+            * 表达式1：哪个字段需要判断是否为null
+            * 如果该字段为null后的替换值。
+    4. 起别名：
+        * as：as也可以省略
+
+
+3. 条件查询
+    1. where子句后跟条件
+    2. 运算符
+        * &gt; 、&lt; 、&lt;= 、&gt;= 、= 、&lt;&gt;
+        * BETWEEN...AND  
+        * IN( 集合) 
+        * LIKE：模糊查询
+            * 占位符：
+                * _:单个任意字符
+                * %：多个任意字符
+        * IS NULL  
+        * and  或 &amp;&amp;
+        * or  或 || 
+        * not  或 !
+
+            -- 查询年龄大于20岁
+
+            SELECT * FROM student WHERE age &gt; 20;
+
+            SELECT * FROM student WHERE age &gt;= 20;
+
+            -- 查询年龄等于20岁
+            SELECT * FROM student WHERE age = 20;
+
+            -- 查询年龄不等于20岁
+            SELECT * FROM student WHERE age != 20;
+            SELECT * FROM student WHERE age &lt;&gt; 20;
+
+            -- 查询年龄大于等于20 小于等于30
+
+            SELECT * FROM student WHERE age &gt;= 20 &amp;&amp;  age &lt;=30;
+            SELECT * FROM student WHERE age &gt;= 20 AND  age &lt;=30;
+            SELECT * FROM student WHERE age BETWEEN 20 AND 30;
+
+            -- 查询年龄22岁，18岁，25岁的信息
+            SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
+            SELECT * FROM student WHERE age IN (22,18,25);
+
+            -- 查询英语成绩为null
+            SELECT * FROM student WHERE english = NULL; -- 不对的。null值不能使用 = （!=） 判断
+
+            SELECT * FROM student WHERE english IS NULL;
+
+            -- 查询英语成绩不为null
+            SELECT * FROM student WHERE english  IS NOT NULL;
+
+            -- 查询姓马的有哪些？ like
+            SELECT * FROM student WHERE NAME LIKE &#39;马%&#39;;
+
+            -- 查询姓名第二个字是化的人
+            SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;
+
+            -- 查询姓名是3个字的人
+            SELECT * FROM student WHERE NAME LIKE &#39;___&#39;;
 </code></pre>
-</li>
-<li><p><code>衍生的注解</code><br>@component有几个衍生注解，在web开发中，会按照MVC三层架构分层！（下面的注解，功能相似）</p>
-<ul>
-<li>dao【@Repository】–&gt;仓库，一般dao层的使用这个注解</li>
-<li>service【@Service】</li>
-<li>controller【@Controller】</li>
-</ul>
-<p>这4个注解功能一样，都是讲某个类注册到Spring中，装配bean。</p>
-</li>
-<li><p><code>自动装配</code></p>
-<ul>
-<li>@Autowired：自动装配通过类型，名字；<ul>
-<li>如果@Autowired不能唯一地自动装配上属性，则需要通过@Qualifier(value=“”)。</li>
-</ul>
-</li>
-<li>@Nullable：字段标记了这个注解，说明这个字段可以为null。</li>
-<li>@Resource：自动装配通过名字、类型。</li>
-</ul>
-</li>
-<li><p><code>作用域</code></p>
-<pre><code class="java">@Scope(&quot;prototype&quot;) // 原型模式
-public class User {...}
+<h1 id="5-DQL-花式查询"><a href="#5-DQL-花式查询" class="headerlink" title="5. $$$ DQL:花式查询"></a>5. $$$ DQL:花式查询</h1><pre><code class="sql">1. 排序查询
+    * 语法：order by 子句
+        * order by 排序字段1 排序方式1 ，  排序字段2 排序方式2...
+
+    * 排序方式：
+        * ASC：升序，默认的。
+        * DESC：降序。
+
+    * 注意：
+        * 如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。
+
+
+
+2. 聚合函数：将一列数据作为一个整体，进行纵向的计算。
+    1. count：计算个数
+        1. 一般选择非空的列：主键
+        2. count(*)
+    2. max：计算最大值
+    3. min：计算最小值
+    4. sum：计算和
+    5. avg：计算平均值
+    * 注意：聚合函数的计算，排除null值。
+        解决方案：
+            1. 选择不包含空的列进行计算
+            2. IFNULL函数
+
+
+
+3. 分组查询:
+    1. 语法：group by 分组字段；
+    2. 注意：
+        1. 分组之后查询的字段：分组字段、聚合函数
+        2. where 和 having 的区别？
+            1. where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之后进行限定，如果不满足结果，则不会被查询出来
+            2. where 后不可以跟聚合函数，having可以进行聚合函数的判断。
+
+        -- 按照性别分组。分别查询男、女同学的平均分
+
+        SELECT sex , AVG(math) FROM student GROUP BY sex;
+
+        -- 按照性别分组。分别查询男、女同学的平均分,人数
+
+        SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
+
+        --  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
+        SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;
+
+        --  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
+        SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;
+
+        SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;
+
+
+4. 分页查询
+    1. 语法：limit 开始的索引,每页查询的条数;
+    2. 公式：开始的索引 = （当前的页码 - 1） * 每页显示的条数
+    -- 每页显示3条记录 
+        SELECT * FROM student LIMIT 0,3; -- 第1页
+        SELECT * FROM student LIMIT 3,3; -- 第2页
+        SELECT * FROM student LIMIT 6,3; -- 第3页
+
+    3. limit 是一个MySQL&quot;方言&quot;
 </code></pre>
-</li>
-<li><p><code>小结</code></p>
-<ul>
-<li><p>xml与注解</p>
-<ul>
-<li>xml更加万能，适用于任何场合，维护简单方便；</li>
-<li>注解不是自己类使用不了，维护相对复杂</li>
-</ul>
-</li>
-<li><p>xml与注解的最佳实践</p>
-<ul>
-<li><p>xml用于管理bean；</p>
-</li>
-<li><p>注解只负责完成属性的注入；</p>
-</li>
-<li><p>使用中需要注意一个问题：开始注解支持，并指定要扫描的包，让包下的注解生效。</p>
-<ul>
-<li><pre><code class="xml">&lt;!--指定要扫描的包，这个包下面的注解就会生效--&gt;
-&lt;context:component-scan base-package=&quot;com.kerr&quot;/&gt;
-&lt;!--开启注解驱动的支持--&gt;
-&lt;context:annotation-config/&gt;
+<h1 id="6-约束"><a href="#6-约束" class="headerlink" title="6. 约束"></a>6. 约束</h1><pre><code class="sql">* 概念： 对表中的数据进行限定，保证数据的正确性、有效性和完整性。    
+
+* 分类：
+    1. 主键约束：primary key
+    2. 非空约束：not null
+    3. 唯一约束：unique
+    4. 外键约束：foreign key
+
+
+
+* 非空约束：not null，值不能为null
+    1. 创建表时添加约束
+        CREATE TABLE stu(
+            id INT,
+            NAME VARCHAR(20) NOT NULL -- name为非空
+        );
+    2. 创建表完后，添加非空约束
+        ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL;
+
+    3. 删除name的非空约束
+        ALTER TABLE stu MODIFY NAME VARCHAR(20);
+
+
+
+* 唯一约束：unique，值不能重复
+    1. 创建表时，添加唯一约束
+        CREATE TABLE stu(
+        id INT,
+        phone_number VARCHAR(20) UNIQUE -- 添加了唯一约束
+        );
+        * 注意mysql中，唯一约束限定的列的值可以有多个null
+    2. 删除唯一约束
+    ALTER TABLE stu DROP INDEX phone_number;
+
+    3. 在创建表后，添加唯一约束
+        ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;
+
+
+
+* 主键约束：primary key。
+    1. 注意：
+        1. 含义：非空且唯一
+        2. 一张表只能有一个字段为主键
+        3. 主键就是表中记录的唯一标识
+
+    2. 在创建表时，添加主键约束
+        create table stu(
+            id int primary key,-- 给id添加主键约束
+            name varchar(20)
+        );
+
+    3. 删除主键
+        -- 错误 alter table stu modify id int ;
+        ALTER TABLE stu DROP PRIMARY KEY;
+
+    4. 创建完表后，添加主键
+        ALTER TABLE stu MODIFY id INT PRIMARY KEY;
+
+    5. 自动增长：
+        1.  概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长
+
+        2. 在创建表时，添加主键约束，并且完成主键自增长
+        create table stu(
+            id int primary key auto_increment,-- 给id添加主键约束
+            name varchar(20)
+        );
+        3. 删除自动增长
+        ALTER TABLE stu MODIFY id INT;
+        4. 添加自动增长
+        ALTER TABLE stu MODIFY id INT AUTO_INCREMENT;
+
+
+
+* 外键约束：foreign key,让表与表产生关系，从而保证数据的正确性。
+    1. 在创建表时，可以添加外键
+        * 语法：
+            create table 表名(
+                ....
+                外键列
+                constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
+            );
+
+    2. 删除外键
+        ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;
+
+    3. 创建表之后，添加外键
+        ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);
 </code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="9-使用java的方式配置Spring"><a href="#9-使用java的方式配置Spring" class="headerlink" title="9. 使用java的方式配置Spring"></a>9. 使用java的方式配置Spring</h2><blockquote>
-<p>现在我们要完全抛弃Spring的xml配置了，全权交给Java来做。</p>
-<p>JavaConfig是Spring的一个子项目，在Spring4之后，他成为了一个核心功能。</p>
-<p>这个时候，测试类中要使用AnnotationConfigApplicationContext来获取容器。（而不是pcx）。</p>
-</blockquote>
-<p><code>实体类：</code></p>
-<pre><code class="java">// 这里这个注解的意思，就是说明这个类被Spring接管了，注册到了容器中
-@Component
-public class User {
-    private String name;
+<pre><code class="sql">级联操作
 
-    public String getName() {
-        return name;
-    }
-
-    @Value(&quot;Kerr&quot;)
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;User{&quot; +
-                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                &#39;}&#39;;
-    }
-}
+          1. 添加级联操作
+               语法：ALTER TABLE 表名 ADD CONSTRAINT 外键名称 
+                       FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE ON DELETE CASCADE  ;
+            2. 分类：
+                 1. 级联更新：ON UPDATE CASCADE 
+                2. 级联删除：ON DELETE CASCADE
 </code></pre>
-<p><code>Java配置类：</code></p>
-<pre><code class="java">import com.kerr.pojo.User;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+<h2 id="7-数据库的设计"><a href="#7-数据库的设计" class="headerlink" title="7.数据库的设计"></a>7.数据库的设计</h2><pre><code class="sql">1. 多表之间的关系
+    1. 分类：
+        1. 一对一(了解)：
+            * 如：人和身份证
+            * 分析：一个人只有一个身份证，一个身份证只能对应一个人
+        2. 一对多(多对一)：
+            * 如：部门和员工
+            * 分析：一个部门有多个员工，一个员工只能对应一个部门
+        3. 多对多：
+            * 如：学生和课程
+            * 分析：一个学生可以选择很多门课程，一个课程也可以被很多学生选择
+    2. 实现关系：
+        1. 一对多(多对一)：
+            * 如：部门和员工
+            * 实现方式：在多的一方建立外键，指向一的一方的主键。
+        2. 多对多：
+            * 如：学生和课程
+            * 实现方式：多对多关系实现需要借助第三张中间表。中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键
+        3. 一对一(了解)：
+            * 如：人和身份证
+            * 实现方式：一对一关系实现，可以在任意一方添加唯一外键指向另一方的主键。
 
-// 这个会在容器中托管，注册到容器中，因为他本来就是一个@Component
-// @Configuration代表这是一个配置类，就和beans.xml一样
-@Configuration
-@ComponentScan(&quot;com.kerr.pojo&quot;) // 用来扫描包
-@Import(KerrConfig2.class) // 把KerrConfig2和KerrConfig融合在一起的方法
-public class KerrConfig {
-
-    // 注册一个bean，就相当于之前写的一个bean标签
-    // 这个方法的名字就相当于bean标签中的id属性
-    // 这个方法中的返回值就相当于bean标签的class属性
-    @Bean
-    public User getUser(){
-        return new User();// 返回要注入到bean的对象
-    }
-}
 </code></pre>
-<p><code>测试类：</code></p>
-<pre><code class="java">public class MyTest {
-    public static void main(String[] args) {
+<h2 id="8-多表查询"><a href="#8-多表查询" class="headerlink" title="8. 多表查询"></a>8. 多表查询</h2><pre><code class="sql">* 查询语法：
+    select
+        列名列表
+    from
+        表名列表
+    where....
 
-        // 如果完全使用了配置类方式去做，只能通过AnnotationConfig上下文来获取容器，通过配置类的class对象加载
-        // 通过纯注解获取容器
-        ApplicationContext context = new AnnotationConfigApplicationContext(KerrConfig.class);
 
-        User getUser = context.getBean(&quot;getUser&quot;, User.class);
 
-        System.out.println(getUser.getName());
+多表查询的分类：
+    1. 内连接查询：
+        1. 隐式内连接：
+            使用where条件消除无用数据
+        2. 显式内连接：
+            语法： select 字段列表 from 表名1 [inner] join 表名2 on 条件
+        3. 内连接查询：
+            1. 从哪些表中查询数据
+            2. 条件是什么
+            3. 查询哪些字段
+    2. 外链接查询：
+        1. 左外连接：
+            * 语法：select 字段列表 from 表1 left [outer] join 表2 on 条件；
+            * 查询的是左表所有数据以及其交集部分。（交集：即满足条件的部分）
+        2. 右外连接：
+            * 语法：select 字段列表 from 表1 right [outer] join 表2 on 条件；
+            * 查询的是右表所有数据以及其交集部分。
+        3. 子查询：
+        * 概念：查询中嵌套查询，称嵌套查询为子查询。
 
-    }
-}
+        * 子查询不同情况
+            1. 子查询的结果是单行单列的：
+                * 子查询可以作为条件，使用运算符去判断。 运算符： &gt; &gt;= &lt; &lt;= =
+            2. 子查询的结果是多行单列的：
+                * 子查询可以作为条件，使用运算符in来判断
+            3. 子查询的结果是多行多列的：
+                * 子查询可以作为一张虚拟表参与查询
 </code></pre>
-<p>这种纯Java的配置方式，在SpringBoot中随处可见！SpringBoot比SSM强！！！</p>
-<h2 id="10-代理模式"><a href="#10-代理模式" class="headerlink" title="10. 代理模式"></a>10. 代理模式</h2><blockquote>
-<p>为什么要学习代理模式呢？<br>因为这就是SpringAOP的底层！<code>【SpringAOP 和 SpringMVC】重点</code></p>
-</blockquote>
-<p><code>代理模式的分类：</code></p>
-<ul>
-<li>静态代理</li>
-<li>动态代理</li>
-</ul>
-<h3 id="10-1-静态代理"><a href="#10-1-静态代理" class="headerlink" title="10.1 静态代理"></a>10.1 静态代理</h3><p><code>角色分析：</code></p>
-<ul>
-<li><p>抽象角色：一般会使用接口或抽象类来解决</p>
-<pre><code class="java">// 租房
-public interface Rent {
-    public void rent();
-}
-</code></pre>
-</li>
-<li><p>真实角色：被代理的角色</p>
-<pre><code class="java">// 房东
-public class Host implements Rent{
-
-    public void rent() {
-        System.out.println(&quot;房东要出租房子！&quot;);
-    }
-}
-</code></pre>
-</li>
-<li><p>代理角色：代理真实角色，之后会做一些附属操作</p>
-<pre><code class="java">// 代理（中介）
-public class Proxy implements Rent{
-
-    private Host host;
-
-    public Proxy() {
-    }
-
-    public Proxy(Host host) {
-        this.host = host;
-    }
-
-    public void rent() {
-        seeHouse();
-        host.rent();
-        signContract();
-        fee();
-    }
-
-    // 代理（中介）还可以带客户去看房
-    public void seeHouse(){
-        System.out.println(&quot;中介带你去看房！&quot;);
-    }
-
-    // 收中介费
-    public void fee(){
-        System.out.println(&quot;收中介费！&quot;);
-    }
-
-    // 签租赁合同
-    public void signContract(){
-        System.out.println(&quot;签租赁合同！&quot;);
-    }
-}
-</code></pre>
-</li>
-<li><p>客户：访问代理对象的人</p>
-<pre><code class="java">// 客户
-public class Client {
-    public static void main(String[] args) {
-        Host host = new Host();
-        // 代理，中介帮房东租房子，但是单利会附带一些附属操作
-        Proxy proxy = new Proxy(host);
-        // 你不用面对房东，直接找中介租房即可！
-        proxy.rent();
-    }
-}
-</code></pre>
-</li>
-</ul>
-<p><code>代理模式的好处：</code></p>
-<ul>
-<li>使真实角色的操作更加纯粹！不用关注一些公共的业务！</li>
-<li>公共业务交代理角色，实现了业务的分工！</li>
-<li>公共业务发生扩展的时候，方便集中管理！</li>
-</ul>
-<p><code>代理模式的缺点：</code></p>
-<ul>
-<li>一个真实角色就会产生一个代理角色，代码量会翻倍，开发效率变低。</li>
-</ul>
-<h3 id="10-2-静态代理加深理解"><a href="#10-2-静态代理加深理解" class="headerlink" title="10.2 静态代理加深理解"></a>10.2 静态代理加深理解</h3><img src="/2020/10/31/Spring学习笔记（下）/静态代理再理解.jpg">
-<h3 id="10-3-动态代理"><a href="#10-3-动态代理" class="headerlink" title="10.3 动态代理"></a>10.3 动态代理</h3><ul>
-<li>动态代理和静态代理角色一样</li>
-<li>动态代理的代理类是动态生成的，不是我们直接写好的</li>
-<li>动态代理分为两大类：<ul>
-<li>基于接口的动态代理——JDK动态代理==【我们在这里使用这个】==</li>
-<li>基于类的动态代理——cglib</li>
-<li>Java字节码实现：javassist</li>
-</ul>
-</li>
-</ul>
-<p>需要了解两个类：Proxy：代理；InvocationHandler：调用处理程序</p>
-<p><code>动态代理的好处：</code></p>
-<ul>
-<li>使真实角色的操作更加纯粹！不用关注一些公共的业务！</li>
-<li>公共业务交代理角色，实现了业务的分工！</li>
-<li>公共业务发生扩展的时候，方便集中管理！</li>
-<li>一个动态代理类代理的是一个接口，一般就是对应的一类业务</li>
-<li>一个动态代理类可以代理多个类，只要是实现了同一个接口即可</li>
-</ul>
-<pre><code class="java">// 动态代理（工具类）
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-/**
- * 动态代理理解：
- *      1.Proxy和InvocationHandler是两个类
- *      2.Proxy：生成动态代理实例
- *      3.InvocationHandler：调用处理程序并返回结果
- */
-
-// 用这个类，自动生成代理类
-
-/** 这程序只做两件事：
- *      1.invoke执行要真正执行的方法
- *      2.得到代理类
- */
-public class ProxyInvocationHandler implements InvocationHandler {
-
-    // 被代理的接口
-    private Object target;
-
-    public void setTarget(Object target) {
-        this.target = target;
-    }
-
-    // 生成代理类（参数解释：1.为了加载到类在哪个位置，2.表示要代理的接口是哪一个，3.表示InvocationHandler，调用他来处理）
-    public Object getProxy() {
-        return Proxy.newProxyInstance(this.getClass().getClassLoader(),
-                target.getClass().getInterfaces(), this);
-    }
-
-    // 处理代理实例，并返回结果（执行方法）
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        // 利用method方法得到log内方法名
-        log(method.getName());
-        // 动态代理的本质，就是使用反射机制实现
-        Object result = method.invoke(target, args);
-        return result;
-    }
-
-    public void log( String msg){
-        System.out.println(&quot;执行了&quot;+msg+&quot;方法&quot;);
-    }
-}
-</code></pre>
-<pre><code class="java">// 测试类
-
-/**
- * 怎么去得到代理类并执行方法？
- *      1.调用host设置一个真实要代理的角色
- *      2.获得代理类
- */
-public class Client {
-    public static void main(String[] args) {
-        // 真实角色
-        UserServiceImpl userService = new UserServiceImpl();
-
-        // 代理角色：现在没有
-        ProxyInvocationHandler pih = new ProxyInvocationHandler();
-
-        // 1.通过调用程序处理角色来处理我们要调用的接口对象！
-        pih.setTarget(userService); // 设置要代理的对象
-
-        // 2.获得代理类，动态生成。
-        UserService proxy = (UserService) pih.getProxy();
-
-        // 3.通过代理调用方法
-        proxy.add();
-        proxy.delete();
-    }
-}
-</code></pre>
-<h2 id="11-AOP"><a href="#11-AOP" class="headerlink" title="11. AOP"></a>11. AOP</h2><h3 id="11-1-什么是AOP"><a href="#11-1-什么是AOP" class="headerlink" title="11.1 什么是AOP"></a>11.1 什么是AOP</h3><p>AOP(Aspect Oriented Programming)意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合降低，提高程序的可重用性，同时提高了开发的效率。</p>
-<img src="/2020/10/31/Spring学习笔记（下）/AOP.jpg">
-<h3 id="11-2-AOP在Spring中的作用"><a href="#11-2-AOP在Spring中的作用" class="headerlink" title="11.2 AOP在Spring中的作用"></a>11.2 AOP在Spring中的作用</h3><p><code>提供声明式事务；允许用户自定义切面</code></p>
-<p>以下名词需要了解下：</p>
-<ul>
-<li>横切关注点：跨越应用程序多个模块的方法或功能。即是，与我们业务逻辑无关的，但是我们需要关注的部分，就是横切关注点。如日志 , 安全 , 缓存 , 事务等等 ….</li>
-<li>切面（ASPECT）：横切关注点 被模块化 的特殊对象。即，它是一个类。</li>
-<li>通知（Advice）：切面必须要完成的工作。即，它是类中的一个方法。</li>
-<li>目标（Target）：被通知对象。</li>
-<li>代理（Proxy）：向目标对象应用通知之后创建的对象。</li>
-<li>切入点（PointCut）：切面通知 执行的 “地点”的定义。</li>
-<li>连接点（JointPoint）：与切入点匹配的执行点。</li>
-</ul>
-<img src="/2020/10/31/Spring学习笔记（下）/AOP1.jpg">
-<p><code>SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice:</code></p>
-<img src="/2020/10/31/Spring学习笔记（下）/Advice.jpg">
-<p>即 Aop 在 不改变原有代码的情况下 , 去增加新的功能 。</p>
-<h3 id="11-3-使用Spring实现AOP"><a href="#11-3-使用Spring实现AOP" class="headerlink" title="11.3 使用Spring实现AOP"></a>11.3 使用Spring实现AOP</h3><p><code>【重点】使用AOP织入，需要导入一个依赖包！</code></p>
-<pre><code class="xml">&lt;!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver --&gt;
-&lt;dependency&gt;
-   &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
-   &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
-   &lt;version&gt;1.9.4&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h4 id="方式1：通过-Spring-API-实现【主要SpringAPI接口实现】"><a href="#方式1：通过-Spring-API-实现【主要SpringAPI接口实现】" class="headerlink" title="方式1：通过 Spring API 实现【主要SpringAPI接口实现】"></a><strong>方式1：通过 Spring API 实现</strong>【主要SpringAPI接口实现】</h4><p>首先编写我们的业务接口和实现类</p>
-<pre><code class="java">public interface UserService {
-
-   public void add();
-
-   public void delete();
-
-   public void update();
-
-   public void search();
-
-}
-</code></pre>
-<pre><code class="java">public class UserServiceImpl implements UserService {
-    public void add() {
-        System.out.println(&quot;增加了一个用户&quot;);
-    }
-
-    public void delete() {
-        System.out.println(&quot;删除了一个用户&quot;);
-    }
-
-    public void update() {
-        System.out.println(&quot;修改了一个用户&quot;);
-    }
-
-    public void query() {
-        System.out.println(&quot;查询了一个用户&quot;);
-    }
-}
-</code></pre>
-<pre><code class="xml">&lt;!--applicationContext.xml配置--&gt;
-
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
-
-    &lt;!--注册bean--&gt;
-    &lt;bean id=&quot;userService&quot; class=&quot;com.kerr.service.UserServiceImpl&quot;/&gt;
-    &lt;bean id=&quot;log&quot; class=&quot;com.kerr.log.Log&quot;/&gt;
-    &lt;bean id=&quot;afterLog&quot; class=&quot;com.kerr.log.AfterLog&quot;/&gt;
-
-    &lt;!--方式一：使用原生Spring API接口--&gt;
-    &lt;!--导入aop的约束--&gt;
-    &lt;aop:config&gt;
-        &lt;!--切入点: expression：表达式；execution(要执行的位置)--&gt;
-        &lt;aop:pointcut id=&quot;pointcut&quot; expression=&quot;execution(* com.kerr.service.UserServiceImpl.*(..))&quot;/&gt;
-        &lt;!--执行环绕增加--&gt;
-        &lt;!--把log、afterLog切到pointcut中执行--&gt;
-        &lt;aop:advisor advice-ref=&quot;log&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
-        &lt;aop:advisor advice-ref=&quot;afterLog&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
-    &lt;/aop:config&gt;
-&lt;/beans&gt;
-</code></pre>
-<p>测试类</p>
-<pre><code class="java">public class MyTest {
-    public static void main(String[] args) {
-        // 获取容器
-        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-
-        // 动态代理代理的是接口，因此参数写的是接口
-        // 得到对象
-        UserService userService =context.getBean(&quot;userService&quot;,UserService.class);
-
-        // 使用对象方法
-        userService.add();
-    }
-}
-</code></pre>
-<p>输出结果：</p>
-<img src="/2020/10/31/Spring学习笔记（下）/SpringAOP返回结果.jpg">
-<h4 id="方式2：自定义类实现AOP【主要是切面定义】"><a href="#方式2：自定义类实现AOP【主要是切面定义】" class="headerlink" title="方式2：自定义类实现AOP【主要是切面定义】"></a>方式2：自定义类实现AOP【主要是切面定义】</h4><p><code>1.来一个自定义切入点类：</code></p>
-<pre><code class="java">package com.kerr.diy;
-
-public class DiyPointCut {
-    public void before() {
-        System.out.println(&quot;方法执行前&quot;);
-    }
-
-    public void after() {
-        System.out.println(&quot;方法执行后&quot;);
-    }
-}
-</code></pre>
-<p><code>2.配置xml中的aop</code></p>
-<pre><code class="xml">&lt;aop:config&gt;
-    &lt;!--自定义切面，ref要引用的类--&gt;
-    &lt;aop:aspect ref=&quot;diy&quot;&gt;
-        &lt;!--切入点：com.kerr.service.UserServiceImpl，在指责格类中，实现下面的通知--&gt;
-        &lt;aop:pointcut id=&quot;point&quot; expression=&quot;execution(* com.kerr.service.UserServiceImpl.*(..))&quot;/&gt;
-        &lt;!--通知--&gt;
-        &lt;aop:before method=&quot;before&quot; pointcut-ref=&quot;point&quot;/&gt;
-        &lt;aop:after method=&quot;after&quot; pointcut-ref=&quot;point&quot;/&gt;
-    &lt;/aop:aspect&gt;
-&lt;/aop:config&gt;
-</code></pre>
-<p><code>3.测试类</code></p>
-<pre><code class="java">public class MyTest {
-    public static void main(String[] args) {
-        // 获取容器
-        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-
-        // 动态代理代理的是接口，因此参数写的是接口
-        // 得到对象
-        UserService userService =context.getBean(&quot;userService&quot;,UserService.class);
-
-        // 使用对象方法
-        userService.add();
-    }
-}
-</code></pre>
-<p><code>4.输出</code></p>
-<img src="/2020/10/31/Spring学习笔记（下）/自定义切面.jpg">
-<h4 id="方式3：基于注解实现AOP"><a href="#方式3：基于注解实现AOP" class="headerlink" title="方式3：基于注解实现AOP"></a>方式3：基于注解实现AOP</h4><p><code>applicationContext.xml文件：</code></p>
-<pre><code class="xml">&lt;!--  applicationContext.xml  --&gt;
-&lt;!--  注解使用  --&gt;
-    &lt;bean id=&quot;annotationPointCut&quot; class=&quot;com.kerr.diy.AnnotationPointCut&quot;/&gt;
-&lt;!-- 开启注解支持 --&gt;
-    &lt;aop:aspectj-autoproxy/&gt;
-</code></pre>
-<p><code>注解切入点文件：</code></p>
-<pre><code class="java">/**
- * 使用注解方式实现aop
- */
-
-@Aspect // 标注这个类是一个切面
-public class AnnotationPointCut {
-    @Before(&quot;execution(* com.kerr.service.UserServiceImpl.*(..))&quot;)
-    public void before(){
-        System.out.println(&quot;方法执行前...&quot;);
-    }
-
-    @After(&quot;execution(* com.kerr.service.UserServiceImpl.*(..))&quot;)
-    public void after(){
-        System.out.println(&quot;方法执行后...&quot;);
-    }
-
-    // 在环绕增强中，我们可以给定一个参数，代表我们要处理切入的点
-    @Around(&quot;execution(* com.kerr.service.UserServiceImpl.*(..))&quot;)
-    public void around(ProceedingJoinPoint jp) throws Throwable {
-        System.out.println(&quot;环绕前&quot;);
-
-        Signature signature = jp.getSignature();// 获得签名
-        System.out.println(signature);
-
-        // 执行方法
-        Object proceed = jp.proceed();
-
-        System.out.println(&quot;环绕后&quot;);
-    }
-}
-</code></pre>
-<p><code>3.测试类</code></p>
-<pre><code class="java">public class MyTest {
-    public static void main(String[] args) {
-        // 获取容器
-        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-
-        // 动态代理代理的是接口，因此参数写的是接口
-        // 得到对象
-        UserService userService =context.getBean(&quot;userService&quot;,UserService.class);
-
-        // 使用对象方法
-        userService.add();
-    }
-}
-</code></pre>
-<p><code>4.输出</code></p>
-
-<h2 id="12-整合Mybatis"><a href="#12-整合Mybatis" class="headerlink" title="12.整合Mybatis"></a>12.整合Mybatis</h2><p>中文文档<a href="http://mybatis.org/spring/zh/index.html" target="_blank" rel="noopener">http://mybatis.org/spring/zh/index.html</a></p>
-<p>步骤：</p>
+<h1 id="9-事务"><a href="#9-事务" class="headerlink" title="9. 事务"></a>9. 事务</h1><ol>
+<li><p>事务的基本介绍</p>
 <ol>
-<li>导入相关jar包<ul>
-<li>mybatis</li>
-<li>mysql数据库</li>
-<li>spring相关的</li>
-<li>aop织入</li>
-<li>mybatis-spring</li>
+<li><p>概念：</p>
+<ul>
+<li>如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。</li>
 </ul>
 </li>
-<li>编写配置文件</li>
-<li>测试</li>
+<li><p>操作：</p>
+<ol>
+<li>开启事务： start transaction;</li>
+<li>回滚：rollback;</li>
+<li>提交：commit;</li>
 </ol>
-<h4 id="12-1-回忆Mybatis"><a href="#12-1-回忆Mybatis" class="headerlink" title="12.1 回忆Mybatis"></a>12.1 回忆Mybatis</h4><ol>
-<li>编写实体类</li>
-<li>编写核心配置文件</li>
-<li>编写接口</li>
-<li>编写Mapper.xml</li>
-<li>测试</li>
+</li>
 </ol>
-<h4 id="12-2-Mybatis-spring"><a href="#12-2-Mybatis-spring" class="headerlink" title="12.2 Mybatis-spring"></a>12.2 Mybatis-spring</h4><ol>
-<li><p>编写数据源</p>
 </li>
-<li><p>SqlSessionFactory</p>
-</li>
-<li><p>sqlSessionTemplate</p>
-</li>
-<li><p>需要给接口加实现类【实现类里做原来mybatis做的事情】</p>
-</li>
-<li><p>将实现类注入到Spring中</p>
-</li>
-<li><p>测试</p>
-<p><code>`</code>xml</p>
-<!--spring-dao.xml-->
-<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-<pre><code>&lt;!--1.编写数据源DataSource：使用Spring的数据源替换Mybatis的配置 c3p0 dbcp druid--&gt;
-&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-    &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-    &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;
-    &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-    &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
-&lt;/bean&gt;
-</code></pre></beans></li>
+<li><p>事务的四大特征：</p>
+<ol>
+<li>原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</li>
+<li>持久性：当事务提交或回滚后，数据库会持久化的保存数据。</li>
+<li>隔离性：多个事务之间。相互独立。</li>
+<li>一致性：事务操作前后，数据总量不变</li>
 </ol>
-<pre><code>   &lt;!--2.sqlSessionFactory--&gt;
-   &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-       &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
-       &lt;!--绑定Mybatis配置文件--&gt;
-       &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot;/&gt;
-       &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:com/kerr/mapper/*.xml&quot;/&gt;
-   &lt;/bean&gt;
-
-   &lt;!--3.sqlSessionTemplate就是我们使用的SqlSession--&gt;
-   &lt;bean id=&quot;sqlSession&quot; class=&quot;org.mybatis.spring.SqlSessionTemplate&quot;&gt;
-       &lt;!--只能使用构造方法注入SqlSessionFactory，因为它没有set方法--&gt;
-       &lt;constructor-arg index=&quot;0&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
-   &lt;/bean&gt;
-
-   &lt;!--5.将实现类注入到Spring中--&gt;
-   &lt;bean id=&quot;userMapper&quot; class=&quot;com.kerr.mapper.UserMapperImpl&quot;&gt;
-       &lt;property name=&quot;sqlSession&quot; ref=&quot;sqlSession&quot;/&gt;
-   &lt;/bean&gt;
-</code></pre><p>   </p>
-<pre><code>
-   ```java
-   // 4.实现类
-   import java.util.List;
-
-   public class UserMapperImpl implements UserMapper{
-
-       // 原来，我们的所有操作都是用sqlSession来执行；现在，都使用sqlSessionTemplate
-       private SqlSessionTemplate sqlSession;
-
-       public void setSqlSession(SqlSessionTemplate sqlSession) {
-           this.sqlSession = sqlSession;
-       }
-
-       public List&lt;User&gt; selectUser() {
-           UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-           return mapper.selectUser();
-       }
-   }
-</code></pre><pre><code class="java">   // 测试
-   public class MyTest {
-       @Test
-       public void test() throws IOException {
-           ApplicationContext context = new ClassPathXmlApplicationContext(&quot;spring-dao.xml&quot;);
-           UserMapper userMapper = context.getBean(&quot;userMapper&quot;, UserMapper.class);
-           for (User user : userMapper.selectUser()) {
-               System.out.println(user);
-           }
-       }
-   }
-</code></pre>
-<h5 id="官方文档分析："><a href="#官方文档分析：" class="headerlink" title="官方文档分析："></a>官方文档分析：</h5><h6 id="SqlSessionFactoryBean"><a href="#SqlSessionFactoryBean" class="headerlink" title="SqlSessionFactoryBean"></a>SqlSessionFactoryBean</h6><img src="/2020/10/31/Spring学习笔记（下）/整合mybatis11.jpg">
-<p>要创建 bean工厂，首先把sqlSessionFactory放进去，由于放sqlSessionFactory需要一个dataSource，所以还需要连一个dataSource。</p>
-<h6 id="使用SqlSession"><a href="#使用SqlSession" class="headerlink" title="使用SqlSession"></a>使用SqlSession</h6><p><a href="http://mybatis.org/spring/zh/sqlsession.html#SqlSessionTemplate" target="_blank" rel="noopener">http://mybatis.org/spring/zh/sqlsession.html#SqlSessionTemplate</a></p>
-<h2 id="13-声明式事务"><a href="#13-声明式事务" class="headerlink" title="13.声明式事务"></a>13.声明式事务</h2><ol>
-<li>回顾事务<ul>
-<li>把一组业务当成一个业务来做，要么都成功，要么都失败！</li>
-<li>事务在项目开发中，十分重要，涉及到数据的一致性问题，不能马虎！</li>
-<li>确保完整性和一致性。</li>
+</li>
+<li><p>事务的隔离级别（了解）</p>
+<ul>
+<li>概念：多个事务之间隔离的，相互独立的。但是如果多个事务操作同一批数据，则会引发一些问题，设置不同的隔离级别就可以解决这些问题。</li>
+<li>存在问题：<ol>
+<li>脏读：一个事务，读取到另一个事务中没有提交的数据</li>
+<li>不可重复读(虚读)：在同一个事务中，两次读取到的数据不一样。</li>
+<li>幻读：一个事务操作(DML)数据表中所有记录，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</li>
+</ol>
+</li>
+<li><p>隔离级别：</p>
+<ol>
+<li>read uncommitted：读未提交<ul>
+<li>产生的问题：脏读、不可重复读、幻读</li>
 </ul>
 </li>
-<li>事务的ACID原则：<ul>
-<li>原子性：确保一组业务要么都成功，要么都失败。</li>
-<li>一致性：一旦事务完成，要么都被提交，要么都不提交，要保持资源和状态的一致性。</li>
-<li>隔离性：事务和事务之间互相不干扰，防止数据损坏。</li>
-<li>持久性：事物一旦完成了，无论系统发生什么问题，结果都不会再被影响，被持久化的写到存储器中。</li>
+<li>read committed：读已提交 （Oracle）<ul>
+<li>产生的问题：不可重复读、幻读</li>
 </ul>
 </li>
-<li>Spring中的事务管理<ul>
-<li>声明式事务：AOP</li>
-<li>编程式事务：需要在代码中进行事务的管理（try…catch）</li>
+<li>repeatable read：可重复读 （MySQL默认）<ul>
+<li>产生的问题：幻读</li>
+</ul>
+</li>
+<li>serializable：串行化<ul>
+<li>可以解决所有的问题</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注意：隔离级别从小到大安全性越来越高，但是效率越来越低</li>
+<li>数据库查询隔离级别：<ul>
+<li>select @@tx_isolation;</li>
+</ul>
+</li>
+<li>数据库设置隔离级别：<ul>
+<li>set global transaction isolation level  级别字符串;</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -1199,28 +1062,11 @@ public class AnnotationPointCut {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/11/06/常用SQL/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                常用SQL</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/10/29/Spring学习笔记（上）/" rel="next">
+            <a href="/2020/10/31/Spring学习笔记（下）/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190035761,2302710927&fm=26&gp=0.jpg">
               </div>
@@ -1228,7 +1074,7 @@ public class AnnotationPointCut {
               Next Post</span>
               <div class="info">
                 <h3>
-                Spring笔记（上）</h3>
+                Spring笔记（下）</h3>
                 <hr>
               </div>
             </a>
