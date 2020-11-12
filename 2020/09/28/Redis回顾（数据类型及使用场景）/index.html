@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">学生信息管理系统项目中遇到的问题总结 | Kerr&amp;Ann</title>
+  <title itemprop="name">Redis回顾（数据类型及使用场景） | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -489,11 +489,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1604849234271&amp;di=b41b01198e94ce761d250244a42de890&amp;imgtype=0&amp;src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-bf05bb30b712bdf59d1401635f98a43d_1200x500.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1604849234271&amp;di=b41b01198e94ce761d250244a42de890&amp;imgtype=0&amp;src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-bf05bb30b712bdf59d1401635f98a43d_1200x500.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=552985732,1956346469&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=552985732,1956346469&amp;fm=26&amp;gp=0.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      学生信息管理系统项目中遇到的问题总结</h1>
+      Redis回顾（数据类型及使用场景）</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -505,7 +505,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-11-9<span class="bull">
+        2020-9-28<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -519,106 +519,14 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="1-执行sql脚本时报错"><a href="#1-执行sql脚本时报错" class="headerlink" title="1.执行sql脚本时报错"></a>1.执行sql脚本时报错</h2><p><code>大概的错误提示</code></p>
-<pre><code>error: check the manual that corresponds to your MySQL server version
-</code></pre><p><code>错误位置：</code></p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/错误提示01.jpg">
-<p><code>错误位置：</code></p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/sql问题01.jpg">
-<p><code>解决：</code></p>
-<ul>
-<li>不是insert语句有问题，也不是create创建有问题，而是时间类型有问题,无论是datetime还是time，Navicat premium工具转储数据表的结构，时间后面都会带“(0)”!!!</li>
-<li>把datetime(0)全替换成datetime或time(0)</li>
-<li></li>
-</ul>
-<h2 id="2-post方法地址栏输入参数后"><a href="#2-post方法地址栏输入参数后" class="headerlink" title="2. post方法地址栏输入参数后"></a>2. post方法地址栏输入参数后</h2><img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/更改请求方法.jpg">
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/post方法地址栏输入参数问题.png">
-<ul>
-<li>将post方法改为get，因为地址栏输入是get请求！！！</li>
-</ul>
-<h2 id="3-测试SSM时无法连接数据库"><a href="#3-测试SSM时无法连接数据库" class="headerlink" title="3. 测试SSM时无法连接数据库"></a>3. 测试SSM时无法连接数据库</h2><p>本地mysql版本5.5.40，项目文件pom.xml里jar包驱动使用5.1.47，在地址栏输入参数后，出现“Cannot load JDBC driver class ‘com.mysql.cj.jdbc.Driver’”的错误。</p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/无法连接数据库.png">
-<p>解决办法是：（mysql 驱动jar文件 兼容性问题）驱动版本更改为6.0.6.</p>
-<h2 id="4-Layui转圈圈长时间加载不入的问题"><a href="#4-Layui转圈圈长时间加载不入的问题" class="headerlink" title="4. Layui转圈圈长时间加载不入的问题"></a>4. Layui转圈圈长时间加载不入的问题</h2><p>F12打开查错，发现是index.jsp接收不到后端传入的loginType，此时可以手动给loginType添加值（1代表管理员，2老师，3学生）；但这样写死的话显然不好。</p>
-<p>在loginController中写入login方法，分别定义三种角色：如下，随着user的信息一同存入session中，在前端通过${type}获取登录角色类型，然后根据type的值传入对应的json数据，并展示对应的页面，即可实现动态判断登录角色。</p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/转圈圈问题.jpg">
-<pre><code class="java">@Controller
-public class LoginController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private TeacherService teacherService;
-    @Autowired
-    private StudentService studentService;
-
-
-    @GetMapping(&quot;/login&quot;)
-    public String login() {
-        return &quot;login&quot;;
-    }
-
-    @PostMapping(&quot;/login&quot;)
-    @ResponseBody
-    public Map&lt;String, Object&gt; login(String userName, String password, String type, String captcha, HttpSession session) {
-
-        // 判断基本登录信息是否为空
-        if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password) || StringUtils.isEmpty(type)) {
-            return MapControl.getInstance().error(&quot;用户名或密码不能为空！&quot;).getMap();
-        }
-
-        // 判断验证码
-        String _captcha = (String) session.getAttribute(&quot;captcha&quot;);
-        // 验证码不能为空
-        if (StringUtils.isEmpty(captcha)){
-            return MapControl.getInstance().error(&quot;验证码不能为空&quot;).getMap();
-        }
-        // 验证码不匹配返回错误信息
-        if (!captcha.equals(_captcha)) {
-            return MapControl.getInstance().error(&quot;验证码错误&quot;).getMap();
-        }
-
-        // 判断登录类型：
-        // 1管理员
-        if (&quot;1&quot;.equals(type)) {
-            User user = userService.login(userName, MD5Utils.getMD5(password));
-            if (user != null) {
-                session.setAttribute(&quot;user&quot;, user);
-                session.setAttribute(&quot;type&quot;, &quot;1&quot;);
-                return MapControl.getInstance().success().add(&quot;data&quot;,user).getMap();
-            } else {
-                return MapControl.getInstance().error(&quot;用户名或密码错误&quot;).getMap();
-            }
-        }
-        // 2老师
-        if (&quot;2&quot;.equals(type)) {
-            Teacher teacher = teacherService.login(userName, MD5Utils.getMD5(password));
-            if (teacher != null) {
-                session.setAttribute(&quot;user&quot;, teacher);
-                session.setAttribute(&quot;type&quot;, &quot;2&quot;);
-                return MapControl.getInstance().success().add(&quot;data&quot;,teacher).getMap();
-            } else {
-                return MapControl.getInstance().error(&quot;用户名或密码错误&quot;).getMap();
-            }
-        }
-        // 3学生
-        if (&quot;3&quot;.equals(type)) {
-            Student student = studentService.login(userName, MD5Utils.getMD5(password));
-            if (student != null) {
-                session.setAttribute(&quot;user&quot;, student);
-                session.setAttribute(&quot;type&quot;, &quot;3&quot;);
-                return MapControl.getInstance().success().add(&quot;data&quot;,student).getMap();
-
-            } else {
-                return MapControl.getInstance().error(&quot;用户名或密码错误&quot;).getMap();
-            }
-        }
-        return MapControl.getInstance().getMap();
-    }
-
-}
-</code></pre>
-<h2 id="5-返回数据不符合Layui规范"><a href="#5-返回数据不符合Layui规范" class="headerlink" title="5.  返回数据不符合Layui规范"></a>5.  返回数据不符合Layui规范</h2><p>返回数据的代码中少了success()方法，导致返回的数据中缺失了定义在success方法中的信息（少了msg和code），因此查询出的数据不符合规范，Layui无法正常渲染。</p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/query问题.jpg">
+          <h2 id="一、redis基本基本介绍"><a href="#一、redis基本基本介绍" class="headerlink" title="一、redis基本基本介绍"></a>一、redis基本基本介绍</h2><p>1、 redis解决分布式环境下缓存不同步<br>让缓存集中处理(大家使用同一个缓存服务),我们需要一个类似于MYSQL这样可以通过服务来提供第三方的缓存工具(缓存服务器);流行的第三方缓存服务器:memcache/redis<br>2、REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统(可以把redis想象成一个巨大的MAP)。Redis和ehcache不一样的是，ehcache可以看做一个嵌入式的缓存框架，而redis是一个独立的应用服务（像MYSQL一样），既可以提供缓存功能，还可以把数据持久化到磁盘上(redis也可以提供持久化的功能,在某些情况下,redis也可以作为数据库存在)；<br>3、性能极高 – Redis能支持超过 10W次每秒的读写频率。丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。<br>原子 – Redis的所有操作都是原子性的，同时Redis还支持对几个操作合并后的原子性执行(简单的事务)。<br>丰富的特性 – Redis还支持 publish/subscribe(发布/订阅), 通知, key 过期等等特性。</p>
+<h2 id="二、redis基本命令和存储"><a href="#二、redis基本命令和存储" class="headerlink" title="二、redis基本命令和存储"></a>二、redis基本命令和存储</h2><p>redis命令分为：<br>  对数据的操作；<br>  发布/订阅相关操作；<br>  事务控制；<br>  脚本命令；<br>  连接服务器命令；<br>  数据库服务相关命令；<br>redis存储：<br>1，redis可以作为内存数据库，也可以把数据持久化到磁盘上；大部分情况下,都是把redis作为内存数据库;<br>2，默认情况下<br>  #after 900 sec (15 min) if at least 1 key changed<br>  #after 300 sec (5 min) if at least 10 keys changed<br>  #after 60 sec if at least 10000 keys changed<br>在redis配置文件中：<br>  save 900 1<br>  save 300 10<br>  save 60 10000<br>3，数据默认存储在安装目录下.rdb文件中（可以在配置文件中dbfilename dump.rdb配置）；<br>4，redis也可以设置为append模式，每次key的修改都会append到文件中，这种方式有可能丢失60秒的数据；<br>  通过配置：appendonly yes开启<br>  appendfilename “appendonly.aof”设置append文件；<br>  可以设置append的模式（类似于mysql的事务文件同步机制）：<br>     # appendfsync always：每次更新key及时同步到append文件；<br>     # appendfsync everysec：每一秒同步一次key的更新；<br>    # appendfsync no：不管理append文件的更新，根据操作系统去定</p>
+<h2 id="三、redis中String数据类型-http-redis-cn-commands-html-string"><a href="#三、redis中String数据类型-http-redis-cn-commands-html-string" class="headerlink" title="三、redis中String数据类型 http://redis.cn/commands.html#string"></a>三、redis中String数据类型 <a href="http://redis.cn/commands.html#string" target="_blank" rel="noopener">http://redis.cn/commands.html#string</a></h2><p>1、常见的字符串操作：<br>  strlen key：返回key的value的值长度；<br>  getrange key X Y：返回key对应value的一个子字符串，位置从X到Y；<br>  append key value：给key对应的value追加值，如果key不存在，相当于set一个新的值；<br>2、如果字符串的内容是数值（integer，在redis中，数值也是string）<br>  incr key：在给定key的value上增加1；（常用于id）；redis中的incr是一个原子操作，支持并发；如果key不存在，则相当于设置1；<br>  incrby key value：给定key的value上增加value值；相当于key=key.value+value；这也是一个原子操作；<br>  decr：在给定key的value上减少1；<br>  decrby key value：给定key的value上减少value值；<br>3、string最常见的使用场景：<br>存储json类型对象<br>  incr user:id<br>  set user:1 {id:1,name:xiaolong}   第一个user设置属性<br>   incr user:id  incr 是原子操作，支持并发<br>  set user:2 {id:2,name:stef}  第二个user设置属性<br>作为计数器,<br>  incr count;<br>优酷视频点赞（为第100个视频点赞统计）<br>   初   始   set vedio：100：goodcount 0<br>   点   赞   incr vedio：100：good：count<br>  取消点赞   decr vedio：100：good：count</p>
+<h2 id="四、redis中的List-http-redis-cn-commands-html-list"><a href="#四、redis中的List-http-redis-cn-commands-html-list" class="headerlink" title="四、redis中的List http://redis.cn/commands.html#list"></a>四、redis中的List <a href="http://redis.cn/commands.html#list" target="_blank" rel="noopener">http://redis.cn/commands.html#list</a></h2><p>1、redis的LIST结构(想象成java中的List)，是一个双向链表结构，可以用来存储一组数据；从这个列表的前端和后端取数据效率非常高；<br>2、list的常用操作：<br>  RPUSH：在一个list最后添加一个元素<br>RPUSH firends “stef”<br>  LPUSH：在一个list最前面添加一个元素<br>LPUSH firends “stea”<br>  LTRIM key start stop：剪裁一个列表，剩下的内容从start到stop；<br>LTRIM friends 0,3 =&gt;只剩下前4个数据；<br>  LRANGE key start stop：获取列表中的一部分数据，两个参数，第一个参数代表第一个获取元素的位置（0）开始，第二个值代表截止的元素位置，如果第二个参数为-1，截止到列表尾部==&gt;LRANGE firends 0 -1<br>  LLEN key： 返回一个列表当前长度==&gt;LLEND friends<br>  LPOP：移除list中第一个元素，并返回这个元素==&gt;LPOP friends<br>  RPOP：移除list中最后一个元素，并返回这个元素==&gt;RPOP friends<br><img src="https://img-blog.csdnimg.cn/20190503001345224.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM4MDY4ODEy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>3,使用场景:<br>①可以使用redis的list模拟队列,堆栈<br>②朋友圈点赞；<br> 规定:朋友圈内容的格式:<br>    内容: user❌post:x content来存储;<br>    点赞: post❌good list来存储;<br> 创建一条微博内容：set user:1:post:91 ‘hello redis’;<br> 点赞：<br>     lpush post:91:good ‘{id:1,name:stef,img:xxx.jpg}’<br>     lpush post:91:good ‘{id:2,name:xl,img:xxx.jpg}’<br>     lpush post:91:good ‘{id:3,name:xm,img:xxx.jpg}’<br>③查看有多少人点赞: llen post:91:good<br>④查看哪些人点赞：lrange post:91:good 0 -1<br>思考，如果用数据库实现这个功能，SQL会多复杂？？</p>
+<p>示例2：回帖<br>  ①创建一个帖子：<br>    set user:1:post:90 ‘wohenshuai’<br>  ②创建一个回帖：<br>    set postreply:1 ‘nonono’<br>  ③把回帖和帖子关联：<br>    lpush post:90:replies 1<br>  ④再来一条回帖：<br>    set postreply:2 ‘hehe’<br>     lpush post:90:replies 2<br> ⑤查询帖子的回帖：<br>    lrange post:90:replies 0 -1<br>     get postreply:2</p>
+<h2 id="五、redis中的Set-http-redis-cn-commands-html-set"><a href="#五、redis中的Set-http-redis-cn-commands-html-set" class="headerlink" title="五、redis中的Set http://redis.cn/commands.html#set"></a>五、redis中的Set <a href="http://redis.cn/commands.html#set" target="_blank" rel="noopener">http://redis.cn/commands.html#set</a></h2><p>1、SET结构和java中差不多，数据没有顺序，并且每一个值不能重复；<br>2、SET结构的常见操作：<br>    SADD：给set添加一个元素==&gt;SADD language ‘java’<br>    SREM：从set中移除一个给定元素==&gt;SREM language ‘php’<br>    SISMEMBER：判断给定的一个元素是否在set中，如果存在，返回1，如果不存在，返回0==&gt;sismember language ‘php’<br>    SMEMBERS：返回指定set内所有的元素，以一个list形式返回==&gt;smembers language<br>    SCARD：返回set的元素个数==&gt;scard language<br>    SRANDMEMBER key count:返回指定set中随机的count个元素==&gt; srandmember friends 3 //随机推荐3个用户（典型场景，抽奖）<br>    SUNION(并集)：综合多个set的内容，并返回一个list的列表，包含综合后的所有元素;<br>         sadd language ‘php’<br>         sadd pg ‘c’<br>         sadd pg ‘c++’<br>         sadd pgs ‘java’<br>         sadd pgs ‘swift’<br>         sunion language pg pgs<br>    SINTER key [key …] (交集)：获取多个key对应的set之间的交集<br>SINTER friends:user:1000 friends:user:1001 friends:user:1002 =&gt;获取1000,1001,1002三个用户的共同好友列表；<br>     SINTERSTORE destination key [key …] ：获取多个key对应的set之间的交集，并保存为新的key值；目标也是一个set；<br>SINTER groupfriends friends:user:1000 friends:user:1001 friends:user:1002 =&gt;获取三个用户共同的好友列表并保存为组好友列表；<br>3、set的使用场景：<br>①、去重；<br>②、抽奖;<br>    准备一个抽奖池:sadd luckdraws 1 2 3 4 5 6 7 8 9 10 11 12 13<br>    抽3个三等奖:srandmember luckdraws 3<br>srem luckdraws 11 1 10<br>    抽2个二等奖:<br>三、做set运算（好友推荐）<br>    初始化好友圈<br>          sadd user:1:friends ‘user:2’ ‘user:3’ ‘user:5’<br>          sadd user:2:friends ‘user:1’ ‘user:3’ ‘user:6’<br>          sadd user:3:friends ‘user:1’ ‘user:7’ ‘user:8’<br>    把user:1的好友的好友集合做并集;<br>         user:1 user:3 user:6 user:7 user:8<br>    让这个并集和user:1的好友集合做差集;<br>         user:1 user:6 user:7 user:8<br>    从差集中去掉自己<br>          user:6 user:7 user:8<br>    随机选取推荐好友<br><img src="https://img-blog.csdnimg.cn/20190503155921993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM4MDY4ODEy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190503160008475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM4MDY4ODEy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="六、redis中的Sort-Set-http-redis-cn-commands-html-sorted-set"><a href="#六、redis中的Sort-Set-http-redis-cn-commands-html-sorted-set" class="headerlink" title="六、redis中的Sort Set http://redis.cn/commands.html#sorted_set"></a>六、redis中的Sort Set <a href="http://redis.cn/commands.html#sorted_set" target="_blank" rel="noopener">http://redis.cn/commands.html#sorted_set</a></h2><p>1、SET是一种非常方便的结构，但是数据无序，redis提供了一个sorted set，每一个添加的值都有一个对应的分数，可以通过这个分数进行排序;sorted set中的排名是按照分组升序排列<br>2、Sortedset的常用操作：<br>   ZADD：添加一个带分数的元素，也可以同时添加多个：<br>        ZADD hackers 1940 “Alan Kay”<br>        ZADD hackers 1906 “Grace Hopper”<br>        ZADD hackers 1969 “Linus Torvalds”<br>        ZADD hackers 1940 “Alan Kay” 1906 “Grace Hopper” 1969 “Linus Torvalds”<br>   ZCOUNT key min max ：给定范围分数的元素个数：<br>   ZCOUNT hackers 1940 1960 =&gt;1940到1960的hacker个数；<br>   ZRANK key member ：查询指定元素的分数在整个列表中的排名（从0开始）<br>   ZRANK hackers “Alan Kay” =&gt;alan kay的年龄在所有hacker中的排名；<br>   zrange hackers 0 -1 =&gt;<br>     1) “Grace Hopper”<br>     2) “Alan Kay”<br>     3) “Linus Torvalds”<br>   ZREVRANGE key start stop：按照分数从小到大排;<br>3、sorted set的使用场景：sorted set算是redis中最有用的一种结构，非常适合用于做海量的数据的排行（比如一个巨型游戏的用户排名）；sorted set中所有的方法都建议大去看一下；sorted set的速度非常快；<br>示例1，天梯排名：<br>  1，添加初始排名和分数：<br>  2，查询fat在当前ladder中的排名：<br>  3，查询ladder中的前3名：<br>  4，jian增加了20ladder score： <img src="https://img-blog.csdnimg.cn/20190504115208589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM4MDY4ODEy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>示例2：<br>   LRU淘汰最长时间没使用；<br>   LFU淘汰最低使用频率；</p>
+<h2 id="七、redis中的hash-http-redis-cn-commands-html-hash"><a href="#七、redis中的hash-http-redis-cn-commands-html-hash" class="headerlink" title="七、redis中的hash http://redis.cn/commands.html#hash"></a>七、redis中的hash <a href="http://redis.cn/commands.html#hash" target="_blank" rel="noopener">http://redis.cn/commands.html#hash</a></h2><p>1、hashes可以理解为一个map，这个map由一对一对的字段和值组成，所以，可以用hashes来保存一个对象：<br>2、hashes的常见操作：<br> HSET:给一个hashes添加一个field和value；<br>    HSET user:1000 name “John Smith”<br>    HSET user:1000 email “<a href="mailto:john.smith@example.com" target="_blank" rel="noopener">john.smith@example.com</a>“<br>    HSET user:1000 password “s3cret”<br> HGET可以得到一个hashes中的某一个属性的值：<br>    HGET user:1000 name =&gt;“John Smith”<br> HGETALL：一次性取出一个hashes中所有的field和value，使用list输出，一个field，一个value有序输出；<br>   HGETALL user:1000 =&gt;<br>    1) “name”<br>    2) “John Smith”<br>    3) “email”<br>    4) “<a href="mailto:john.smith@example.com" target="_blank" rel="noopener">john.smith@example.com</a>“<br>    5) “password”<br>    6) “s3cret”<br> HMSET:一次性的设置多个值(hashes multiple set)<br>    HMSET user:1001 name “Mary Jones” password “hidden” email “<a href="mailto:mjones@example.com" target="_blank" rel="noopener">mjones@example.com</a>“<br> HMGET：一次性的得到多个字段值(hashes multiple get)，以列表形式返回；<br>    HMGET user:1001 name email =&gt;<br>    1)“Mary Jones”<br>    2)“<a href="mailto:mjones@example.com" target="_blank" rel="noopener">mjones@example.com</a>”<br> HINCRBY：给hashes的一个field的value增加一个值(integer)，这个增加操作是原子操作：<br>    HSET user:1000 visits 10<br>    HINCRBY user:1000 visits 1 =&gt; 11<br>    HINCRBY user:1000 visits 10 =&gt; 21<br> HKEYS：得到一个key的所有fields字段，以list返回：<br>    HKEYS user:1000 =&gt;<br>    1)“name”<br>    2)“password”<br>    3)“email”<br> HDEL:删除hashes一个指定的filed；<br>    HDEL user:1000 visits<br>3、使用场景:<br>  使用hash来保存一个对象更直观;(建议不使用hash来保存)<br>  分组<br>     set user:id 1<br>    set dept:id 1<br>    HMSET ids user:id 1 dept:id 1 orderbill:id 1<br>    HINCRBY ids user:id<br>    HINCRBY ids dept:id<br>    HMSET users user:1 “{id:1,name:xx}” user:2 “{id:2,name:xx}”</p>
 
         </div>
         <!-- .entry-content -->
@@ -647,19 +555,36 @@ public class LoginController {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/28/003-String-StringBuffer-String-Builder的区别/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/6992/forest-trees-northwestisbest-exploress.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://images.pexels.com/photos/6992/forest-trees-northwestisbest-exploress.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                003.String_StringBuffer_String_Builder的区别</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
-            <a href="/2020/11/06/常用SQL/" rel="next">
+            <a href="/2020/09/28/002-final的用法及相关注意点/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/banner/coding.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/banner/coding.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                常用SQL</h3>
+                002.final的用法及相关注意点</h3>
                 <hr>
               </div>
             </a>

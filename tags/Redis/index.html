@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">学生信息管理系统项目中遇到的问题总结 | Kerr&amp;Ann</title>
+  <title itemprop="name">Tag: Redis | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,223 +483,64 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1604849234271&amp;di=b41b01198e94ce761d250244a42de890&amp;imgtype=0&amp;src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-bf05bb30b712bdf59d1401635f98a43d_1200x500.jpg);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1604849234271&amp;di=b41b01198e94ce761d250244a42de890&amp;imgtype=0&amp;src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-bf05bb30b712bdf59d1401635f98a43d_1200x500.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      学生信息管理系统项目中遇到的问题总结</h1>
-      <p class="entry-census">
-        <span>
-          <a href="">
-            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
-          </a>
-        </span>
-        <span>
-          <a href="">Kerr</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-11-9<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="Redis.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-
+  <header class="pattern-header ">
+    <h1 class="cat-title">Redis</h1>
+  </header>
+</div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h2 id="1-执行sql脚本时报错"><a href="#1-执行sql脚本时报错" class="headerlink" title="1.执行sql脚本时报错"></a>1.执行sql脚本时报错</h2><p><code>大概的错误提示</code></p>
-<pre><code>error: check the manual that corresponds to your MySQL server version
-</code></pre><p><code>错误位置：</code></p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/错误提示01.jpg">
-<p><code>错误位置：</code></p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/sql问题01.jpg">
-<p><code>解决：</code></p>
-<ul>
-<li>不是insert语句有问题，也不是create创建有问题，而是时间类型有问题,无论是datetime还是time，Navicat premium工具转储数据表的结构，时间后面都会带“(0)”!!!</li>
-<li>把datetime(0)全替换成datetime或time(0)</li>
-<li></li>
-</ul>
-<h2 id="2-post方法地址栏输入参数后"><a href="#2-post方法地址栏输入参数后" class="headerlink" title="2. post方法地址栏输入参数后"></a>2. post方法地址栏输入参数后</h2><img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/更改请求方法.jpg">
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/post方法地址栏输入参数问题.png">
-<ul>
-<li>将post方法改为get，因为地址栏输入是get请求！！！</li>
-</ul>
-<h2 id="3-测试SSM时无法连接数据库"><a href="#3-测试SSM时无法连接数据库" class="headerlink" title="3. 测试SSM时无法连接数据库"></a>3. 测试SSM时无法连接数据库</h2><p>本地mysql版本5.5.40，项目文件pom.xml里jar包驱动使用5.1.47，在地址栏输入参数后，出现“Cannot load JDBC driver class ‘com.mysql.cj.jdbc.Driver’”的错误。</p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/无法连接数据库.png">
-<p>解决办法是：（mysql 驱动jar文件 兼容性问题）驱动版本更改为6.0.6.</p>
-<h2 id="4-Layui转圈圈长时间加载不入的问题"><a href="#4-Layui转圈圈长时间加载不入的问题" class="headerlink" title="4. Layui转圈圈长时间加载不入的问题"></a>4. Layui转圈圈长时间加载不入的问题</h2><p>F12打开查错，发现是index.jsp接收不到后端传入的loginType，此时可以手动给loginType添加值（1代表管理员，2老师，3学生）；但这样写死的话显然不好。</p>
-<p>在loginController中写入login方法，分别定义三种角色：如下，随着user的信息一同存入session中，在前端通过${type}获取登录角色类型，然后根据type的值传入对应的json数据，并展示对应的页面，即可实现动态判断登录角色。</p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/转圈圈问题.jpg">
-<pre><code class="java">@Controller
-public class LoginController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private TeacherService teacherService;
-    @Autowired
-    private StudentService studentService;
-
-
-    @GetMapping(&quot;/login&quot;)
-    public String login() {
-        return &quot;login&quot;;
-    }
-
-    @PostMapping(&quot;/login&quot;)
-    @ResponseBody
-    public Map&lt;String, Object&gt; login(String userName, String password, String type, String captcha, HttpSession session) {
-
-        // 判断基本登录信息是否为空
-        if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password) || StringUtils.isEmpty(type)) {
-            return MapControl.getInstance().error(&quot;用户名或密码不能为空！&quot;).getMap();
-        }
-
-        // 判断验证码
-        String _captcha = (String) session.getAttribute(&quot;captcha&quot;);
-        // 验证码不能为空
-        if (StringUtils.isEmpty(captcha)){
-            return MapControl.getInstance().error(&quot;验证码不能为空&quot;).getMap();
-        }
-        // 验证码不匹配返回错误信息
-        if (!captcha.equals(_captcha)) {
-            return MapControl.getInstance().error(&quot;验证码错误&quot;).getMap();
-        }
-
-        // 判断登录类型：
-        // 1管理员
-        if (&quot;1&quot;.equals(type)) {
-            User user = userService.login(userName, MD5Utils.getMD5(password));
-            if (user != null) {
-                session.setAttribute(&quot;user&quot;, user);
-                session.setAttribute(&quot;type&quot;, &quot;1&quot;);
-                return MapControl.getInstance().success().add(&quot;data&quot;,user).getMap();
-            } else {
-                return MapControl.getInstance().error(&quot;用户名或密码错误&quot;).getMap();
-            }
-        }
-        // 2老师
-        if (&quot;2&quot;.equals(type)) {
-            Teacher teacher = teacherService.login(userName, MD5Utils.getMD5(password));
-            if (teacher != null) {
-                session.setAttribute(&quot;user&quot;, teacher);
-                session.setAttribute(&quot;type&quot;, &quot;2&quot;);
-                return MapControl.getInstance().success().add(&quot;data&quot;,teacher).getMap();
-            } else {
-                return MapControl.getInstance().error(&quot;用户名或密码错误&quot;).getMap();
-            }
-        }
-        // 3学生
-        if (&quot;3&quot;.equals(type)) {
-            Student student = studentService.login(userName, MD5Utils.getMD5(password));
-            if (student != null) {
-                session.setAttribute(&quot;user&quot;, student);
-                session.setAttribute(&quot;type&quot;, &quot;3&quot;);
-                return MapControl.getInstance().success().add(&quot;data&quot;,student).getMap();
-
-            } else {
-                return MapControl.getInstance().error(&quot;用户名或密码错误&quot;).getMap();
-            }
-        }
-        return MapControl.getInstance().getMap();
-    }
-
-}
-</code></pre>
-<h2 id="5-返回数据不符合Layui规范"><a href="#5-返回数据不符合Layui规范" class="headerlink" title="5.  返回数据不符合Layui规范"></a>5.  返回数据不符合Layui规范</h2><p>返回数据的代码中少了success()方法，导致返回的数据中缺失了定义在success方法中的信息（少了msg和code），因此查询出的数据不符合规范，Layui无法正常渲染。</p>
-<img src="/2020/11/09/学生信息管理系统项目中遇到的问题总结/query问题.jpg">
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-        
-          
-            <div class="post-nepre full next">
-          
-            <a href="/2020/11/06/常用SQL/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                常用SQL</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
-        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author">Kerr</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2020/09/28/Redis回顾（数据类型及使用场景）/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i></p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=552985732,1956346469&amp;fm=26&amp;gp=0.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2020/09/28/Redis回顾（数据类型及使用场景）/">
+    Redis回顾（数据类型及使用场景）</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-9-28</div>
+    <p>
+    Redis的数据类型及使用场景</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2020/09/28/Redis回顾（数据类型及使用场景）/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
-
-
-
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
