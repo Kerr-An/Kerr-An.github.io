@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Kerr&amp;Ann</title>
+  <title itemprop="name">如何自定义线程池 | Kerr&amp;Ann</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -483,290 +483,208 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1605552200525&amp;di=9f322ff20232c25502a31b799a3e4156&amp;imgtype=0&amp;src=http%3A%2F%2Fattachbak.dataguru.cn%2Fattachments%2Fforum%2F201507%2F01%2F144931tq9ogiyico5cnzyy.png);" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1605552200525&amp;di=9f322ff20232c25502a31b799a3e4156&amp;imgtype=0&amp;src=http%3A%2F%2Fattachbak.dataguru.cn%2Fattachments%2Fforum%2F201507%2F01%2F144931tq9ogiyico5cnzyy.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      如何自定义线程池</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png">
+          </a>
+        </span>
+        <span>
+          <a href="">Kerr</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-11-17<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">🚀🚀🚀欢迎来到我的博客！🚀🚀🚀</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-    <i class="fa fa-anchor" aria-hidden="true">
-    </i>
-    起飞飞飞……🛫🛫🛫🛫</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>我的主题</h3>
-          <p>主题宣传页</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://space.bilibili.com/172816607" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>原地反复横跳</h3>
-          <p>自传</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-        <i class="fa fa-envira" aria-hidden="true"></i>
-        Show Time</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <ul>
+<li>线程每次创建和关闭的开销非常大，我们可以使用线程池来管理我们的线程，可以充分利用线程，减少不必要的开销。</li>
+</ul>
+<h2 id="1-创建线程的方式有三种："><a href="#1-创建线程的方式有三种：" class="headerlink" title="1. 创建线程的方式有三种："></a>1. 创建线程的方式有三种：</h2><p>1、继承Thread类</p>
+<p>2、实现Runable或者Callable（带返回值）接口</p>
+<p>3、线程池的方式启动</p>
+<h2 id="2-线程池"><a href="#2-线程池" class="headerlink" title="2.线程池"></a>2.线程池</h2><p>今天我们主要针对线程池来进行展开讨论：</p>
+<p>JDK自带创建线程的方式有多种：</p>
+<img src="/2020/11/17/如何自定义线程池/线程池1.png">
+<p> 这里是针对JDK1.8版本。每个创建都不一样，但是使用JDK自带的线程池会出现OOM问题，中小型公司一般狠难遇到，在阿里巴巴开发文档上面有明确的标识：</p>
+<img src="/2020/11/17/如何自定义线程池/线程池2.png">
+<p> 如果有需要此文档，请点击下面的url进行下载：<a href="https://www.cnblogs.com/han-1034683568/p/7680354.html" target="_blank" rel="noopener">https://www.cnblogs.com/han-1034683568/p/7680354.html</a></p>
+<p>既然JDK自带的线程池我们不能用，那么我们要自己手动来写线程池了， 如果创建一个线程池：</p>
+<img src="/2020/11/17/如何自定义线程池/线程池3.png">
+<h3 id="2-1-创建"><a href="#2-1-创建" class="headerlink" title="2.1 创建"></a>2.1 创建</h3><p>我们可以这样来创建线程池，其他里面的参数表示什么意思，我们在这里说明一下啊：</p>
+<pre><code>ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler)
+</code></pre><h3 id="2-2-参数"><a href="#2-2-参数" class="headerlink" title="2.2 参数"></a>2.2 参数</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>corePoolSize</td>
+<td>线程中常驻核心线程数</td>
+</tr>
+<tr>
+<td>maximumPoolSize</td>
+<td>线程池能够容纳同时执行的最大线程数，此值必须大于1</td>
+</tr>
+<tr>
+<td>keepAliveTime</td>
+<td>多余空闲线程的存活时间</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>keepAliveTime的单位</td>
+</tr>
+<tr>
+<td>workQueue</td>
+<td>任务队列，被提交但尚未被执行的任务</td>
+</tr>
+<tr>
+<td>threadFactory</td>
+<td>表示生成线程池中工作线程的线程工厂，用于创建线程，一般的默认即可</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>拒绝策略，表示当队列满了，并且工作线程大于等于线程池的最大线程数（maximumPoolSize）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3-拒绝策略"><a href="#2-3-拒绝策略" class="headerlink" title="2.3 拒绝策略"></a>2.3 拒绝策略</h3><pre><code>线程池的拒绝策略：
+
+ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。（默认）
+ThreadPoolExecutor.DiscardPolicy：丢弃任务，但是不抛出异常。
+ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新提交被拒绝的任务
+ThreadPoolExecutor.CallerRunsPolicy：由调用线程（提交任务的线程）处理该任务添加阻塞队列的方式有四种：　　
+1、add，添加不进去的时候，就会抛异常　　
+2、offer，添加进去返回true，添加不进去返回false　　
+3、put，会一直阻塞，直到可以放进去为止　　
+4、offer+时间，如果阻塞队列满的时候，往阻塞队列添加，多久没有添加进去，则停止添加如何合理的配置线程池：　　这看你的业务了，看你的业务是CPU密集还是IO密集　　如果是CPU密集，一般配置的是CPU的核数或者核数+1　　如果是IO密集，大部分的线程都会阻塞，则需要多配置线程数，公式（CPU/(1-阻塞系数)），阻塞系数在0.8-0
+</code></pre><h2 id="3-总体步骤："><a href="#3-总体步骤：" class="headerlink" title="3. 总体步骤："></a>3. 总体步骤：</h2><table>
+<thead>
+<tr>
+<th>创建及使用线程池的步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1、在创建线程后，等待提交过来的任务请求</td>
+</tr>
+<tr>
+<td>2、当调用execute()方法添加一个请求任务的时候，线程池会如何判断<br>　　2.1、如果正在运行的线程数小于corePoolSize，那么马上创建线程运行这个认为<br>　　2.2、如果正在运行的线程数大于等于corePoolSize，那么将这个认为放入队列<br>　　2.3、如果这个时候队列满了，且小于maximumPoolSize，那么还是要创建线程立即执行任务<br>　　2.4、如果队列满了，maximumPoolSize也满了，将会启动饱和拒绝策略来执行</td>
+</tr>
+<tr>
+<td>3、将一个线程完成任务的时候，他会冲=从队列里面取下一个任务来执行</td>
+</tr>
+<tr>
+<td>4、当一个线程无事的时候，超过一定时间的时候，线程池会判断：如果当前运行的线程数大于等于corePoolSize，那么这个线程将被停掉，所以线程池的所有任务完成后它最终收缩到corePoolSize的大小</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/11/16/深挖数据库（MySQL）/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604671115393&di=9ffed59f43b5d977233c99f769cca680&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-45a820c30ba2559809663bc0639c1245_1200x500.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                深挖数据库（MySQL）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/09/28/003-String-StringBuffer-String-Builder的区别/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/6992/forest-trees-northwestisbest-exploress.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-9-28 16:09</div>
-      <a href="/2020/09/28/003-String-StringBuffer-String-Builder的区别/" class="post-title">
-        <h3>003.String_StringBuffer_String_Builder的区别</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Java基础/">Java基础<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Java中字符串类的相关问题</p>
-        <div class="post-bottom">
-          <a href="/2020/09/28/003-String-StringBuffer-String-Builder的区别/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/custom/avatar.png" itemprop="image" alt="Kerr" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kerr</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/09/28/Redis回顾（数据类型及使用场景）/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=552985732,1956346469&amp;fm=26&amp;gp=0.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-9-28 16:09</div>
-      <a href="/2020/09/28/Redis回顾（数据类型及使用场景）/" class="post-title">
-        <h3>Redis回顾（数据类型及使用场景）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Redis/">Redis<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Redis的数据类型及使用场景</p>
-        <div class="post-bottom">
-          <a href="/2020/09/28/Redis回顾（数据类型及使用场景）/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/09/28/002-final的用法及相关注意点/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.2/img/banner/coding.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-9-28 11:09</div>
-      <a href="/2020/09/28/002-final的用法及相关注意点/" class="post-title">
-        <h3>002.final的用法及相关注意点</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Java基础/">Java基础<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Java中final的相关问题</p>
-        <div class="post-bottom">
-          <a href="/2020/09/28/002-final的用法及相关注意点/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/09/28/001-==和equals的区别/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-9-28 11:09</div>
-      <a href="/2020/09/28/001-==和equals的区别/" class="post-title">
-        <h3>001.“==” 与 equals的区别</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Java基础/">Java基础<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Java判断是否相等的“小纠结”问题</p>
-        <div class="post-bottom">
-          <a href="/2020/09/28/001-==和equals的区别/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/09/28/Hexo写发文章步骤/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Kerr-An/cdn@1.4/img/banner/writing.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-9-28 10:09</div>
-      <a href="/2020/09/28/Hexo写发文章步骤/" class="post-title">
-        <h3>写发文章步骤.md</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Hexo写文章/">Hexo写文章<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Hexo写文章的相关步骤和可能碰到的问题</p>
-        <div class="post-bottom">
-          <a href="/2020/09/28/Hexo写发文章步骤/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-    <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
-      </nav>
-     -->
-  </div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>

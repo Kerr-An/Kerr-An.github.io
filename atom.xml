@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-16T15:05:03.390Z</updated>
+  <updated>2020-11-16T16:08:01.919Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何自定义线程池</title>
+    <link href="/2020/11/17/%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>/2020/11/17/如何自定义线程池/</id>
+    <published>2020-11-16T16:07:40.000Z</published>
+    <updated>2020-11-16T16:08:01.919Z</updated>
+    
+    <summary type="html">
+    
+      线程池
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="线程池" scheme="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>深挖数据库（MySQL）</title>
@@ -393,26 +413,6 @@
     
     
       <category term="Java基础" scheme="/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>转载开篇</title>
-    <link href="/2020/10/02/%E8%BD%AC%E8%BD%BD%E5%BC%80%E7%AF%87/"/>
-    <id>/2020/10/02/转载开篇/</id>
-    <published>2020-10-02T07:54:44.000Z</published>
-    <updated>2020-10-02T07:58:45.628Z</updated>
-    
-    <summary type="html">
-    
-      转载自CodeSheep
-    
-    </summary>
-    
-      <category term="转载" scheme="/categories/%E8%BD%AC%E8%BD%BD/"/>
-    
-    
-      <category term="转载" scheme="/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
